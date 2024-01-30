@@ -29,9 +29,17 @@
 .login-page .form-container .login-form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     background-color: lightgray;
     position: absolute;
     height: 100%;
     width: 100%;
+}
+
+.login-page .form-container .login-form .login-title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 

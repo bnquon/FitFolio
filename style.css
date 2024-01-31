@@ -21,7 +21,6 @@
     flex-direction: row;
     width: 55vw;
     height: 60vh;
-    border: 1px solid blue;
 }
 
 .login-page .form-container .login-form,
@@ -37,13 +36,23 @@
     overflow-y: auto;
 }
 
-.login-page .form-container .login-form {
-    /* background-color: #CCF381; */
+.login-page .form-container #login-form {
+    opacity: 0;
+    transition: 1.5s;
 }
 
-.login-page .form-container .signup-form {
+.login-page .form-container #login-form.show {
+    opacity: 1;
+}
+
+.login-page .form-container #signup-form {
     left: 50%;
-    /* background-color: #4831D4; */
+    opacity: 1;
+    transition: 1.5s;
+}
+
+.login-page .form-container #signup-form.show {
+    opacity: 0;
 }
 
 .login-page .form-container .login-form .login-title,
@@ -132,6 +141,10 @@
 .login-page .form-container .overlay #overlayMsg h3 {
     font-size: 25px;
     font-weight: 300;
+}
+
+.hidden {
+    display: none;
 }
 
 .login-page .form-container .overlay .overlayBtnContainer {

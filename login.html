@@ -12,14 +12,19 @@
 
             <div class="overlay" id="overlay">
                 <div id="overlayMsg">
-                    <h1>Welcome Back!</h1><br><h3>If you already have an account, continue by logging in and letting us keep tracking your journey!</h3>
+                    <div id="loginMsg">
+                        <p><h1>Welcome Back!</h1><br><h3>If you already have an account, continue by logging in and letting us keep tracking your journey!</h3></p>
+                    </div>
+                    <div id="signupMsg" class="hidden">
+                        <p><h1>Hello There!</h1><br><h3>Join our community and start your fitness journey today. Sign up and let's make progress together! 💪🎉</h3></p>
+                    </div>
                 </div>
                 <div class="overlayBtnContainer">
                     <button id="switchBtn"><p>Login</p></button>
                 </div>
             </div>
 
-            <form action="#" class="login-form">
+            <form action="#" class="login-form" id="login-form">
 
                 <div class="login-title">
                     <p>Login</p>
@@ -34,7 +39,7 @@
                 </div>
             </form>
 
-            <form action="#" class="signup-form">
+            <form action="#" class="signup-form" id="signup-form">
                 <div class="signup-title">
                     <p>Create Account</p>
                 </div>

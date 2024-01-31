@@ -19,27 +19,57 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    
     width: 30vw;
     height: 55vh;
-
-    border: 2px solid blue;
 }
 
 .login-page .form-container .login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     background-color: lightgray;
     position: absolute;
     height: 100%;
     width: 100%;
+    border-radius: 25px;
 }
 
 .login-page .form-container .login-form .login-title {
-    position: absolute;
+    position: relative;
+    display: flex;
+    border: 1px solid green;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    height: 20%;
+    justify-content: center;
+    align-items: center;
 }
 
+.login-page .form-container .login-form .login-title p {
+    font-size: 60px;
+}
+
+.login-page .form-container .login-form .login-fillout {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 80%;
+    max-height: 80%;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid orange;
+
+}
+.login-page .form-container .login-form .login-fillout label[for=username],
+.login-page .form-container .login-form .login-fillout label[for=password] {
+    font-size: 30px;
+    margin-bottom: 1%;
+}
+
+.login-page .form-container .login-form .login-fillout input[type=text],
+.login-page .form-container .login-form .login-fillout input[type=password] {
+    font-size: 25px;
+    padding: 5px;
+    width: 90%;
+}

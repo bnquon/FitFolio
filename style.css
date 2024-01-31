@@ -109,6 +109,11 @@
     left: 0%;
     align-items: center;
     overflow-y: auto;
+    transition: 500ms;
+}
+
+.login-page .form-container .overlay.show {
+    transform: translateX(100%);
 }
 
 .login-page .form-container .overlay #overlayMsg {

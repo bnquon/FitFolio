@@ -10,6 +10,15 @@
     <div class="login-page">
         <div class="form-container">
 
+            <div class="overlay">
+                <div id="overlayMsg">
+                    <h1>Welcome Back!</h1><br><h3>If you already have an account, continue by logging in and letting us keep tracking your journey!</h3>
+                </div>
+                <div class="overlayBtnContainer">
+                    <button id="switchBtn"><p>Login</p></button>
+                </div>
+            </div>
+
             <form action="#" class="login-form">
 
                 <div class="login-title">
@@ -18,6 +27,10 @@
                 <div class="login-fillout">
                     <input type="text" id="username" name="username" placeholder="Username" required>
                     <input type="password" placeholder="Password" required>
+                </div>
+
+                <div class="buttonContainer">
+                    <button id="loginBtn" type="submit"><p>Login</p></button>
                 </div>
             </form>
 
@@ -32,6 +45,9 @@
                     <input type="password" placeholder="Password" required>
                 </div>
 
+                <div class="buttonContainer">
+                    <button id="signUpBtn" type="submit"><p>Create</p></button>
+                </div>
             </form>
 
         </div>

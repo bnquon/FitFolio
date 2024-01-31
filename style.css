@@ -34,11 +34,16 @@
     position: absolute;
     height: 100%;
     width: 50%;
+    overflow-y: auto;
+}
+
+.login-page .form-container .login-form {
+    /* background-color: #CCF381; */
 }
 
 .login-page .form-container .signup-form {
     left: 50%;
-    background-color: lightblue;
+    /* background-color: #4831D4; */
 }
 
 .login-page .form-container .login-form .login-title,
@@ -58,11 +63,29 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 80%;
-    max-height: 80%;
-    justify-content: center;
+    height: 60%;
+    max-height: 60%;
+    justify-content: space-evenly;
     align-items: center;
+    top: 20%;
 }
+
+.login-page .form-container .login-form .buttonContainer,
+.login-page .form-container .signup-form .buttonContainer {
+    position: absolute;
+    display: flex;
+    top: 85%;
+    height: 10%;
+    width: 40%;
+}
+
+.login-page .form-container .login-form #loginBtn,
+.login-page .form-container .signup-form #signUpBtn {
+    width: 100%;
+    font-weight: 600;
+    font-size: 25px;
+}
+
 
 .login-page .form-container .login-form .login-fillout input[type=text],
 .login-page .form-container .login-form .login-fillout input[type=password],
@@ -70,7 +93,53 @@
 .login-page .form-container .signup-form .signup-fillout input[type=password],
 .login-page .form-container .signup-form .signup-fillout input[type=email] {
     font-size: 25px;
-    padding: 5px;
+    padding: 3%;
     width: 90%;
-    margin-bottom: 10%;
+    border-radius: 20px;
+}
+
+.login-page .form-container .overlay {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+    width: 50%;
+    height: 100%;
+    background-color: lightcoral;
+    left: 0%;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.login-page .form-container .overlay #overlayMsg {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    top: 25%;
+    width: 75%;
+}
+
+.login-page .form-container .overlay #overlayMsg h1 {
+    font-size: 60px;
+}
+
+.login-page .form-container .overlay #overlayMsg h3 {
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.login-page .form-container .overlay .overlayBtnContainer {
+    display: flex;
+    position: absolute;
+    top: 60%;
+    width: 40%;
+    height: 10%;
+}
+
+.login-page .form-container .overlay #switchBtn {
+    width: 100%;
+    font-weight: 600;
+    font-size: 25px;
+    border-radius: 20px;
 }

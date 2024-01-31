@@ -18,39 +18,43 @@
 .login-page .form-container {
     position: relative;
     display: flex;
-    flex-direction: column;
-    width: 30vw;
-    height: 55vh;
+    flex-direction: row;
+    width: 55vw;
+    height: 60vh;
+    border: 1px solid blue;
 }
 
-.login-page .form-container .login-form {
+.login-page .form-container .login-form,
+.login-page .form-container .signup-form {
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: lightgray;
     position: absolute;
     height: 100%;
-    width: 100%;
-    border-radius: 25px;
+    width: 50%;
 }
 
-.login-page .form-container .login-form .login-title {
-    position: relative;
+.login-page .form-container .signup-form {
+    left: 50%;
+    background-color: lightblue;
+}
+
+.login-page .form-container .login-form .login-title,
+.login-page .form-container .signup-form .signup-title {
+    font-size: 60px;
+    position: absolute;
     display: flex;
-    border: 1px solid green;
     top: 0;
     height: 20%;
     justify-content: center;
     align-items: center;
 }
 
-.login-page .form-container .login-form .login-title p {
-    font-size: 60px;
-}
-
-.login-page .form-container .login-form .login-fillout {
-    position: relative;
+.login-page .form-container .login-form .login-fillout,
+.login-page .form-container .signup-form .signup-fillout {
+    position: absolute;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -58,18 +62,15 @@
     max-height: 80%;
     justify-content: center;
     align-items: center;
-    border: 1px solid orange;
-
-}
-.login-page .form-container .login-form .login-fillout label[for=username],
-.login-page .form-container .login-form .login-fillout label[for=password] {
-    font-size: 30px;
-    margin-bottom: 1%;
 }
 
 .login-page .form-container .login-form .login-fillout input[type=text],
-.login-page .form-container .login-form .login-fillout input[type=password] {
+.login-page .form-container .login-form .login-fillout input[type=password],
+.login-page .form-container .signup-form .signup-fillout input[type=text],
+.login-page .form-container .signup-form .signup-fillout input[type=password],
+.login-page .form-container .signup-form .signup-fillout input[type=email] {
     font-size: 25px;
     padding: 5px;
     width: 90%;
+    margin-bottom: 10%;
 }

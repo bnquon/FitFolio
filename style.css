@@ -6,7 +6,6 @@
 }
 
 .login-page {
-    border: 1px solid red;
     display: flex;
     width: 100vw;
     max-width: 100%;
@@ -66,6 +65,7 @@
     height: 20%;
     justify-content: center;
     align-items: center;
+    color: #0ABAB5;
 }
 
 .login-page .form-container .login-form .login-fillout,
@@ -95,6 +95,16 @@
     width: 100%;
     font-weight: 600;
     font-size: 25px;
+    transition: 500ms;
+    background-color: #0ABAB5;
+    cursor: pointer;
+    color: white;
+    border-radius: 20px;
+}
+
+.login-page .form-container .login-form #loginBtn:hover,
+.login-page .form-container .signup-form #signUpBtn:hover {
+    background-color: lightcoral;
 }
 
 
@@ -135,6 +145,7 @@
     top: 25%;
     width: 85%;
     margin-bottom: 5%;
+    color: white;
 }
 
 .login-page .form-container .overlay #overlayMsg h1 {
@@ -165,10 +176,11 @@
     border-radius: 20px;
     cursor: pointer;
     background-color: transparent;
-    border: 3px solid black;
+    border: 3px solid white;
+    color: white;
     transition: 500ms;
 }
 
 .login-page .form-container .overlay #switchBtn:hover {
-    background-color: white;
+    background-color: #0ABAB5;
 }

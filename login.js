@@ -15,7 +15,6 @@ switchBtn.onclick = function () {
     signup.classList.toggle("show");
     login.classList.toggle("show");
 
-    
 
     if (loginMsg.classList.contains('hidden')) {
         loginMsg.classList.remove('hidden');
@@ -28,17 +27,3 @@ switchBtn.onclick = function () {
     };
 
 };
-
-// MAIN PAGE
-
-var i = 0;
-var txt = 'HELLO';
-var speed = 50;
-
-function typing() {
-    if (i < txt.length) {
-        document.getElementById("inspire").innerHTML += txt.charAt(i);
-        i++;
-        setTimeout(typing, speed);
-    }
-}

@@ -184,3 +184,30 @@
 .login-page .form-container .overlay #switchBtn:hover {
     background-color: #0ABAB5;
 }
+
+.main-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-page .inspire-container {
+    padding-top: 1%;
+    border: 1px solid red;
+    width: 40vw;
+    max-width: 100%;
+    text-align: center;
+    height: fit-content;
+    max-width: 100%;
+}
+
+.main-page .inspire-container .buttons button{
+    margin: 5%;
+    width: 25%;
+    font-size: 25px;
+    padding: 2%;
+    border-radius: 20px;
+}

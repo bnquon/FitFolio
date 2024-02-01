@@ -66,7 +66,7 @@
     height: 20%;
     justify-content: center;
     align-items: center;
-    color: #0ABAB5;
+    color: orange;
 }
 
 .login-page .form-container .login-form .login-fillout,
@@ -97,7 +97,7 @@
     font-weight: 600;
     font-size: 25px;
     transition: 500ms;
-    background-color: #0ABAB5;
+    background-color: orange;
     cursor: pointer;
     color: white;
     border-radius: 20px;
@@ -105,7 +105,7 @@
 
 .login-page .form-container .login-form #loginBtn:hover,
 .login-page .form-container .signup-form #signUpBtn:hover {
-    background-color: lightcoral;
+    background-color: red;
 }
 
 
@@ -127,7 +127,7 @@
     z-index: 9999;
     width: 50%;
     height: 100%;
-    background-color: lightcoral;
+    background-color: red;
     left: 0%;
     align-items: center;
     overflow-y: auto;
@@ -183,7 +183,7 @@
 }
 
 .login-page .form-container .overlay #switchBtn:hover {
-    background-color: #0ABAB5;
+    background-color: orange;
 }
 
 .main-page {

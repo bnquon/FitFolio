@@ -200,7 +200,6 @@
     display: flex;
     flex-direction: column;
     padding: 2% 1%;
-    border: 1px solid red;
     width: 40vw;
     max-width: 100%;
     text-align: center;
@@ -228,6 +227,22 @@
     background-color: orange;
 }
 
+.main-page .inspire-container .buttons #cardio:hover {
+    background-color: orange;
+}
+
 .main-page .inspire-container .buttons #weightlifting:hover {
     background-color: red;
 }
+
+.main-page #cardioVid,
+.main-page #weightVid {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 0;
+    display: none;
+}
+

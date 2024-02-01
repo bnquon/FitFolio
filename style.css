@@ -221,6 +221,13 @@
 }
 
 .main-page .inspire-container .buttons button:hover {
-    background-color: red;
     transform: scale(1.1);
+}
+
+.main-page .inspire-container .buttons #cardio:hover {
+    background-color: orange;
+}
+
+.main-page .inspire-container .buttons #weightlifting:hover {
+    background-color: red;
 }

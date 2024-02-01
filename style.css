@@ -223,11 +223,10 @@
 } */
 
 .main-page .main-container {
-    border: 1px solid red;
     position: relative;
     width: 100vw;
-    height: 75vh;
-    top: 10vh;
+    height: 80vh;
+    top: 7.5vh;
 }
 
 .main-page .main-container .image-container {
@@ -242,6 +241,44 @@
     height: auto; /* Maintain the aspect ratio of the image */
 }
 
+.main-page .main-container .bio {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    text-align: center;
+    color: white;
+}
+
+.main-page .main-container .bio .intro h1{
+    font-size: 120px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5%;
+}
+
+.main-page .main-container .bio .buttons {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.main-page .main-container .bio .buttons button {
+    cursor: pointer;
+    font-size: 30px;
+    padding: 5px;
+    border-radius: 20px;
+    width: 250px;
+}
+
 .main-page .inspire-container {
     position: absolute;
     display: flex;
@@ -251,7 +288,7 @@
     bottom: 0;
     width: 100vw;
     max-width: 100%;
-    height: 15vh;
+    height: 12.5vh;
     justify-content: center;
     align-items: center;
 }

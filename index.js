@@ -13,27 +13,3 @@ function typing() {
     }
 }
 
-const cardioBtn = document.getElementById("cardio");
-const weightliftingBtn = document.getElementById("weightlifting");
-const cardioVid = document.getElementById("cardioVid");
-const weightVid = document.getElementById("weightVid");
-
-cardioBtn.addEventListener("mouseover", function() {
-    buttonHoverEvent(cardioVid, "block");
-});
-
-cardioBtn.addEventListener("mouseout", function() {
-    buttonHoverEvent(cardioVid, "none");
-});
-
-weightliftingBtn.addEventListener("mouseover", function() {
-    buttonHoverEvent(weightVid, "block");
-});
-
-weightliftingBtn.addEventListener("mouseout", function() {
-    buttonHoverEvent(weightVid, "none");
-});
-
-function buttonHoverEvent(videoName, displayValue) {
-    videoName.style.display = displayValue;
-}

@@ -1,3 +1,4 @@
+// LOGIN PAGE
 const overlay = document.getElementById("overlay");
 const login = document.getElementById("login-form");
 const signup = document.getElementById("signup-form")
@@ -26,4 +27,18 @@ switchBtn.onclick = function () {
         switchBtn.textContent = "Sign Up";
     };
 
+};
+
+// MAIN PAGE
+
+var i = 0;
+var txt = 'HELLO';
+var speed = 50;
+
+function typing() {
+    if (i < txt.length) {
+        document.getElementById("inspire").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typing, speed);
+    }
 }

@@ -5,6 +5,7 @@
     font-family: 'Oswald', sans-serif;
 }
 
+
 .login-page {
     display: flex;
     width: 100vw;
@@ -195,19 +196,31 @@
 }
 
 .main-page .inspire-container {
-    padding-top: 1%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2% 1%;
     border: 1px solid red;
     width: 40vw;
     max-width: 100%;
     text-align: center;
     height: fit-content;
     max-width: 100%;
+    border-radius: 20px;
 }
 
 .main-page .inspire-container .buttons button{
-    margin: 5%;
-    width: 25%;
+    margin: 3%;
+    width: 35%;
+    max-width: 35%;
     font-size: 25px;
     padding: 2%;
     border-radius: 20px;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.main-page .inspire-container .buttons button:hover {
+    background-color: red;
+    transform: scale(1.1);
 }

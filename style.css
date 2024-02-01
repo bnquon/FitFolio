@@ -189,26 +189,13 @@
 .main-page {
     width: 100vw;
     height: 100vh;
-    background-color: beige;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.main-page .inspire-container {
-    position: relative;
+    background-color: white;
     display: flex;
     flex-direction: column;
-    padding: 2% 1%;
-    width: 40vw;
-    max-width: 100%;
-    text-align: center;
-    height: fit-content;
-    max-width: 100%;
-    border-radius: 20px;
 }
 
-.main-page .inspire-container .buttons button{
+
+/* .main-page .buttons button{
     margin: 3%;
     width: 35%;
     max-width: 35%;
@@ -219,30 +206,52 @@
     cursor: pointer;
 }
 
-.main-page .inspire-container .buttons button:hover {
+.main-page .buttons button:hover {
     transform: scale(1.1);
 }
 
-.main-page .inspire-container .buttons #cardio:hover {
+.main-page .buttons #cardio:hover {
     background-color: orange;
 }
 
-.main-page .inspire-container .buttons #cardio:hover {
+.main-page .buttons #cardio:hover {
     background-color: orange;
 }
 
-.main-page .inspire-container .buttons #weightlifting:hover {
+.main-page .buttons #weightlifting:hover {
     background-color: red;
+} */
+
+.main-page .main-container {
+    border: 1px solid red;
+    position: relative;
+    width: 100vw;
+    height: 75vh;
+    top: 10vh;
 }
 
-.main-page #cardioVid,
-.main-page #weightVid {
-    position: fixed;
-    right: 0;
+.main-page .main-container .image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main-page .main-container .image-container img {
+    width: 100%;
+    height: auto; /* Maintain the aspect ratio of the image */
+}
+
+.main-page .inspire-container {
+    position: absolute;
+    display: flex;
+    border: 1px solid black;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: 0;
-    display: none;
+    width: 100vw;
+    max-width: 100%;
+    height: 15vh;
+    justify-content: center;
+    align-items: center;
 }
-

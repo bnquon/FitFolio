@@ -322,29 +322,48 @@
     position: relative;
     display: flex;
     height: 72.5vh;
+
 }
 
-.cardio-page .main-container .table-container {
+.cardio-page .main-container .content-container {
+    border: 1px solid red;
     position: relative;
     display: flex;
-    background-color: lightgray;
+    background-color: white;
     width: 80%;
 }
 
-.cardio-page .main-container .table-container table {
-    position: relative;
-    border: 1px solid red;
-    width: 80%;
-    height: fit-content;
+.cardio-page .main-container .content-container #title {
+    margin-top: 2%;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 5%;
+    font-size: 25px;
 }
 
-.cardio-page .main-container .table-container th {
-    border: 1px solid black;
+.cardio-page .main-container .content-container .table-container {
+    border: 1px solid blue;
+    position: absolute;
+    width: 80%;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 70%;
+    overflow: auto;
 }
 
-.cardio-page .main-container .table-container .buttons {
-    position: relative;
+.cardio-page .main-container .content-container .table-container table {
+    width: 100%;
+    border: 1px solid lightgray;
+}
+
+.cardio-page .main-container .content-container .table-container table th{
+    width: 20%;
+    border: 1px solid lightgray;
+}
+
+.cardio-page .main-container .content-container .buttons {
+    position: absolute;
+    top: 87%;
+    left: 15%;
 }

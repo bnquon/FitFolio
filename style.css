@@ -285,3 +285,47 @@
     justify-content: center;
     align-items: center;
 }
+
+.cardio-page { 
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardio-page .taskbar {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    height: 7.5vh;
+    background-color: lightcyan;
+}
+
+.cardio-page .header {
+    position: relative;
+    width: 100vw;
+    height: 20vh;
+    overflow: hidden;
+    background-color: lightcyan;
+}
+
+.cardio-page .header img {
+    position: absolute;
+    width: 100%;
+    bottom: 50%;
+    transform: translateY(31%);
+    height: auto;
+}
+
+.cardio-page .main-container {
+    
+}
+
+.cardio-page .main-container #table {
+    
+}
+
+.cardio-page .main-container #goals {
+
+}

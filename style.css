@@ -355,6 +355,7 @@
 .cardio-page .main-container .content-container .table-container table {
     width: 100%;
     border: 1px solid lightgray;
+    border-collapse: collapse;
 }
 
 .cardio-page .main-container .content-container .table-container table th{

@@ -12,4 +12,17 @@ function typing() {
         setTimeout(typing, speed);
     }
 }
+const cardioBtn = document.getElementById("cardio");
+const weightliftingBtn = document.getElementById("weightlifting");
+const cardioPic = document.getElementById("cardioBg");
+const weightPic = document.getElementById("weightBg");
 
+weightliftingBtn.addEventListener("mouseover", function() {
+    weightPic.style.display = "block";
+    cardioPic.style.display = "none";
+})
+
+cardioBtn.addEventListener("mouseover", function() {
+    weightPic.style.display = "none";
+    cardioPic.style.display = "block";
+})

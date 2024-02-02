@@ -1,3 +1,5 @@
 - Design login form
     - Copy the design for signup form
 - Make button display transition of the two forms
+
+https://codingstatus.com/how-to-display-data-from-mysql-database-table-in-node-js/

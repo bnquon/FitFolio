@@ -319,11 +319,29 @@
 }
 
 .cardio-page .main-container {
-    
+    background-color: lightgreen;
+    position: relative;
+    display: flex;
+    height: 72.5vh;
 }
 
-.cardio-page .main-container #table {
-    
+.cardio-page .main-container .table-container {
+    position: relative;
+    background-color: lightgray;
+    width: 80%;
+}
+
+.cardio-page .main-container .table-container table {
+    position: relative;
+    border: 1px solid red;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5%;
+}
+
+.cardio-page .main-container .table-container th {
+    border: 1px solid black;
 }
 
 .cardio-page .main-container #goals {

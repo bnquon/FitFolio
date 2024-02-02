@@ -327,6 +327,7 @@
 
 .cardio-page .main-container .table-container {
     position: relative;
+    display: flex;
     background-color: lightgray;
     width: 80%;
 }
@@ -335,6 +336,7 @@
     position: relative;
     border: 1px solid red;
     width: 80%;
+    height: fit-content;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 5%;
@@ -344,6 +346,6 @@
     border: 1px solid black;
 }
 
-.cardio-page .main-container #goals {
-
+.cardio-page .main-container .table-container .buttons {
+    position: relative;
 }

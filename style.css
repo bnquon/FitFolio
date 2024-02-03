@@ -384,6 +384,8 @@
 .cardio-page .main-container #goals {
     border: 1px solid black;
     position: relative;
+    display: flex;
+    flex-direction: column;
     width: 20%;
 }
 

@@ -41,3 +41,25 @@ function addRow() {
 function deleteRow() {
     document.getElementById("tracker-sheet").deleteRow(1);
 }
+
+function addGoal() {
+    var goalContainer = document.getElementById("goal-container");
+    var ul = document.createElement('ul');
+    var li = document.createElement('li');
+
+    var inputText = document.createElement('input');
+    inputText.type = 'text';
+    inputText.placeholder = 'Enter goal...';
+    inputText.style.fontSize = '14px';
+    inputText.style.padding = '1%';
+    inputText.style.marginTop = '2%';
+    inputText.style.marginLeft = '5%';
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+
+    li.appendChild(checkbox);
+    li.appendChild(inputText);
+
+    ul.appendChild(li);
+    goalContainer.appendChild(ul);
+}

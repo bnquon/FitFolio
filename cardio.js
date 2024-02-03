@@ -1,12 +1,39 @@
 function addRow() {
     var table = document.getElementById("tracker-sheet");
-    var row = table.insertRow();
+    let newRow = table.insertRow(1);
 
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
+    for (let i = 0; i < 5; i++) {
+        var cell = newRow.insertCell(i);
+        var input = document.createElement("input");
+        
+        switch(i) {
+            case 0:
+                input.type = "text";
+                input.value = "👟";
+                break;
+            case 1:
+                input.type = "number";
+                break;
+            case 2:
+                input.type = "text";
+                break;
+            case 3:
+                input.type = "text";
+                input.readOnly = true;
+                input.placeholder = "We will calculate this!"
+                break;
+            case 4: 
+                input.type = "date";
+                break;
+        }
+        input.style.width = "100%";  // Set the width to 100%
+        input.style.boxSizing = "border-box";
+        input.style.borderCollapse = "collapse";
+        input.style.fontSize = "15px";
+        input.style.padding = "1%";
+        input.style.textAlign = "center";
+        cell.appendChild(input);
+    }
 }
 
 function deleteRow() {

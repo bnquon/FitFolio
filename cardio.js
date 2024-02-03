@@ -23,7 +23,9 @@ function addRow() {
                 input.placeholder = "We will calculate this!"
                 break;
             case 4: 
-                input.type = "date";
+                input.type = "text";
+                input.readOnly = true;
+                input.value = new Date().toDateString();
                 break;
         }
         input.style.width = "100%";  // Set the width to 100%

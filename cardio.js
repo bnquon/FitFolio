@@ -9,7 +9,7 @@ function addRow() {
         switch(i) {
             case 0:
                 input.type = "text";
-                input.value = "👟";
+                input.placeholder = "👟";
                 break;
             case 1:
                 input.type = "number";

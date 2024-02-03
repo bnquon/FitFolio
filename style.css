@@ -333,7 +333,7 @@
     width: 80%;
 }
 
-.cardio-page .main-container .content-container #title {
+.cardio-page .main-container .content-container #table-title {
     margin-top: 2%;
     position: absolute;
     left: 50%;
@@ -380,3 +380,26 @@
     background-color: transparent;
     font-size: 16px;
 }
+
+.cardio-page .main-container #goals {
+    border: 1px solid black;
+    position: relative;
+    width: 20%;
+}
+
+.cardio-page .main-container #goals #goal-title {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+}
+
+.cardio-page .main-container #goals #goal-container {
+    background-color: white;
+    position: relative;
+    margin-top: 5%;
+    width: 100%;
+    height: 70%;
+    overflow: auto;
+}
+

@@ -333,38 +333,48 @@
 }
 
 .cardio-page .main-container .content-container #table-title {
-    margin-top: 2%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     font-size: 25px;
 }
 
+.cardio-page .main-container .content-container hr {
+    position: absolute;
+    top: 6%;
+    border: 1px solid lightgray;
+    width: 100%;
+    height: 1px;
+}
+
 .cardio-page .main-container .content-container .table-container {
-    border: 1px solid blue;
     position: absolute;
     width: 80%;
     top: 15%;
     left: 50%;
     transform: translateX(-50%);
-    height: 70%;
+    height: 60%;
     overflow: auto;
+    border: 1px solid lightgray;
 }
 
 .cardio-page .main-container .content-container .table-container table {
     width: 100%;
-    border: 1px solid lightgray;
     border-collapse: collapse;
 }
 
 .cardio-page .main-container .content-container .table-container table th{
     width: 20%;
+    font-size: 20px;
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+    padding: 2px;
 }
 
 .cardio-page .main-container .content-container .buttons {
     position: absolute;
     display: flex;
-    top: 87%;
+    top: 80%;
     left: 10%;
     border: 1px solid red;
     width: 30%;
@@ -378,6 +388,11 @@
     padding: 2%;
     background-color: transparent;
     font-size: 16px;
+    transition: 0.3s;
+}
+
+.cardio-page .main-container .content-container .buttons button:hover {
+    background-color: var(--button-bg-hover, #3498db); 
 }
 
 .cardio-page .main-container #goals {
@@ -402,9 +417,8 @@
     position: relative;
     width: 100%;
     height: 80%;
-    max-height: 80%;
     text-align: center;
-    overflow-y: auto;
+    overflow: auto;
 }
 
 .cardio-page .main-container #goals #goal-container input[type="checkbox"] {
@@ -421,6 +435,7 @@
 }
 
 .cardio-page .main-container #goals #goal-btn button {
+    cursor: pointer;
     width: 25%;
     padding: 2%;
     border-radius: 20px;

@@ -256,10 +256,12 @@
 }
 
 .main-page .main-container .bio .buttons button {
+    position: relative;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 1.25vw;
     font-weight: bold;
     padding: 7.5px;
+    width: 12.5vw;
     border-radius: 20px;
     border: 1px solid white;
     transition: 500ms;

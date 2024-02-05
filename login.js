@@ -48,9 +48,7 @@ login.addEventListener('submit', function(event) {
     .then(data => {
         console.log(data);
         if (data.loginSuccessful) {
-            login.action = "index.html";
-            // Submit the form
-            login.submit();
+            window.location.href = "index.html";
         }
     })
     .catch(error => {

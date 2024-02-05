@@ -84,7 +84,8 @@ app.post("/createUser", async (req, res) => {
 
                console.log("--------> Created new User");
                console.log(result.insertId);
-               res.sendStatus(201);
+               // res.sendStatus(201);
+               res.json({ createUserSuccessful: true });
             });
          }
       }); // end of connection.query()
@@ -112,7 +113,8 @@ db.getConnection ( async (err, connection)=> {
          //get the hashedPassword from result
         if (await bcrypt.compare(password, hashedPassword)) {
         console.log("---------> Login Successful")
-        res.send(`${user} is logged in!`)
+      //   res.send(`${user} is logged in!`)
+        res.json({loginSuccessful: true });
         } 
         else {
         console.log("---------> Password Incorrect")

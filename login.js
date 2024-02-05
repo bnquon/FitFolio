@@ -23,6 +23,41 @@ switchBtn.onclick = function () {
     }
 };
 
+signup.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const newUsername = document.getElementById('usernameSignup').value;
+    const newPassword = document.getElementById('passwordSignup').value;
+    const serverURL = "http://localhost:3000";
+
+    fetch(`${serverURL}/createUser`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: newUsername,
+            password: newPassword,
+        }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        if (data.createUserSuccessful) {
+            // Optionally, you can redirect the user to a different page upon successful signup
+            window.location.href = "index.html";
+        }
+    })
+    .catch(error => {
+        console.error('Signup failed: ', error);
+    });
+});
+
+
 login.addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.getElementById('usernameLogin').value;

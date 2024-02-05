@@ -112,8 +112,7 @@
 .login-page .form-container .login-form .login-fillout input[type=text],
 .login-page .form-container .login-form .login-fillout input[type=password],
 .login-page .form-container .signup-form .signup-fillout input[type=text],
-.login-page .form-container .signup-form .signup-fillout input[type=password],
-.login-page .form-container .signup-form .signup-fillout input[type=email] {
+.login-page .form-container .signup-form .signup-fillout input[type=password] {
     font-size: 25px;
     padding: 3%;
     width: 90%;

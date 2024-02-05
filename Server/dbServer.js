@@ -1,7 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
+
+app.use(cors()); // Enable CORS for all routes
+app.use(express.json());
 
 // First connection pool
 const db = mysql.createPool({

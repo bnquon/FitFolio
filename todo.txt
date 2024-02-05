@@ -4,4 +4,7 @@
 
 https://www.w3schools.com/jsref/met_table_insertrow.asp#:~:text=The%20insertRow()%20method%20creates,method%20to%20remove%20a%20row.
 
+THIS IS WHAT HELPED ME DO THE LOGIN/SIGNUP IMPLEMENTATION AND SETUP
+https://medium.com/@prashantramnyc/a-simple-registration-and-login-backend-using-nodejs-and-mysql-967811509a64
+
 https://codingstatus.com/how-to-display-data-from-mysql-database-table-in-node-js/

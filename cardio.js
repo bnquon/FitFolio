@@ -19,8 +19,6 @@ function addRow() {
                 break;
             case 3:
                 input.type = "text";
-                input.readOnly = true;
-                input.placeholder = "We will calculate this!"
                 break;
             case 4: 
                 input.type = "text";
@@ -36,10 +34,59 @@ function addRow() {
         input.style.textAlign = "center";
         cell.appendChild(input);
     }
+
+    document.getElementById("save").addEventListener("click", function() {
+        saveRunningData(newRow);
+    });
+
 }
 
 function deleteRow() {
-    document.getElementById("tracker-sheet").deleteRow(1);
+    const table = document.getElementById("tracker-sheet");
+    const runningDataId = table.rows[1].cells[0].innerText; // Assuming the ID is displayed in the first cell
+    deleteRunningData(runningDataId);
+    table.deleteRow(1);
+}
+
+function saveRunningData(row) {
+    const name = row.cells[0].getElementsByTagName("input")[0].value;
+    const distance = row.cells[1].getElementsByTagName("input")[0].value;
+    const time = row.cells[2].getElementsByTagName("input")[0].value;
+    const pace = row.cells[3].getElementsByTagName("input")[0].value; // Assuming you have a function to calculate pace
+    const date = new Date().toDateString();
+    console.log("Name:", name);
+    console.log("Distance:", distance);
+    console.log("Time:", time);
+    console.log("Pace:", pace);
+    console.log("Date:", date);
+    fetch("/addRunningData", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name,
+            distance,
+            time,
+            pace,
+            date,
+        }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("HTTP error! Status: ${response.status}");
+        }
+        return response.json();
+    })
+    .then(response => {
+        if(!response.ok) {
+            throw new Error("HTTP error! Status: ${response.status}");
+        }
+        return response.json();
+    })
+    .catch(error => {
+        console.error("Save failed: ", error);
+    });
 }
 
 function addGoal() {

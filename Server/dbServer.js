@@ -124,3 +124,32 @@ db.getConnection ( async (err, connection)=> {
     }) //end of connection.query()
 }) //end of db.connection()
 }) //end of app.post()
+
+app.post("/addRunningData", (req, res) => {
+   console.log('Received POST request at /addRunningData');
+   console.log('Request body:', req.body);
+   
+   const { name, distance, time, pace, date } = req.body;
+
+   db.getConnection((err, connection) => {
+       if (err) {
+           console.error("Error getting connection: ", err);
+           return res.status(500).json({ error: "Failed to add running data." });
+       }
+
+       const sql = "INSERT INTO runningdata (name, distance, time, pace, date) VALUES (?, ?, ?, ?, ?)";
+       const values = [name, distance, time, pace, date];
+
+       connection.query(sql, values, (err, result) => {
+           connection.release();
+
+           if (err) {
+               console.error("Error adding running data: ", err);
+               return res.status(500).json({ error: "Failed to add running data." });
+           }
+
+           console.log("Running data added successfully: ", result);
+           res.status(200).json({ success: true });
+       });
+   });
+});

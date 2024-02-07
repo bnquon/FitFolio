@@ -59,7 +59,7 @@ function saveRunningData(row) {
     console.log("Time:", time);
     console.log("Pace:", pace);
     console.log("Date:", date);
-    fetch("/addRunningData", {
+    fetch("http://127.0.0.1:3000/addRunningData", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

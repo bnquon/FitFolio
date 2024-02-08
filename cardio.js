@@ -113,6 +113,7 @@ function addGoal() {
     saveGoal(inputText.value, checkbox.checked);
 }
 
+// NEED TO MAKE THIS HAPPEN ON SAVE BUTTON CLICK NOT AUTOMATICALLY
 function saveGoal(goal, status) {
     fetch("http://127.0.0.1:3000/addGoal", {
         method: "POST",

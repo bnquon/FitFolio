@@ -109,4 +109,34 @@ function addGoal() {
 
     ul.appendChild(li);
     goalContainer.appendChild(ul);
+
+    saveGoal(inputText.value, checkbox.checked);
+}
+
+function saveGoal(goal, status) {
+    fetch("http://127.0.0.1:3000/addGoal", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            goal,
+            status,
+        }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("HTTP error! Status: ${response.status}");
+        }
+        return response.json();
+    })
+    .then(response => {
+        if(!response.ok) {
+            throw new Error("HTTP error! Status: ${response.status}");
+        }
+        console.log("Goal added successfully: ", response);
+    })
+    .catch(error => {
+        console.error("Save failed: ", error);
+    });
 }

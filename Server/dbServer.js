@@ -121,9 +121,9 @@ db.getConnection ( async (err, connection)=> {
         res.send("Password incorrect!")
         } //end of bcrypt.compare()
       }//end of User exists i.e. results.length==0
-    }) //end of connection.query()
-}) //end of db.connection()
-}) //end of app.post()
+    }); //end of connection.query()
+}); //end of db.connection()
+}); //end of app.post()
 
 app.post("/addRunningData", (req, res) => {
    console.log('Received POST request at /addRunningData');
@@ -151,5 +151,27 @@ app.post("/addRunningData", (req, res) => {
            console.log("Running data added successfully: ", result);
            res.status(200).json({ success: true });
        });
+   });
+});
+
+app.post("/addGoal", (req, res) => {
+   const {goal, status} = req.body;
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error getting connection: ", err);
+         return res.status(500).json({ error: "Failed to add goal." });
+      }
+      const sql = "INSERT INTO goals (goal, status) VALUES (?, ?)";
+      const values = [goal, status];
+      connection.query(sql, values, (err, results) => {
+         connection.release();
+
+         if (err) {
+            console.error("Error adding goal: ", err);
+            return res.status(500).json({ error: "Failed to add goal." });
+         }
+         console.log("Goal added successfully: ", result);
+         res.status(200).json({ success: true });
+      });
    });
 });

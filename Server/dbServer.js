@@ -163,7 +163,7 @@ app.post("/addGoal", (req, res) => {
       }
       const sql = "INSERT INTO goals (goal, status) VALUES (?, ?)";
       const values = [goal, status];
-      connection.query(sql, values, (err, results) => {
+      connection.query(sql, values, (err, result) => {
          connection.release();
 
          if (err) {

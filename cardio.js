@@ -110,7 +110,10 @@ function addGoal() {
     ul.appendChild(li);
     goalContainer.appendChild(ul);
 
-    saveGoal(inputText.value, checkbox.checked);
+    document.getElementById("saveGoalBtn").addEventListener("click", function() {
+        saveGoal(inputText.value, checkbox.checked);
+    });
+
 }
 
 // NEED TO MAKE THIS HAPPEN ON SAVE BUTTON CLICK NOT AUTOMATICALLY

@@ -1,4 +1,5 @@
 const storedUserID = sessionStorage.getItem('userid');
+console.log("I AM ON CARDIO PAGE HERE IS USERID, ", storedUserID);
 
 function addRow() {
     var table = document.getElementById("tracker-sheet");
@@ -55,7 +56,7 @@ function saveRunningData(row) {
     const distance = row.cells[1].getElementsByTagName("input")[0].value;
     const time = row.cells[2].getElementsByTagName("input")[0].value;
     const pace = row.cells[3].getElementsByTagName("input")[0].value; // Assuming you have a function to calculate pace
-    const date = new Date().toDateString();
+    const date = row.cells[4].getElementsByTagName("input")[0].value;
     console.log("Name:", name);
     console.log("Distance:", distance);
     console.log("Time:", time);

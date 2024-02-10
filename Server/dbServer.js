@@ -131,7 +131,7 @@ app.post("/addRunningData", (req, res) => {
    console.log('Received POST request at /addRunningData');
    console.log('Request body:', req.body);
    
-   const { userid, name, distance, time, pace, date } = req.body;
+   const { storedUserID, name, distance, time, pace, date } = req.body;
 
    db.getConnection((err, connection) => {
        if (err) {
@@ -139,8 +139,8 @@ app.post("/addRunningData", (req, res) => {
            return res.status(500).json({ error: "Failed to add running data." });
        }
 
-       const sql = "INSERT INTO runningdata (userID, name, distance, time, pace, date) VALUES (?, ?, ?, ?, ?)";
-       const values = [userid, name, distance, time, pace, date];
+       const sql = "INSERT INTO runningdata (userID, name, distance, time, pace, date) VALUES (?, ?, ?, ?, ?, ?)";
+       const values = [storedUserID, name, distance, time, pace, date];
 
        connection.query(sql, values, (err, result) => {
            connection.release();

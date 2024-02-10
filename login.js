@@ -49,6 +49,7 @@ signup.addEventListener('submit', function(event) {
         console.log(data);
         if (data.createUserSuccessful) {
             // Optionally, you can redirect the user to a different page upon successful signup
+            sessionStorage.setItem('userid', data.userid);
             window.location.href = "index.html";
         }
     })
@@ -83,6 +84,7 @@ login.addEventListener('submit', function(event) {
     .then(data => {
         console.log(data);
         if (data.loginSuccessful) {
+            sessionStorage.setItem('userid', data.userid);
             window.location.href = "index.html";
         }
     })

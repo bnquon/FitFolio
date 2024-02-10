@@ -128,6 +128,7 @@ function saveGoal(goal, status) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
+            storedUserID,
             goal,
             status,
         }),

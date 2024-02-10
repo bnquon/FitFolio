@@ -157,14 +157,14 @@ app.post("/addRunningData", (req, res) => {
 });
 
 app.post("/addGoal", (req, res) => {
-   const {goal, status} = req.body;
+   const {storedUserID, goal, status} = req.body;
    db.getConnection((err, connection) => {
       if (err) {
          console.error("Error getting connection: ", err);
          return res.status(500).json({ error: "Failed to add goal." });
       }
-      const sql = "INSERT INTO goals (goal, status) VALUES (?, ?)";
-      const values = [goal, status];
+      const sql = "INSERT INTO goals (userID, goal, status) VALUES (?, ?, ?)";
+      const values = [storedUserID, goal, status];
       connection.query(sql, values, (err, result) => {
          connection.release();
 

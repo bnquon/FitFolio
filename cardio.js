@@ -1,3 +1,5 @@
+const storedUserID = sessionStorage.getItem('userid');
+
 function addRow() {
     var table = document.getElementById("tracker-sheet");
     let newRow = table.insertRow(1);
@@ -65,6 +67,7 @@ function saveRunningData(row) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
+            storedUserID,
             name,
             distance,
             time,

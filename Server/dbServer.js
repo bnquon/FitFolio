@@ -81,11 +81,11 @@ app.post("/createUser", async (req, res) => {
             await connection.query(insert_query, (err, result) => {
                connection.release();
                if (err) throw err;
-
+               
+               const userId = result.insertId;
                console.log("--------> Created new User");
-               console.log(result.insertId);
-               // res.sendStatus(201);
-               res.json({ createUserSuccessful: true });
+               console.log(userId);
+               res.json({ createUserSuccessful: true, userid: userId });
             });
          }
       }); // end of connection.query()
@@ -114,7 +114,9 @@ db.getConnection ( async (err, connection)=> {
         if (await bcrypt.compare(password, hashedPassword)) {
         console.log("---------> Login Successful")
       //   res.send(`${user} is logged in!`)
-        res.json({loginSuccessful: true });
+        const userId = result[0].insertId;
+        console.log(userId);
+        res.json({ loginSuccessful: true, userid: userId });
         } 
         else {
         console.log("---------> Password Incorrect")

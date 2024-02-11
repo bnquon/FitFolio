@@ -1,6 +1,10 @@
 const storedUserID = sessionStorage.getItem('userid');
 console.log("I AM ON CARDIO PAGE HERE IS USERID, ", storedUserID);
 
+document.addEventListener("DOMContentLoaded", function(){
+    alert("HELLO");
+}, false);
+
 function addRow() {
     var table = document.getElementById("tracker-sheet");
     let newRow = table.insertRow(1);

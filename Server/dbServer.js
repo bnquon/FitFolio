@@ -127,6 +127,26 @@ db.getConnection ( async (err, connection)=> {
 }); //end of db.connection()
 }); //end of app.post()
 
+app.get('/', (req, res) => {
+   const userId = req.query.passedUserID;
+   const sql = "SELECT * FROM runningdata WHERE userID = ?"
+   const sqlQuery = mysql.format(sql, [userId]);
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error getting connection: ", err);
+         return res.status(500).json({ error: "Failed to fetch running data." });
+      }
+      connection.query(sqlQuery, (err, result) => {
+         if (err) {
+            console.error("Error executing query: ", err);
+            return res.status(500).json({ error: "Failed to fetch running data." });
+         }
+
+         res.json({result});
+      });
+   });
+});
+
 app.post("/addRunningData", (req, res) => {
    console.log('Received POST request at /addRunningData');
    console.log('Request body:', req.body);

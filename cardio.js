@@ -1,9 +1,28 @@
 const storedUserID = sessionStorage.getItem('userid');
-console.log("I AM ON CARDIO PAGE HERE IS USERID, ", storedUserID);
 
-document.addEventListener("DOMContentLoaded", function(){
-    alert("HELLO");
-}, false);
+fetch(`http://127.0.0.1:3000/?passedUserID=${storedUserID}`, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+    },
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => {
+    // Handle the data received from the server
+    sessionStorage.setItem('userRunningData', JSON.stringify(data));
+})
+.catch(error => {
+    // Handle errors
+    console.error('Error fetching data:', error);
+});
+
+const storedUserRunning = sessionStorage.getItem('userRunningData');
+console.log(storedUserRunning);
 
 function addRow() {
     var table = document.getElementById("tracker-sheet");

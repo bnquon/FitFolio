@@ -82,8 +82,7 @@ app.post("/createUser", async (req, res) => {
                connection.release();
                if (err) throw err;
                
-               const userId = result.userID;
-               console.log("--------> Created new User");
+               const userId = result.insertId;
                console.log(userId);
                res.json({ createUserSuccessful: true, userid: userId });
             });

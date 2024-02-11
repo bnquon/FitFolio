@@ -26,8 +26,8 @@ function populateTable(data) {
     const table = document.getElementById("tracker-sheet");
     const results = data.result;
     results.forEach(item => {
-        const row = table.insertRow(-1);
-        const values = Object.values(item).slice(1);
+        const row = table.insertRow(1);
+        const values = Object.values(item).slice(2);
         console.log(values);
         values.forEach(value => {
             const cell = row.insertCell();

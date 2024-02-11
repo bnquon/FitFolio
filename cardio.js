@@ -14,15 +14,27 @@ fetch(`http://127.0.0.1:3000/?passedUserID=${storedUserID}`, {
 })
 .then(data => {
     // Handle the data received from the server
-    sessionStorage.setItem('userRunningData', JSON.stringify(data));
+    // sessionStorage.setItem('userRunningData', JSON.stringify(data));
+    populateTable(data);
 })
 .catch(error => {
     // Handle errors
     console.error('Error fetching data:', error);
 });
 
-const storedUserRunning = sessionStorage.getItem('userRunningData');
-console.log(storedUserRunning);
+function populateTable(data) {
+    const table = document.getElementById("tracker-sheet");
+    const results = data.result;
+    results.forEach(item => {
+        const row = table.insertRow(-1);
+        const values = Object.values(item).slice(1);
+        console.log(values);
+        values.forEach(value => {
+            const cell = row.insertCell();
+            cell.textContent = value;
+        });
+    });
+}
 
 function addRow() {
     var table = document.getElementById("tracker-sheet");

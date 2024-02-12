@@ -32,6 +32,7 @@ function populateTable(data) {
         values.forEach(value => {
             const cell = row.insertCell();
             cell.textContent = value;
+            applyCellStyle(cell);
         });
     });
 }
@@ -43,7 +44,6 @@ function addRow() {
     for (let i = 0; i < 5; i++) {
         var cell = newRow.insertCell(i);
         var input = document.createElement("input");
-        
         switch(i) {
             case 0:
                 input.type = "text";
@@ -51,12 +51,15 @@ function addRow() {
                 break;
             case 1:
                 input.type = "number";
+                input.placeholder = "10";
                 break;
             case 2:
                 input.type = "text";
+                input.placeholder = "0h40m00s";
                 break;
             case 3:
                 input.type = "text";
+                input.placeholder = "4";
                 break;
             case 4: 
                 input.type = "text";
@@ -64,12 +67,7 @@ function addRow() {
                 input.value = new Date().toDateString();
                 break;
         }
-        input.style.width = "100%";  // Set the width to 100%
-        input.style.boxSizing = "border-box";
-        input.style.borderCollapse = "collapse";
-        input.style.fontSize = "15px";
-        input.style.padding = "1%";
-        input.style.textAlign = "center";
+        applyCellStyle(cell);
         cell.appendChild(input);
     }
 
@@ -77,6 +75,14 @@ function addRow() {
         saveRunningData(newRow);
     });
 
+}
+
+function applyCellStyle(cell) {
+    cell.style.boxSizing = "border-box";
+    cell.style.borderCollapse = "collapse";
+    cell.style.fontSize = "15px";
+    cell.style.padding = "0.25%";
+    cell.style.textAlign = "center";
 }
 
 function deleteRow() {

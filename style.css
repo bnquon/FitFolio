@@ -369,7 +369,11 @@
     font-size: 20px;
     border: 1px solid lightgray;
     border-collapse: collapse;
-    padding: 2px;
+    padding: 0.35%;
+}
+
+::placeholder {
+    color: lightgray;
 }
 
 .cardio-page .main-container .content-container .buttons {

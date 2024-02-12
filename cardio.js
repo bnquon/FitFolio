@@ -80,10 +80,10 @@ function addRow() {
 }
 
 function applyCellStyle(cell) {
-    // cell.style.boxSizing = "border-box";
-    // cell.style.borderCollapse = "collapse";
-    cell.style.fontSize = "15px";
-    cell.style.padding = "0.25%";
+    cell.style.border = "1px solid #dddddd";  // Add this line to set border
+    cell.style.boxSizing = "border-box";
+    cell.style.fontSize = "18px";
+    cell.style.padding = "0.35%";
     cell.style.textAlign = "center";
 }
 

@@ -83,7 +83,7 @@ function applyCellStyle(cell) {
     cell.style.border = "1px solid #dddddd";  // Add this line to set border
     cell.style.boxSizing = "border-box";
     cell.style.fontSize = "18px";
-    cell.style.padding = "0.35%";
+    cell.style.padding = "4px";
     cell.style.textAlign = "center";
 }
 

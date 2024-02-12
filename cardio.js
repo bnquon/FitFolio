@@ -40,17 +40,19 @@ function populateTable(data) {
 function addRow() {
     var table = document.getElementById("tracker-sheet");
     let newRow = table.insertRow(1);
-
+    
     for (let i = 0; i < 5; i++) {
         var cell = newRow.insertCell(i);
         var input = document.createElement("input");
+        input.style.width = "100%";
+        input.style.textAlign = "Center";
         switch(i) {
             case 0:
                 input.type = "text";
                 input.placeholder = "👟";
                 break;
             case 1:
-                input.type = "number";
+                input.type = "text";
                 input.placeholder = "10";
                 break;
             case 2:
@@ -67,7 +69,7 @@ function addRow() {
                 input.value = new Date().toDateString();
                 break;
         }
-        applyCellStyle(cell);
+        applyCellStyle(input);
         cell.appendChild(input);
     }
 
@@ -78,8 +80,8 @@ function addRow() {
 }
 
 function applyCellStyle(cell) {
-    cell.style.boxSizing = "border-box";
-    cell.style.borderCollapse = "collapse";
+    // cell.style.boxSizing = "border-box";
+    // cell.style.borderCollapse = "collapse";
     cell.style.fontSize = "15px";
     cell.style.padding = "0.25%";
     cell.style.textAlign = "center";

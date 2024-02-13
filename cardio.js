@@ -1,6 +1,7 @@
 const storedUserID = sessionStorage.getItem('userid');
 const addressUser = sessionStorage.getItem('username');
 document.getElementById('username').textContent = "Logged in as: " + addressUser;
+
 fetch(`http://127.0.0.1:3000/?passedUserID=${storedUserID}`, {
     method: "GET",
     headers: {
@@ -22,6 +23,23 @@ fetch(`http://127.0.0.1:3000/?passedUserID=${storedUserID}`, {
     // Handle errors
     console.error('Error fetching data:', error);
 });
+
+function applyTableCellStyle(cell) {
+    cell.style.border = "1px solid #dddddd";  // Add this line to set border
+    cell.style.boxSizing = "border-box";
+    cell.style.fontSize = "18px";
+    cell.style.padding = "4px";
+    cell.style.textAlign = "center";
+}
+
+function applyGoalCellStyle(cell) {
+    cell.style.border = "none";
+    cell.style.borderBottom = "1px solid #ccc";
+    cell.style.fontSize = '16px';
+    cell.style.padding = '3px';
+    cell.style.marginTop = '15px';
+    cell.style.marginLeft = '10px';
+}
 
 function populateTable(data) {
     const table = document.getElementById("tracker-sheet");
@@ -118,22 +136,6 @@ function addRow() {
 
 }
 
-function applyTableCellStyle(cell) {
-    cell.style.border = "1px solid #dddddd";  // Add this line to set border
-    cell.style.boxSizing = "border-box";
-    cell.style.fontSize = "18px";
-    cell.style.padding = "4px";
-    cell.style.textAlign = "center";
-}
-
-function applyGoalCellStyle(cell) {
-    cell.style.border = "none";
-    cell.style.borderBottom = "1px solid #ccc";
-    cell.style.fontSize = '16px';
-    cell.style.padding = '3px';
-    cell.style.marginTop = '15px';
-    cell.style.marginLeft = '10px';
-}
 
 function deleteRow() {
     const table = document.getElementById("tracker-sheet");
@@ -198,7 +200,12 @@ function addGoal() {
     li.appendChild(inputText);
 
     ul.appendChild(li);
-    goalContainer.appendChild(ul);
+    
+    if (goalContainer.firstChild) {
+        goalContainer.insertBefore(ul, goalContainer.firstChild);
+    } else {
+        goalContainer.appendChild(ul);
+    }
 
     document.getElementById("saveGoalBtn").addEventListener("click", function() {
         saveGoal(inputText.value, checkbox.checked);

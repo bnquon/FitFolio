@@ -1,6 +1,8 @@
 // JS FOR MAIN PAGE (index.html)
 const addressUser = sessionStorage.getItem('username');
-document.getElementById('username').textContent = "Logged in as: " + addressUser;
+document.getElementById('username').textContent = addressUser;
+document.getElementById('username').style.fontWeight = '700';
+
 // Add multiple quotes and have a random selector for the quote
 var i = 0;
 var txt = `“Success is not final; failure is not fatal: It is the courage to continue that counts.” -Winston Churchill`;

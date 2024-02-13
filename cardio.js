@@ -1,5 +1,6 @@
 const storedUserID = sessionStorage.getItem('userid');
-
+const addressUser = sessionStorage.getItem('username');
+document.getElementById('username').textContent = "Logged in as: " + addressUser;
 fetch(`http://127.0.0.1:3000/?passedUserID=${storedUserID}`, {
     method: "GET",
     headers: {

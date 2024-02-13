@@ -48,7 +48,7 @@ signup.addEventListener('submit', function(event) {
     .then(data => {
         console.log(data);
         if (data.createUserSuccessful) {
-            // Optionally, you can redirect the user to a different page upon successful signup
+            sessionStorage.setItem('username', newUsername);
             sessionStorage.setItem('userid', data.userid);
             window.location.href = "index.html";
         }
@@ -71,7 +71,7 @@ login.addEventListener('submit', function(event) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            name: username, // Send 'name' instead of 'username'
+            name: username, 
             password: password,
         }),
     })
@@ -84,6 +84,7 @@ login.addEventListener('submit', function(event) {
     .then(data => {
         console.log(data);
         if (data.loginSuccessful) {
+            sessionStorage.setItem('username', username);
             sessionStorage.setItem('userid', data.userid);
             window.location.href = "index.html";
         }

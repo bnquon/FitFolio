@@ -287,6 +287,7 @@
 }
 
 .cardio-page { 
+    font-family: 'Libre Baskerville', serif;
     width: 100vw;
     height: 100vh;
     background-color: white;
@@ -299,7 +300,6 @@
     display: flex;
     width: 100vw;
     height: 7.5vh;
-    background-color: lightcyan;
 }
 
 .cardio-page .taskbar #fit {
@@ -315,8 +315,16 @@
     position: absolute;
     align-self: center;
     list-style-type: none;
-    width: 25%;
-    justify-content: space-evenly;
+    margin-left: 8%;
+    width: 12%;
+    justify-content: space-between;
+}
+
+.cardio-page .taskbar #username {
+    position: absolute;
+    right: 0;
+    margin-right: 8%;
+    align-self: center;
 }
 
 .cardio-page .header {

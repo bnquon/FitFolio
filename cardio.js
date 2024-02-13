@@ -43,19 +43,24 @@ function populateGoals(data) {
         console.log("VALUES IS ", values);
         
         var ul = document.createElement('ul');
+        ul.style.width = '100%';
         var li = document.createElement('li');
         
         const storedText = document.createElement('input');
+        storedText.style.border = "none";
+        storedText.style.borderBottom = "1px solid #ccc";
         storedText.value = values[0];
-        storedText.style.fontSize = '14px';
-        storedText.style.padding = '1%';
-        storedText.style.marginTop = '2%';
-        storedText.style.marginLeft = '5%';
+        storedText.style.fontSize = '16px';
+        storedText.style.padding = '3px';
+        storedText.style.marginTop = '15px';
+        storedText.style.marginLeft = '10px';
         
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         if (values[1] === 1) {
             checkbox.checked = true;
+            const crossedStoredText = strikeThrough(values[0]);
+            storedText.value = crossedStoredText;
         }
 
         li.appendChild(checkbox);
@@ -65,6 +70,13 @@ function populateGoals(data) {
         ul.appendChild(li);
         goalContainer.appendChild(ul);
     });   
+}
+
+function strikeThrough(text) {
+    return text
+        .split('')
+        .map(char => char + '\u0336')
+        .join('')
 }
 
 function addRow() {

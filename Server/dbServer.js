@@ -131,8 +131,8 @@ app.get('/', (req, res) => {
    const sqlRunning = "SELECT * FROM runningdata WHERE userID = ?"
    const sqlRunningQuery = mysql.format(sqlRunning, [userId]);
 
-   const sqlGoal = "SELECT * FROM goals WHERE userID = ?"
-   const sqlGoalQuery = mysql.format(sqlGoal, [userId]);
+   // const sqlGoal = "SELECT * FROM goals WHERE userID = ?"
+   // const sqlGoalQuery = mysql.format(sqlGoal, [userId]);
 
    db.getConnection((err, connection) => {
       if (err) {

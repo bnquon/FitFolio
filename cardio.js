@@ -32,7 +32,7 @@ function populateTable(data) {
         values.forEach(value => {
             const cell = row.insertCell();
             cell.textContent = value;
-            applyCellStyle(cell);
+            applyTableCellStyle(cell);
         });
     });
 }
@@ -48,13 +48,9 @@ function populateGoals(data) {
         var li = document.createElement('li');
         
         const storedText = document.createElement('input');
-        storedText.style.border = "none";
-        storedText.style.borderBottom = "1px solid #ccc";
+
         storedText.value = values[0];
-        storedText.style.fontSize = '16px';
-        storedText.style.padding = '3px';
-        storedText.style.marginTop = '15px';
-        storedText.style.marginLeft = '10px';
+        applyGoalCellStyle(storedText);
         
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -112,7 +108,7 @@ function addRow() {
                 input.value = new Date().toDateString();
                 break;
         }
-        applyCellStyle(input);
+        applyTableCellStyle(input);
         cell.appendChild(input);
     }
 
@@ -122,7 +118,7 @@ function addRow() {
 
 }
 
-function applyCellStyle(cell) {
+function applyTableCellStyle(cell) {
     cell.style.border = "1px solid #dddddd";  // Add this line to set border
     cell.style.boxSizing = "border-box";
     cell.style.fontSize = "18px";
@@ -130,9 +126,17 @@ function applyCellStyle(cell) {
     cell.style.textAlign = "center";
 }
 
+function applyGoalCellStyle(cell) {
+    cell.style.border = "none";
+    cell.style.borderBottom = "1px solid #ccc";
+    cell.style.fontSize = '16px';
+    cell.style.padding = '3px';
+    cell.style.marginTop = '15px';
+    cell.style.marginLeft = '10px';
+}
+
 function deleteRow() {
     const table = document.getElementById("tracker-sheet");
-    const runningDataId = table.rows[1].cells[0].innerText; // Assuming the ID is displayed in the first cell
     table.deleteRow(1);
 }
 
@@ -186,10 +190,7 @@ function addGoal() {
     var inputText = document.createElement('input');
     inputText.type = 'text';
     inputText.placeholder = 'Enter goal...';
-    inputText.style.fontSize = '14px';
-    inputText.style.padding = '1%';
-    inputText.style.marginTop = '2%';
-    inputText.style.marginLeft = '5%';
+    applyGoalCellStyle(inputText);
     var checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
 

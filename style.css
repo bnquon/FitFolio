@@ -463,6 +463,10 @@
     overflow: auto;
 }
 
+.cardio-page .main-container #goals #goal-container textarea:focus, input:focus{
+    outline: none;
+}
+
 .cardio-page .main-container #goals #goal-container input[type="checkbox"] {
     width: 15px; /* Size of the checkbox */
     height: 15px;

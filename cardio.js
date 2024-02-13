@@ -132,7 +132,6 @@ function applyCellStyle(cell) {
 function deleteRow() {
     const table = document.getElementById("tracker-sheet");
     const runningDataId = table.rows[1].cells[0].innerText; // Assuming the ID is displayed in the first cell
-    deleteRunningData(runningDataId);
     table.deleteRow(1);
 }
 

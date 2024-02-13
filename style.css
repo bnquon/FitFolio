@@ -6,7 +6,7 @@
 
 
 .login-page {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     display: flex;
     width: 100vw;
     max-width: 100%;
@@ -59,14 +59,15 @@
 
 .login-page .form-container .login-form .login-title,
 .login-page .form-container .signup-form .signup-title {
-    font-size: 60px;
+    font-size: 70px;
+    font-weight: 600;
     position: absolute;
     display: flex;
-    top: 0;
+    top: 7.5%;
     height: 20%;
     justify-content: center;
     align-items: center;
-    color: orange;
+    color: black;
 }
 
 .login-page .form-container .login-form .login-fillout,
@@ -86,7 +87,7 @@
 .login-page .form-container .signup-form .buttonContainer {
     position: absolute;
     display: flex;
-    top: 85%;
+    top: 80%;
     height: 10%;
     width: 40%;
 }
@@ -97,15 +98,15 @@
     font-weight: 600;
     font-size: 25px;
     transition: 500ms;
-    background-color: orange;
+    background-color: transparent;
     cursor: pointer;
-    color: white;
+    color: black;
     border-radius: 20px;
 }
 
 .login-page .form-container .login-form #loginBtn:hover,
 .login-page .form-container .signup-form #signUpBtn:hover {
-    background-color: red;
+    transform: scale(1.1);
 }
 
 
@@ -126,7 +127,7 @@
     z-index: 9999;
     width: 50%;
     height: 100%;
-    background-color: red;
+    background-color: black;
     left: 0%;
     align-items: center;
     overflow-y: auto;
@@ -164,7 +165,7 @@
 .login-page .form-container .overlay .overlayBtnContainer {
     display: flex;
     position: absolute;
-    top: 60%;
+    top: 65%;
     width: 40%;
     height: 10%;
 }
@@ -175,14 +176,13 @@
     font-size: 25px;
     border-radius: 20px;
     cursor: pointer;
-    background-color: transparent;
-    border: 3px solid white;
-    color: white;
+    background-color: white;
+    color: black;
     transition: 500ms;
 }
 
 .login-page .form-container .overlay #switchBtn:hover {
-    background-color: orange;
+    transform: scale(1.1);
 }
 
 .main-page {
@@ -196,7 +196,7 @@
 }
 
 .main-page .main-container {
-    position: relative;
+    position: absolute;
     width: 100vw;
     height: 80vh;
     top: 7.5vh;
@@ -295,14 +295,16 @@
     flex-direction: column;
 }
 
-.cardio-page .taskbar {
+.cardio-page .taskbar,
+.main-page .taskbar {
     position: relative;
     display: flex;
     width: 100vw;
     height: 7.5vh;
 }
 
-.cardio-page .taskbar #fit {
+.cardio-page .taskbar #fit,
+.main-page .taskbar #fit {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -311,7 +313,8 @@
     font-size: 45px;
 }
 
-.cardio-page .taskbar #links {
+.cardio-page .taskbar #links,
+.main-page .taskbar #links {
     font-size: 25px;
     display: flex;
     position: absolute;
@@ -322,7 +325,8 @@
     justify-content: space-between;
 }
 
-.cardio-page .taskbar #username {
+.cardio-page .taskbar #username,
+.main-page .taskbar #username {
     position: absolute;
     right: 0;
     margin-right: 8%;

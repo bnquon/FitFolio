@@ -15,6 +15,7 @@ fetch(`http://127.0.0.1:3000/?passedUserID=${storedUserID}`, {
 .then(data => {
     console.log(data);
     populateTable(data.runningData);
+    populateGoals(data.goalData);
 })
 .catch(error => {
     // Handle errors
@@ -36,7 +37,34 @@ function populateTable(data) {
 }
 
 function populateGoals(data) {
-    
+    const goalContainer = document.getElementById("goal-container");
+    data.forEach(item => {  
+        const values = Object.values(item).slice(1, -1);
+        console.log("VALUES IS ", values);
+        
+        var ul = document.createElement('ul');
+        var li = document.createElement('li');
+        
+        const storedText = document.createElement('input');
+        storedText.value = values[0];
+        storedText.style.fontSize = '14px';
+        storedText.style.padding = '1%';
+        storedText.style.marginTop = '2%';
+        storedText.style.marginLeft = '5%';
+        
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        if (values[1] === 1) {
+            checkbox.checked = true;
+        }
+
+        li.appendChild(checkbox);
+        li.appendChild(storedText);
+
+        // Append the list item to the goal container
+        ul.appendChild(li);
+        goalContainer.appendChild(ul);
+    });   
 }
 
 function addRow() {

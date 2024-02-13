@@ -302,6 +302,23 @@
     background-color: lightcyan;
 }
 
+.cardio-page .taskbar #fit {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    align-self: center;
+}
+
+.cardio-page .taskbar #links {
+    font-size: 25px;
+    display: flex;
+    position: absolute;
+    align-self: center;
+    list-style-type: none;
+    width: 25%;
+    justify-content: space-evenly;
+}
+
 .cardio-page .header {
     position: relative;
     width: 100vw;

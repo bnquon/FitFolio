@@ -35,6 +35,10 @@ function populateTable(data) {
     });
 }
 
+function populateGoals(data) {
+    
+}
+
 function addRow() {
     var table = document.getElementById("tracker-sheet");
     let newRow = table.insertRow(1);

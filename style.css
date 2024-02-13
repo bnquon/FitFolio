@@ -498,15 +498,17 @@
 
 .cardio-page .main-container #goals hr {
     display: flex;
+    position: relative;
     border: 1px solid black;
     width: 90%;
+    left: 5%;
 }
 
 .cardio-page .main-container #goals #goal-container {
     /* background-color: lightgray; */
     position: relative;
     width: 100%;
-    height: 80%;
+    height: 70%;
     text-align: center;
     overflow: auto;
 }
@@ -525,7 +527,6 @@
     width: 100%;
     position: absolute;
     display: flex;
-    margin-top: 0%;
     top: 85%;
     align-items: center;
     justify-content: space-evenly;

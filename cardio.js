@@ -13,8 +13,6 @@ fetch(`http://127.0.0.1:3000/?passedUserID=${storedUserID}`, {
     return response.json();
 })
 .then(data => {
-    // Handle the data received from the server
-    // sessionStorage.setItem('userRunningData', JSON.stringify(data));
     populateTable(data);
 })
 .catch(error => {

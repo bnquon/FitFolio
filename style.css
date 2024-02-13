@@ -319,14 +319,21 @@
 }
 
 .cardio-page .main-container {
-    position: relative;
+    position: absolute;
     display: flex;
-    height: 72.5vh;
+    height: 65vh;
+    width: 100%;
+    bottom: 0;
+}
 
+.cardio-page .title {
+    height: 7.5vh;
+    display: flex;
+    align-items: center;
+    padding-left: 5vw;
 }
 
 .cardio-page .main-container .content-container {
-    border: 1px solid red;
     position: relative;
     display: flex;
     background-color: white;
@@ -344,17 +351,17 @@
     position: absolute;
     top: 6%;
     border: 1px solid lightgray;
-    width: 100%;
+    width: 96%;
     height: 1px;
 }
 
 .cardio-page .main-container .content-container .table-container {
     position: absolute;
     width: 80%;
-    top: 15%;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    height: 60%;
+    height: 70%;
     overflow: auto;
     border: 1px solid lightgray;
 }
@@ -379,9 +386,8 @@
 .cardio-page .main-container .content-container .buttons {
     position: absolute;
     display: flex;
-    top: 80%;
+    top: 85%;
     left: 10%;
-    border: 1px solid red;
     width: 30%;
     justify-content: space-between;
 }
@@ -401,7 +407,6 @@
 }
 
 .cardio-page .main-container #goals {
-    border: 1px solid black;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -415,6 +420,13 @@
     text-align: center;
     font-size: 25px;
     height: 6%;
+}
+
+.cardio-page .main-container #goals hr {
+    display: flex;
+    border: 1px solid lightgray;
+    width: 90%;
+    margin-left: 10%;
 }
 
 .cardio-page .main-container #goals #goal-container {

@@ -309,6 +309,12 @@
     height: 7.5vh;
 }
 
+.cardio-page .taskbar a,
+.main-page .taskbar a {
+    text-decoration: none;
+    color: black;
+}
+
 .cardio-page .taskbar #fit,
 .main-page .taskbar #fit {
     position: absolute;

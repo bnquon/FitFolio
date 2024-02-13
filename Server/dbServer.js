@@ -128,14 +128,18 @@ db.getConnection ( async (err, connection)=> {
 
 app.get('/', (req, res) => {
    const userId = req.query.passedUserID;
-   const sql = "SELECT * FROM runningdata WHERE userID = ?"
-   const sqlQuery = mysql.format(sql, [userId]);
+   const sqlRunning = "SELECT * FROM runningdata WHERE userID = ?"
+   const sqlRunningQuery = mysql.format(sqlRunning, [userId]);
+
+   const sqlGoal = "SELECT * FROM goals WHERE userID = ?"
+   const sqlGoalQuery = mysql.format(sqlGoal, [userId]);
+
    db.getConnection((err, connection) => {
       if (err) {
          console.error("Error getting connection: ", err);
          return res.status(500).json({ error: "Failed to fetch running data." });
       }
-      connection.query(sqlQuery, (err, result) => {
+      connection.query(sqlRunningQuery, (err, result) => {
          if (err) {
             console.error("Error executing query: ", err);
             return res.status(500).json({ error: "Failed to fetch running data." });

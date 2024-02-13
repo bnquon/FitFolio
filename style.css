@@ -377,8 +377,9 @@
 .cardio-page .main-container .content-container hr {
     position: absolute;
     top: 6%;
-    border: 1px solid lightgray;
-    width: 96%;
+    border: 1px solid black;
+    width: 90%;
+    margin-left: 5%;
     height: 1px;
 }
 
@@ -416,7 +417,7 @@
     top: 85%;
     left: 10%;
     width: 40%;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .box {
@@ -497,9 +498,8 @@
 
 .cardio-page .main-container #goals hr {
     display: flex;
-    border: 1px solid lightgray;
+    border: 1px solid black;
     width: 90%;
-    margin-left: 10%;
 }
 
 .cardio-page .main-container #goals #goal-container {

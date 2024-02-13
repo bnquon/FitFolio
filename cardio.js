@@ -13,7 +13,8 @@ fetch(`http://127.0.0.1:3000/?passedUserID=${storedUserID}`, {
     return response.json();
 })
 .then(data => {
-    populateTable(data);
+    console.log(data);
+    populateTable(data.runningData);
 })
 .catch(error => {
     // Handle errors
@@ -22,8 +23,7 @@ fetch(`http://127.0.0.1:3000/?passedUserID=${storedUserID}`, {
 
 function populateTable(data) {
     const table = document.getElementById("tracker-sheet");
-    const results = data.result;
-    results.forEach(item => {
+    data.forEach(item => {
         const row = table.insertRow(1);
         const values = Object.values(item).slice(2);
         console.log(values);

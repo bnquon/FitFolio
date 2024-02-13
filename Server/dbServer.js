@@ -131,21 +131,32 @@ app.get('/', (req, res) => {
    const sqlRunning = "SELECT * FROM runningdata WHERE userID = ?"
    const sqlRunningQuery = mysql.format(sqlRunning, [userId]);
 
-   // const sqlGoal = "SELECT * FROM goals WHERE userID = ?"
-   // const sqlGoalQuery = mysql.format(sqlGoal, [userId]);
+   const sqlGoal = "SELECT * FROM goals WHERE userID = ?"
+   const sqlGoalQuery = mysql.format(sqlGoal, [userId]);
 
    db.getConnection((err, connection) => {
       if (err) {
          console.error("Error getting connection: ", err);
          return res.status(500).json({ error: "Failed to fetch running data." });
       }
-      connection.query(sqlRunningQuery, (err, result) => {
+      connection.query(sqlRunningQuery, (err, runningResult) => {
          if (err) {
             console.error("Error executing query: ", err);
             return res.status(500).json({ error: "Failed to fetch running data." });
          }
 
-         res.json({result});
+         connection.query(sqlGoalQuery, (goalErr, goalResult) => {
+            if (goalErr) {
+               console.error("Error executing goal data query: ", err);
+               return res.status(500).json({ error: "Failed to fetch goal data." });
+            }
+
+            res.json({
+               runningData: runningResult,
+               goalData: goalResult
+            });
+
+         })
       });
    });
 });

@@ -73,6 +73,7 @@ function populateGoals(data) {
         applyGoalCellStyle(storedText);
         
         var checkbox = document.createElement('input');
+        
         checkbox.type = 'checkbox';
         if (values[1] === 1) {
             checkbox.checked = true;

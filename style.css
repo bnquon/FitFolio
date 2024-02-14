@@ -183,13 +183,15 @@
     font-size: 25px;
     border-radius: 20px;
     cursor: pointer;
-    background-color: white;
-    color: black;
-    transition: 500ms;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    box-shadow: 3px 3px #fafafa;
 }
 
-.login-page .form-container .overlay #switchBtn:hover {
-    transform: scale(1.1);
+.login-page .form-container .overlay #switchBtn:active {
+    box-shadow: none;
+    transform: translate(3px, 3px);
 }
 
 .main-page {

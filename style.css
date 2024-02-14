@@ -604,40 +604,6 @@
     top: 6.5%;
 }
 
-.weight-page #content-container #calendar-container {
-    border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow-y: auto;
-    align-items: center;
-    justify-content: center;
-    width: 65%;
-}
-
-.weight-page #content-container #calendar-container #calendar-title {
-    font-size: 25px;
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.weight-page #content-container #calendar-container #calendar {
-    position: relative;
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.weight-page #content-container #calendar-container #calendar th {
-    width: 14.2857%; /* 100% / 7 columns */
-    text-align: center;
-    border: 1px solid #ddd;
-}
-
-.weight-page #content-container #calendar-container #calendar td {
-    border: 1px solid black;
-    /* padding-left: 0.5%; */
-}
-
 .weight-page #content-container #template-container,
 .weight-page #content-container #goal-container {
     border: 1px solid blue;
@@ -672,4 +638,38 @@
 .weight-page #content-container #goal-container #goalBtnContainer button {
     max-width: 50%;
     width: 40%;
+}
+
+.weight-page #content-container #calendar-container {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+}
+
+.weight-page #content-container #calendar-container #calendar-title {
+    font-size: 25px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.weight-page #content-container #calendar-container #calendar {
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.weight-page #content-container #calendar-container #calendar th {
+    width: 14.2857%; /* 100% / 7 columns */
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.weight-page #content-container #calendar-container #calendar td {
+    border: 1px solid black;
+    /* padding-left: 0.5%; */
 }

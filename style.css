@@ -575,16 +575,26 @@
 
 .weight-page #calendar-container {
     border: 1px solid red;
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    width: 100%;
+    width: 80%;
     height: 60%;
     bottom: 12.5%;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.weight-page #calendar-container #calendar-title {
+    position: relative;
+    margin-bottom: 1.5%;
 }
 
 .weight-page #calendar-container #calendar {
-    position: absolute;
-    width: 90%;
-    left: 5%;
+    position: relative;
+    width: 70%;
+    left: 2%;
     border-collapse: collapse;
 }
 
@@ -592,6 +602,10 @@
     width: 14.2857%; /* 100% / 7 columns */
     text-align: center;
     border: 1px solid #ddd;
+}
+
+.weight-page #calendar-container #calendar td {
+    border: 1px solid black;
 }
 
 .weight-page #template-container {

@@ -9,6 +9,7 @@ function daysInMonth(month, year) {
 
 function generateCalendar() {
     const table = document.getElementById("calendar");
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     var date = new Date();
     var month = date.getMonth();
@@ -22,8 +23,27 @@ function generateCalendar() {
     let numDay = daysInMonth(month, year);
     console.log(numDay);
 
-}
+    // Find the index of the first day
+    let startIndex = daysOfWeek.indexOf(dayAbbreviation);
 
+    for (let i = 0; i < 6; i++) {
+        let row = table.insertRow();
+        for (let j = 0; j < 7; j++) {
+            let cell = row.insertCell();
+            calendarCellStyle(cell);
+            if (i === 0 && j < startIndex) {
+                cell.textContent = "";
+            } else if (i*7 + j - startIndex + 1 <= numDay) {
+                cell.textContent = i*7 + j - startIndex + 1;
+            } else i++;
+        }
+    }
+}
 generateCalendar();
+
+function calendarCellStyle(cell) {
+    cell.style.fontSize = '20px';
+    cell.style.height = '100px';
+}
 
 // Get first day abbreviation, match it with column header start the count until num day is ended

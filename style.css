@@ -591,7 +591,7 @@
     overflow-y: auto;
     align-items: center;
     justify-content: center;
-    width: 60%;
+    width: 65%;
 }
 
 .weight-page #content-container #calendar-container #calendar-title {
@@ -623,5 +623,5 @@
 }
 
 .weight-page #content-container #goal-container {
-    width: 20%;
+    width: 15%;
 }

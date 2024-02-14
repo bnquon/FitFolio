@@ -304,7 +304,8 @@
 }
 
 .cardio-page .taskbar,
-.main-page .taskbar {
+.main-page .taskbar,
+.weight-page .taskbar {
     position: relative;
     display: flex;
     width: 100vw;
@@ -312,13 +313,15 @@
 }
 
 .cardio-page .taskbar a,
-.main-page .taskbar a {
+.main-page .taskbar a, 
+.weight-page .taskbar a {
     text-decoration: none;
     color: black;
 }
 
 .cardio-page .taskbar #fit,
-.main-page .taskbar #fit {
+.main-page .taskbar #fit,
+.weight-page .taskbar #fit {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -328,7 +331,8 @@
 }
 
 .cardio-page .taskbar #links,
-.main-page .taskbar #links {
+.main-page .taskbar #links,
+.weight-page .taskbar #links {
     font-size: 25px;
     display: flex;
     position: absolute;
@@ -340,7 +344,8 @@
 }
 
 .cardio-page .taskbar #username-container,
-.main-page .taskbar #username-container {
+.main-page .taskbar #username-container,
+.weight-page .taskbar #username-container {
     position: absolute;
     right: 0;
     margin-right: 8%;
@@ -558,3 +563,13 @@
     background-color: transparent;
 
 }
+
+.weight-page {
+    font-family: 'Nunito Sans', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+

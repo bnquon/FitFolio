@@ -437,6 +437,7 @@
 }
 
 .cardio-page .main-container .content-container .buttons {
+    border: 1px solid red;
     position: absolute;
     display: flex;
     top: 85%;
@@ -445,8 +446,13 @@
     justify-content: space-evenly;
 }
 
+.cardio-page .main-container .content-container .buttons button {
+    cursor: pointer;
+    max-width: 50%;
+    width: 30%;
+}
+
 .box {
-    width: 180px;
     height: auto;
     float: left;
     transition: .5s linear;

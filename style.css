@@ -574,46 +574,54 @@
     flex-direction: column;
 }
 
-.weight-page #calendar-container {
+.weight-page #content-container {
+    border: 1px solid green;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    top: 27.5vh;
+    height: 65vh;
+}
+
+.weight-page #content-container #calendar-container {
     border: 1px solid red;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    width: 60%;
-    height: 60%;
-    bottom: 12.5%;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     overflow-y: auto;
     align-items: center;
     justify-content: center;
+    width: 60%;
 }
 
-.weight-page #calendar-container #calendar-title {
+.weight-page #content-container #calendar-container #calendar-title {
+    font-size: 25px;
     position: relative;
-    margin-bottom: 1.25%;
+    margin-bottom: 20px;
 }
 
-.weight-page #calendar-container #calendar {
+.weight-page #content-container #calendar-container #calendar {
     position: relative;
     width: 100%;
     border-collapse: collapse;
 }
 
-.weight-page #calendar-container #calendar th {
+.weight-page #content-container #calendar-container #calendar th {
     width: 14.2857%; /* 100% / 7 columns */
     text-align: center;
     border: 1px solid #ddd;
 }
 
-.weight-page #calendar-container #calendar td {
+.weight-page #content-container #calendar-container #calendar td {
     border: 1px solid black;
 }
 
-.weight-page #template-container {
+.weight-page #content-container #template-container {
     border: 1px solid blue;
-    position: absolute;
-    top: 87.5%;
-    height: 12.5%;
-    width: 100%;
+    position: relative;
+    width: 20%;
+}
+
+.weight-page #content-container #goal-container {
+    width: 20%;
 }

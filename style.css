@@ -583,6 +583,11 @@
     height: 65vh;
 }
 
+.weight-page #content-container #container-title {
+    margin-top: 10px;
+    text-align: center;
+}
+
 .weight-page #content-container #calendar-container {
     border: 1px solid red;
     display: flex;

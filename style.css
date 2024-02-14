@@ -592,6 +592,16 @@
 .weight-page #content-container #container-title {
     margin-top: 10px;
     text-align: center;
+    height: 10%;
+}
+
+.weight-page #content-container #template-container hr,
+.weight-page #content-container #goal-container hr {
+    border: 1px solid black;
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    top: 6.5%;
 }
 
 .weight-page #content-container #calendar-container {
@@ -637,6 +647,16 @@
     width: 20%;
 }
 
+.weight-page #content-container #template-container #templateContentContainer,
+.weight-page #content-container #goal-container #goalContentContainer {
+    border: 1px solid blue;
+    position: relative;
+    left: 5%;
+    width: 90%;
+    height: 75%;
+    overflow-y: auto;
+}
+
 .weight-page #content-container #template-container #templateBtnContainer,
 .weight-page #content-container #goal-container #goalBtnContainer {
     position: absolute;
@@ -644,7 +664,8 @@
     justify-content: space-around;
     width: 100%;
     border: 1px solid red;
-    bottom: 0;
+    bottom: 2%;
+    height: 6%;
 }
 
 .weight-page #content-container #template-container #templateBtnContainer button,

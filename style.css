@@ -573,3 +573,18 @@
     flex-direction: column;
 }
 
+.weight-page #calendar-container {
+    border: 1px solid red;
+    position: absolute;
+    width: 100%;
+    height: 55%;
+    top: 30%;
+}
+
+.weight-page #template-container {
+    border: 1px solid blue;
+    position: absolute;
+    top: 85%;
+    height: 15%;
+    width: 100%;
+}

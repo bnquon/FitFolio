@@ -353,7 +353,8 @@
     font-size: 20px;
 }
 
-.cardio-page .header {
+.cardio-page .header,
+.weight-page .header {
     position: relative;
     width: 100vw;
     height: 20vh;
@@ -578,9 +579,11 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    width: 80%;
+    width: 60%;
     height: 60%;
     bottom: 12.5%;
+    left: 50%;
+    transform: translateX(-50%);
     overflow-y: auto;
     align-items: center;
     justify-content: center;
@@ -588,13 +591,12 @@
 
 .weight-page #calendar-container #calendar-title {
     position: relative;
-    margin-bottom: 1.5%;
+    margin-bottom: 1.25%;
 }
 
 .weight-page #calendar-container #calendar {
     position: relative;
-    width: 70%;
-    left: 2%;
+    width: 100%;
     border-collapse: collapse;
 }
 

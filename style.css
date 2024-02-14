@@ -628,12 +628,27 @@
     /* padding-left: 0.5%; */
 }
 
-.weight-page #content-container #template-container {
+.weight-page #content-container #template-container,
+.weight-page #content-container #goal-container {
     border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
     position: relative;
     width: 20%;
 }
 
-.weight-page #content-container #goal-container {
-    width: 15%;
+.weight-page #content-container #template-container #templateBtnContainer,
+.weight-page #content-container #goal-container #goalBtnContainer {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    border: 1px solid red;
+    bottom: 0;
+}
+
+.weight-page #content-container #template-container #templateBtnContainer button,
+.weight-page #content-container #goal-container #goalBtnContainer button {
+    max-width: 50%;
+    width: 40%;
 }

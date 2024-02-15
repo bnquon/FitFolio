@@ -46,4 +46,26 @@ function calendarCellStyle(cell) {
     cell.style.height = '100px';
 }
 
-// Get first day abbreviation, match it with column header start the count until num day is ended
+function viewExercise() {
+    fetch("http://127.0.0.1:3000/selectExercise", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Handle the data received from the server
+        console.log("Exercise List:", data.exerciseList);
+        // Do something with the data, such as displaying it on the page
+    })
+    .catch(error => {
+        // Handle errors
+        console.error('Error fetching exercise data:', error);
+    });
+}

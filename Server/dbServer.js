@@ -212,8 +212,9 @@ app.post("/addGoal", (req, res) => {
    });
 });
 
-app.post("/selectExercise", (req, res) => {
-   const retrieveExercises = "SELECT * from exercises"
+app.get("/selectExercise", (req, res) => {
+   console.log("Retrieved GET call from /selectExercise");
+   const retrieveExercises = "SELECT * FROM exercises"
    const exerciseQuery = mysql.format(retrieveExercises);
 
    db.getConnection((err, connection) => {
@@ -229,9 +230,7 @@ app.post("/selectExercise", (req, res) => {
             return res.status(500).json({ error: "Failed to fetch exercise data." });
         }
 
-        console.log("Exercises fetched: ", exerciseResult);
         res.json({exerciseList: exerciseResult})
-      })
-   })
-
-})
+      });
+   });
+});

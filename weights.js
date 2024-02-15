@@ -62,6 +62,7 @@ function viewExercise() {
     .then(data => {
         // Handle the data received from the server
         console.log("Exercise List:", data.exerciseList);
+        sessionStorage.setItem("exerciseList", data.exerciseList);
         // Do something with the data, such as displaying it on the page
     })
     .catch(error => {
@@ -69,3 +70,28 @@ function viewExercise() {
         console.error('Error fetching exercise data:', error);
     });
 }
+
+function addExerciseRow() {
+    var table = document.getElementById("exerciseTable");
+    let newRow = table.insertRow(1);
+
+    for (let i = 0; i < 3; i++) {
+        var cell = newRow.insertCell(i);
+        var input = document.createElement("input");
+        switch(i) {
+            case 0:
+                break;
+            case 1:
+                input.type = "number";
+                break;
+            case 2:
+                input.type = "number";
+                break;
+        }
+        input.style.width = '100%';
+        cell.appendChild(input);
+    }
+
+}
+
+document.getElementById("addExercise").addEventListener("click", addExerciseRow);

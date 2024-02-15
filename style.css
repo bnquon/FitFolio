@@ -673,3 +673,17 @@
     border: 1px solid black;
     /* padding-left: 0.5%; */
 }
+
+.weight-page #content-container #template-container .workout {
+    position: relative;
+    text-align: center;
+    border: 1px solid pink;
+    width: 90%;
+    left: 5%;
+    height: 50%;
+    overflow: auto;
+}
+
+.weight-page #content-container #template-container .workout #exerciseTable th {
+    width: 20%; /* Adjust the width to make the columns narrower */
+}

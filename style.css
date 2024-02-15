@@ -680,7 +680,8 @@
     border: 1px solid pink;
     width: 90%;
     left: 5%;
-    height: 50%;
+    height: fit-content;
+    max-height: 40%;
     overflow: auto;
 }
 

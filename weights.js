@@ -75,7 +75,7 @@ viewExercise();
 
 function addExerciseRow(exercises) {
     var table = document.getElementById("exerciseTable");
-    let newRow = table.insertRow(1);
+    let newRow = table.insertRow(-1);
     for (let i = 0; i < 3; i++) {
         var cell = newRow.insertCell(i);
         
@@ -90,7 +90,7 @@ function addExerciseRow(exercises) {
                     option.text = exercise.exerciseName;  // Use the appropriate property from exercise
                     select.add(option);
                 });
-                select.style.width = '100%';
+                applyTemplateCellStyle(select);
                 cell.appendChild(select);
                 break;
 
@@ -98,11 +98,18 @@ function addExerciseRow(exercises) {
             case 2:
                 var input = document.createElement("input");
                 input.type = "number";
-                input.style.width = '100%';
+                input.min = "1";
+                applyTemplateCellStyle(input);
                 cell.appendChild(input);
                 break;
         }
     }
+}
+
+function applyTemplateCellStyle(cell) {
+    cell.style.width = '100%';
+    cell.style.textAlign = 'center';
+    cell.style.padding = '4px';
 }
 
 const exerciseList = JSON.parse(sessionStorage.getItem("exerciseList"));

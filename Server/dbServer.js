@@ -211,3 +211,27 @@ app.post("/addGoal", (req, res) => {
       });
    });
 });
+
+app.post("/selectExercise", (req, res) => {
+   const retrieveExercises = "SELECT * from exercises"
+   const exerciseQuery = mysql.format(retrieveExercises);
+
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error retrieving exercises: ", err);
+         return res.status(500).json({ error: "Failed to fetch exercises." });
+      }
+      connection.query(exerciseQuery, (err, exerciseResult) => {
+         connection.release();
+         
+         if (err) {
+            console.error("Error fetching exercise data: ", err);
+            return res.status(500).json({ error: "Failed to fetch exercise data." });
+        }
+
+        console.log("Exercises fetched: ", exerciseResult);
+        res.json({exerciseList: exerciseResult})
+      })
+   })
+
+})

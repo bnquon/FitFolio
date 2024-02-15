@@ -684,6 +684,11 @@
     overflow: auto;
 }
 
-.weight-page #content-container #template-container .workout #exerciseTable th {
-    width: 20%; /* Adjust the width to make the columns narrower */
+.weight-page #content-container #template-container .workout #exerciseTable {
+    border-collapse: collapse;
+    width: 100%;
 }
+
+/* .weight-page #content-container #template-container .workout #exerciseTable tr:nth-child(even) {
+    background-color: lightgray;
+} */

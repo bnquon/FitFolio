@@ -62,7 +62,7 @@ function viewExercise() {
     .then(data => {
         // Handle the data received from the server
         console.log("Exercise List:", data.exerciseList);
-        sessionStorage.setItem("exerciseList", data.exerciseList);
+        sessionStorage.setItem("exerciseList", JSON.stringify(data.exerciseList));
         // Do something with the data, such as displaying it on the page
     })
     .catch(error => {
@@ -71,27 +71,42 @@ function viewExercise() {
     });
 }
 
-function addExerciseRow() {
+viewExercise();
+
+function addExerciseRow(exercises) {
     var table = document.getElementById("exerciseTable");
     let newRow = table.insertRow(1);
-
     for (let i = 0; i < 3; i++) {
         var cell = newRow.insertCell(i);
-        var input = document.createElement("input");
-        switch(i) {
+        
+        switch (i) {
             case 0:
+                var select = document.createElement("select");
+
+                // Populate the select element with options based on exercises
+                exercises.forEach(exercise => {
+                    var option = document.createElement("option");
+                    option.value = exercise.id;  // Use the appropriate property from exercise
+                    option.text = exercise.exerciseName;  // Use the appropriate property from exercise
+                    select.add(option);
+                });
+                select.style.width = '100%';
+                cell.appendChild(select);
                 break;
+
             case 1:
-                input.type = "number";
-                break;
             case 2:
+                var input = document.createElement("input");
                 input.type = "number";
+                input.style.width = '100%';
+                cell.appendChild(input);
                 break;
         }
-        input.style.width = '100%';
-        cell.appendChild(input);
     }
-
 }
 
-document.getElementById("addExercise").addEventListener("click", addExerciseRow);
+const exerciseList = JSON.parse(sessionStorage.getItem("exerciseList"));
+
+document.getElementById("addExercise").addEventListener("click", function() {
+    addExerciseRow(exerciseList);
+});

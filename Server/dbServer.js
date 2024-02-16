@@ -255,3 +255,13 @@ app.post("/addWeightGoal", (req, res) => {
       });
    });
 });
+
+// app.post("/addWorkoutTemplate", (req, res) => {
+//    const templateRows = req.body;
+//    db.getConnection((err, connection) => {
+//       if (err) {
+//          console.error("Error getting connection: ", err);
+//          return res.status(500).json({ error: "Failed to add weightlifting goal. "});
+//       }
+//       const sql = "INSERT INTO workouttemplates"
+// })

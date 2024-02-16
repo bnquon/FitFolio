@@ -83,12 +83,12 @@ function addExerciseRow(exercises) {
         switch (i) {
             case 0:
                 var select = document.createElement("select");
-
+    
                 // Populate the select element with options based on exercises
                 exercises.forEach(exercise => {
                     var option = document.createElement("option");
-                    option.value = exercise.id;  // Use the appropriate property from exercise
-                    option.text = exercise.exerciseName;  // Use the appropriate property from exercise
+                    option.value = exercise.exerciseID;  
+                    option.text = exercise.exerciseName;  
                     select.add(option);
                 });
                 applyTemplateCellStyle(select);
@@ -105,6 +105,56 @@ function addExerciseRow(exercises) {
                 break;
         }
     }
+    document.getElementById("saveExercise").addEventListener("click", function() {
+        saveTemplate(table);
+    })
+}
+
+function saveTemplate(table) {
+    // Create an array to store the template rows
+    var templateRows = [];
+
+    // Loop through each row in the table
+    for (var i = 1; i < table.rows.length; i++) {
+        var row = table.rows[i];
+
+        // Create an object to represent each row
+        var templateRow = {
+            exerciseId: row.cells[0].querySelector('select').value,
+            sets: row.cells[1].querySelector('input').value,
+            reps: row.cells[2].querySelector('input').value
+        };
+
+        // Add the row object to the array
+        templateRows.push(templateRow);
+    }
+
+    // Convert the array to JSON
+    var templateJSON = JSON.stringify(templateRows);
+    // You can now store or send templateJSON as needed
+    console.log(templateJSON);
+    
+    fetch("http://127.0.0.1:3000/addWorkoutTemplate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: templateJSON,
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Handle the response data if needed
+        console.log("Template saved successfully:", data);
+    })
+    .catch(error => {
+        // Handle errors
+        console.error('Error saving template:', error);
+    });
 }
 
 function applyTemplateCellStyle(cell) {

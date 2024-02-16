@@ -107,7 +107,7 @@ function addExerciseRow(exercises) {
     }
 }
 
-document.getElementById("saveExercise").addEventListener("click", function (e) {
+document.getElementById("saveExercise").addEventListener("click", function(e) {
     e.preventDefault();
     console.log('Save button clicked');
 

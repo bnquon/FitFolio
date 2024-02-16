@@ -40,12 +40,18 @@ function generateCalendar() {
         }
     }
 }
+
 generateCalendar();
 
 function calendarCellStyle(cell) {
     cell.style.fontSize = '20px';
     cell.style.height = '100px';
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Call the viewExercise function here
+    viewExercise();
+});
 
 function viewExercise() {
     fetch("http://127.0.0.1:3000/selectExercise", {
@@ -63,16 +69,17 @@ function viewExercise() {
     .then(data => {
         // Handle the data received from the server
         console.log("Exercise List:", data.exerciseList);
-        sessionStorage.setItem("exerciseList", JSON.stringify(data.exerciseList));
-        // Do something with the data, such as displaying it on the page
+    
+        // Set the event listener after fetching data
+        document.getElementById("addExercise").addEventListener("click", function() {
+            addExerciseRow(data.exerciseList);
+        });
     })
     .catch(error => {
         // Handle errors
         console.error('Error fetching exercise data:', error);
     });
 }
-
-viewExercise();
 
 function addExerciseRow(exercises) {
     var table = document.getElementById("exerciseTable");
@@ -106,6 +113,7 @@ function addExerciseRow(exercises) {
         }
     }
 }
+
 
 document.getElementById("saveExercise").addEventListener("click", function(e) {
     e.preventDefault();
@@ -172,22 +180,6 @@ function applyTemplateCellStyle(cell) {
     cell.style.padding = '4px';
 }
 
-const exerciseList = JSON.parse(sessionStorage.getItem("exerciseList"));
-
-document.getElementById("addExercise").addEventListener("click", function() {
-    addExerciseRow(exerciseList);
-});
-
-function applyGoalCellStyle(cell) {
-    cell.style.fontFamily = 'Nunito Sans';
-    cell.style.border = "none";
-    cell.style.borderBottom = "1px solid #ccc";
-    cell.style.fontSize = '16px';
-    cell.style.padding = '3px';
-    cell.style.marginTop = '15px';
-    cell.style.marginLeft = '10px';
-}
-
 function addWeightGoal() {
     var goalContainer = document.getElementById("goalContentContainer");
     var ul = document.createElement('ul');
@@ -245,4 +237,14 @@ function saveGoal(goal, status) {
     .catch(error => {
         console.error("Save failed: ", error);
     });
+}
+
+function applyGoalCellStyle(cell) {
+    cell.style.fontFamily = 'Nunito Sans';
+    cell.style.border = "none";
+    cell.style.borderBottom = "1px solid #ccc";
+    cell.style.fontSize = '16px';
+    cell.style.padding = '3px';
+    cell.style.marginTop = '15px';
+    cell.style.marginLeft = '10px';
 }

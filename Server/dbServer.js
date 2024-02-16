@@ -213,7 +213,6 @@ app.post("/addGoal", (req, res) => {
 });
 
 app.get("/selectExercise", (req, res) => {
-   console.log("Retrieved GET call from /selectExercise");
    const retrieveExercises = "SELECT * FROM exercises"
    const exerciseQuery = mysql.format(retrieveExercises);
 
@@ -231,6 +230,28 @@ app.get("/selectExercise", (req, res) => {
         }
 
         res.json({exerciseList: exerciseResult})
+      });
+   });
+});
+
+app.post("/addWeightGoal", (req, res) => {
+   const {storedUserID, goal, status} = req.body;
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error getting connection: ", err);
+         return res.status(500).json({ error: "Failed to add weightlifting goal. "});
+      }
+      const sql = "INSERT INTO weightgoals (userID, goal, status) VALUES (?, ?, ?)";
+      const values = [storedUserID, goal, status];
+      connection.query(sql, values, (err, result) => {
+         connection.release();
+
+         if (err) {
+            console.error("Error adding weightlifting goal: ", err);
+            return res.status(500).json({ error: "Failed to add goal." });
+         }
+         console.log("Weightlifting goal added successfully: ", result);
+         res.status(200).json ({ success: true });
       });
    });
 });

@@ -139,8 +139,10 @@ function saveTemplate(table) {
         headers: {
             "Content-Type": "application/json",
         },
-        body: templateJSON,
-              storedUserID,
+        body: JSON.stringify({
+            storedUserID,
+            templateJSON,
+        }),
     })
     .then(response => {
         if (!response.ok) {

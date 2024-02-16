@@ -256,25 +256,72 @@ app.post("/addWeightGoal", (req, res) => {
    });
 });
 
+// app.post("/addWorkoutTemplate", (req, res) => {
+//    const { storedUserID, templateJSON } = req.body;
+
+//    // Access storedUserID and templateJSON in your server logic
+//    console.log('Stored UserID:', storedUserID);
+//    console.log('Template JSON:', templateJSON);
+//    db.getConnection((err, connection) => {
+//       if (err) {
+//          console.error("Error getting connection: ", err);
+//          return res.status(500).json({ error: "Failed to add weightlifting goal. "});
+//       }
+//       const sql = "INSERT INTO workouttemplate (userID, exerciseID, sets, reps) VALUES ?";
+//       const template = JSON.parse(templateJSON);
+//       template.forEach(element => {
+//          console.log(element);
+//          console.log(element.exerciseId);
+//          console.log(element.sets);
+//          console.log(element.reps);
+//          var values = [storedUserID, element.exerciseId, element.sets, element.reps];
+//          connection.query(sql, values, (err, result) => {            
+//             if (err) {
+//                console.error("Error inserting workouttemplate rows: ", err);
+//                connection.release();
+//                return res.status(500).json({ error: "Failed to insert workouttemplate rows." });
+//             }     
+//             console.log("Template row inserted:", result); 
+//          });
+//          connection.release();
+//       });
+//    });
+// });
+
 app.post("/addWorkoutTemplate", (req, res) => {
-   const templateRows = req.body;
+   const { storedUserID, templateJSON } = req.body;
+
+   // Access storedUserID and templateJSON in your server logic
+   console.log('Stored UserID:', storedUserID);
+   console.log('Template JSON:', templateJSON);
    db.getConnection((err, connection) => {
       if (err) {
          console.error("Error getting connection: ", err);
          return res.status(500).json({ error: "Failed to add weightlifting goal. "});
       }
       const sql = "INSERT INTO workouttemplate (userID, exerciseID, sets, reps) VALUES ?";
-      const values = templateRows.map(row => [storedUserID, row.exerciseID, row.sets, row.reps]);
-      connection.query(sql, [values], (err, result) => {
-         connection.release();
+      const template = JSON.parse(templateJSON);
 
+      // Initialize an array to store values for each row
+      const values = [];
+
+      // Use a for loop to populate the values array
+      for (let i = 0; i < template.length; i++) {
+         const element = template[i];
+         values.push([storedUserID, element.exerciseId, element.sets, element.reps]);
+      }
+
+      // Use a single query to insert multiple rows
+      connection.query(sql, [values], (err, result) => {            
          if (err) {
-             console.error("Error inserting workouttemplate rows: ", err);
-             return res.status(500).json({ error: "Failed to insert workouttemplate rows." });
-         }
+            console.error("Error inserting workouttemplate rows: ", err);
+            connection.release();
+            return res.status(500).json({ error: "Failed to insert workouttemplate rows." });
+         }     
+         console.log("Template rows inserted:", result); 
 
-         // Assuming you want to send a success response
-         res.json({ success: true });
+         // Release the connection after all rows are inserted
+         connection.release();
       });
    });
 });

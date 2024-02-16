@@ -140,6 +140,7 @@ function saveTemplate(table) {
             "Content-Type": "application/json",
         },
         body: templateJSON,
+              storedUserID,
     })
     .then(response => {
         if (!response.ok) {

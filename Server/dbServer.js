@@ -256,12 +256,25 @@ app.post("/addWeightGoal", (req, res) => {
    });
 });
 
-// app.post("/addWorkoutTemplate", (req, res) => {
-//    const templateRows = req.body;
-//    db.getConnection((err, connection) => {
-//       if (err) {
-//          console.error("Error getting connection: ", err);
-//          return res.status(500).json({ error: "Failed to add weightlifting goal. "});
-//       }
-//       const sql = "INSERT INTO workouttemplates"
-// })
+app.post("/addWorkoutTemplate", (req, res) => {
+   const templateRows = req.body;
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error getting connection: ", err);
+         return res.status(500).json({ error: "Failed to add weightlifting goal. "});
+      }
+      const sql = "INSERT INTO workouttemplate (userID, exerciseID, sets, reps) VALUES ?";
+      const values = templateRows.map(row => [storedUserID, row.exerciseID, row.sets, row.reps]);
+      connection.query(sql, [values], (err, result) => {
+         connection.release();
+
+         if (err) {
+             console.error("Error inserting workouttemplate rows: ", err);
+             return res.status(500).json({ error: "Failed to insert workouttemplate rows." });
+         }
+
+         // Assuming you want to send a success response
+         res.json({ success: true });
+      });
+   });
+});

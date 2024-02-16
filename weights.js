@@ -3,7 +3,30 @@ const addressUser = sessionStorage.getItem('username');
 document.getElementById('username').textContent = addressUser;
 document.getElementById('username').style.fontWeight = '700';
 
-   
+
+fetch(`http://127.0.0.1:3000/retrieveWeightliftingData?passedUserID=${storedUserID}`, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+    },
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => {
+    console.log(data);
+    // populateTable(data.templateData);
+    populateGoals(data.weightliftingGoalData);
+})
+.catch(error => {
+    // Handle errors
+    console.error('Error fetching data:', error);
+});
+
+
 function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
@@ -46,6 +69,56 @@ generateCalendar();
 function calendarCellStyle(cell) {
     cell.style.fontSize = '20px';
     cell.style.height = '100px';
+}
+
+function applyGoalCellStyle(cell) {
+    cell.style.fontFamily = 'Nunito Sans';
+    cell.style.border = "none";
+    cell.style.borderBottom = "1px solid #ccc";
+    cell.style.fontSize = '16px';
+    cell.style.padding = '3px';
+    cell.style.marginTop = '15px';
+    cell.style.marginLeft = '10px';
+}
+
+function strikeThrough(text) {
+    return text
+        .split('')
+        .map(char => char + '\u0336')
+        .join('')
+}
+
+function populateGoals(data) {
+    const goalContainer = document.getElementById("goalContentContainer");
+    data.forEach(item => {  
+        const values = Object.values(item).slice(1, -1);
+        console.log("VALUES IS ", values);
+        
+        var ul = document.createElement('ul');
+        ul.style.width = '100%';
+        var li = document.createElement('li');
+        
+        const storedText = document.createElement('input');
+
+        storedText.value = values[0];
+        applyGoalCellStyle(storedText);
+        
+        var checkbox = document.createElement('input');
+        
+        checkbox.type = 'checkbox';
+        if (values[1] === 1) {
+            checkbox.checked = true;
+            const crossedStoredText = strikeThrough(values[0]);
+            storedText.value = crossedStoredText;
+        }
+
+        li.appendChild(checkbox);
+        li.appendChild(storedText);
+
+        // Append the list item to the goal container
+        ul.appendChild(li);
+        goalContainer.appendChild(ul);
+    });   
 }
 
 document.addEventListener('DOMContentLoaded', function() {

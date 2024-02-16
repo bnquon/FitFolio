@@ -152,8 +152,8 @@ app.get('/retrieveCardioData', (req, res) => {
             }
 
             res.json({
-               runningData: runningResult,
-               goalData: goalResult
+               cardioData: runningResult,
+               cardioGoalData: goalResult
             });
 
          })
@@ -309,6 +309,28 @@ app.post("/addWorkoutTemplate", (req, res) => {
             // Return success response
             res.json({ success: true });
          });
+      });
+   });
+});
+
+app.get('/retrieveWeightliftingData', (req, res) => {
+   const userId = req.query.passedUserID;
+   const sqlGoal =  "SELECT * FROM weightgoals WHERE userID = ?"
+   const sqlGoalQuery = mysql.format(sqlGoal, [userId]);
+
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error getting connection: ", err);
+         return res.status(500).json({ error: "Failed to fetch weightlifting data. "});
+      }
+      connection.query(sqlGoalQuery, (err, weightGoalResult) => {
+         if (err) {
+            console.error("Error executing query: ", err);
+            connection.release();
+            return res.status(500).json({ error: "Failed to fetch weightlifting goal data." });
+         }
+         connection.release();
+         res.json({weightliftingGoalData: weightGoalResult});
       });
    });
 });

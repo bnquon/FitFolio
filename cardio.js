@@ -17,8 +17,8 @@ fetch(`http://127.0.0.1:3000/retrieveCardioData?passedUserID=${storedUserID}`, {
 })
 .then(data => {
     console.log(data);
-    populateTable(data.runningData);
-    populateGoals(data.goalData);
+    populateTable(data.cardioData);
+    populateGoals(data.cardioGoalData);
 })
 .catch(error => {
     // Handle errors

@@ -623,7 +623,6 @@
     overflow-y: auto;
 }
 
-.weight-page #content-container #template-container #templateBtnContainer,
 .weight-page #content-container #goal-container #goalBtnContainer {
     position: absolute;
     display: flex;
@@ -634,7 +633,7 @@
     height: 6%;
 }
 
-.weight-page #content-container #template-container #templateBtnContainer button,
+.weight-page #content-container #template-container button,
 .weight-page #content-container #goal-container #goalBtnContainer button {
     max-width: 50%;
     width: 40%;

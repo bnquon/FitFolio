@@ -256,38 +256,6 @@ app.post("/addWeightGoal", (req, res) => {
    });
 });
 
-// app.post("/addWorkoutTemplate", (req, res) => {
-//    const { storedUserID, templateJSON } = req.body;
-
-//    // Access storedUserID and templateJSON in your server logic
-//    console.log('Stored UserID:', storedUserID);
-//    console.log('Template JSON:', templateJSON);
-//    db.getConnection((err, connection) => {
-//       if (err) {
-//          console.error("Error getting connection: ", err);
-//          return res.status(500).json({ error: "Failed to add weightlifting goal. "});
-//       }
-//       const sql = "INSERT INTO workouttemplate (userID, exerciseID, sets, reps) VALUES ?";
-//       const template = JSON.parse(templateJSON);
-//       template.forEach(element => {
-//          console.log(element);
-//          console.log(element.exerciseId);
-//          console.log(element.sets);
-//          console.log(element.reps);
-//          var values = [storedUserID, element.exerciseId, element.sets, element.reps];
-//          connection.query(sql, values, (err, result) => {            
-//             if (err) {
-//                console.error("Error inserting workouttemplate rows: ", err);
-//                connection.release();
-//                return res.status(500).json({ error: "Failed to insert workouttemplate rows." });
-//             }     
-//             console.log("Template row inserted:", result); 
-//          });
-//          connection.release();
-//       });
-//    });
-// });
-
 app.post("/addWorkoutTemplate", (req, res) => {
    const { storedUserID, templateJSON } = req.body;
 
@@ -299,29 +267,40 @@ app.post("/addWorkoutTemplate", (req, res) => {
          console.error("Error getting connection: ", err);
          return res.status(500).json({ error: "Failed to add weightlifting goal. "});
       }
-      const sql = "INSERT INTO workouttemplate (userID, exerciseID, sets, reps) VALUES ?";
-      const template = JSON.parse(templateJSON);
 
-      // Initialize an array to store values for each row
-      const values = [];
+      // Query to get the latest templateID for the user
+      const selectLatestTemplateID = "SELECT MAX(templateID) AS latestTemplateID FROM workouttemplate WHERE userID = ?";
 
-      // Use a for loop to populate the values array
-      for (let i = 0; i < template.length; i++) {
-         const element = template[i];
-         values.push([storedUserID, element.exerciseId, element.sets, element.reps]);
-      }
-
-      // Use a single query to insert multiple rows
-      connection.query(sql, [values], (err, result) => {            
+      connection.query(selectLatestTemplateID, [storedUserID], (err, result) => {
          if (err) {
-            console.error("Error inserting workouttemplate rows: ", err);
+            console.error("Error retrieving latest templateID: ", err);
             connection.release();
-            return res.status(500).json({ error: "Failed to insert workouttemplate rows." });
-         }     
-         console.log("Template rows inserted:", result); 
+            return res.status(500).json({ error: "Failed to retrieve latest templateID." });
+         }
 
-         // Release the connection after all rows are inserted
-         connection.release();
+         const latestTemplateID = result[0].latestTemplateID || 0; // Use 0 if no previous templateID found
+
+         // Increment the latest templateID by 1 for the new entry
+         const newTemplateID = latestTemplateID + 1;
+
+         // SQL query to insert new workout template
+         const sql = "INSERT INTO workouttemplate (templateID, userID, exerciseID, sets, reps) VALUES ?";
+         const template = JSON.parse(templateJSON);
+         const values = template.map(element => [newTemplateID, storedUserID, element.exerciseId, element.sets, element.reps]);
+
+         connection.query(sql, [values], (err, result) => {            
+            if (err) {
+               console.error("Error inserting workouttemplate rows: ", err);
+               connection.release();
+               return res.status(500).json({ error: "Failed to insert workouttemplate rows." });
+            }     
+            console.log("Template rows inserted:", result); 
+
+            // Release the connection after all rows are inserted
+            connection.release();
+            // Return success response
+            res.json({ success: true });
+         });
       });
    });
 });

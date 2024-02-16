@@ -3,7 +3,7 @@ const addressUser = sessionStorage.getItem('username');
 document.getElementById('username').textContent = addressUser;
 document.getElementById('username').style.fontWeight = '700';
 
-fetch(`http://127.0.0.1:3000/?passedUserID=${storedUserID}`, {
+fetch(`http://127.0.0.1:3000/retrieveCardioData?passedUserID=${storedUserID}`, {
     method: "GET",
     headers: {
         "Content-Type": "application/json",

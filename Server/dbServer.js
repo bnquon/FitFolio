@@ -126,7 +126,7 @@ db.getConnection ( async (err, connection)=> {
 }); //end of db.connection()
 }); //end of app.post()
 
-app.get('/', (req, res) => {
+app.get('/retrieveCardioData', (req, res) => {
    const userId = req.query.passedUserID;
    const sqlRunning = "SELECT * FROM runningdata WHERE userID = ?"
    const sqlRunningQuery = mysql.format(sqlRunning, [userId]);

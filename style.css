@@ -690,6 +690,12 @@
     width: 100%;
 }
 
-/* .weight-page #content-container #template-container .workout #exerciseTable tr:nth-child(even) {
-    background-color: lightgray;
-} */
+.weight-page #content-container #goal-container #goalContentContainer {
+    text-align: center;
+    overflow: auto;
+}
+
+.weight-page #content-container #goal-container #goalContentContainer input[type="checkbox"] {
+    width: 15px; /* Size of the checkbox */
+    height: 15px;
+}

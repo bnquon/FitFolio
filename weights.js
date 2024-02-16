@@ -1,3 +1,4 @@
+const storedUserID = sessionStorage.getItem('userid');
 const addressUser = sessionStorage.getItem('username');
 document.getElementById('username').textContent = addressUser;
 document.getElementById('username').style.fontWeight = '700';
@@ -117,3 +118,72 @@ const exerciseList = JSON.parse(sessionStorage.getItem("exerciseList"));
 document.getElementById("addExercise").addEventListener("click", function() {
     addExerciseRow(exerciseList);
 });
+
+function applyGoalCellStyle(cell) {
+    cell.style.fontFamily = 'Nunito Sans';
+    cell.style.border = "none";
+    cell.style.borderBottom = "1px solid #ccc";
+    cell.style.fontSize = '16px';
+    cell.style.padding = '3px';
+    cell.style.marginTop = '15px';
+    cell.style.marginLeft = '10px';
+}
+
+function addWeightGoal() {
+    var goalContainer = document.getElementById("goalContentContainer");
+    var ul = document.createElement('ul');
+    var li = document.createElement('li');
+
+    var inputText = document.createElement('input');
+    inputText.type = 'text';
+    inputText.placeholder = 'Enter goal...';
+    applyGoalCellStyle(inputText);
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+
+    li.appendChild(checkbox);
+    li.appendChild(inputText);
+
+    ul.appendChild(li);
+    
+    if (goalContainer.firstChild) {
+        goalContainer.insertBefore(ul, goalContainer.firstChild);
+    } else {
+        goalContainer.appendChild(ul);
+    }
+
+    document.getElementById("GoalSave").addEventListener("click", function() {
+        saveGoal(inputText.value, checkbox.checked);
+    });
+
+}
+
+// NEED TO MAKE THIS HAPPEN ON SAVE BUTTON CLICK NOT AUTOMATICALLY
+function saveGoal(goal, status) {
+    fetch("http://127.0.0.1:3000/addWeightGoal", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            storedUserID,
+            goal,
+            status,
+        }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("HTTP error! Status: ${response.status}");
+        }
+        return response.json();
+    })
+    .then(response => {
+        if(!response.ok) {
+            throw new Error("HTTP error! Status: ${response.status}");
+        }
+        console.log("Goal added successfully: ", response);
+    })
+    .catch(error => {
+        console.error("Save failed: ", error);
+    });
+}

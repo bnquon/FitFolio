@@ -9,3 +9,9 @@ CHANGE THE BORDER COLOUR ON THE BUTTONS IN CARDIO
 
 https://uiverse.io/Cornerstone-04/bitter-impala-54
 https://uiverse.io/gharsh11032000/foolish-sloth-90
+
+TODO:
+- Populate weightlifting goals
+- actually save template details + make button for save
+- populate templates
+- make the calendar interactable

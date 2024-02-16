@@ -286,7 +286,15 @@ app.post("/addWorkoutTemplate", (req, res) => {
          // SQL query to insert new workout template
          const sql = "INSERT INTO workouttemplate (templateID, userID, exerciseID, sets, reps) VALUES ?";
          const template = JSON.parse(templateJSON);
-         const values = template.map(element => [newTemplateID, storedUserID, element.exerciseId, element.sets, element.reps]);
+         const values = [];
+
+         // Use a for loop to populate the values array
+         for (let i = 0; i < template.length; i++) {
+            const element = template[i];
+            values.push([newTemplateID, storedUserID, element.exerciseId, element.sets, element.reps]);
+         }
+
+         console.log("VALUES ", values);
 
          connection.query(sql, [values], (err, result) => {            
             if (err) {
@@ -294,7 +302,7 @@ app.post("/addWorkoutTemplate", (req, res) => {
                connection.release();
                return res.status(500).json({ error: "Failed to insert workouttemplate rows." });
             }     
-            console.log("Template rows inserted:", result); 
+            console.log("ROWS INSERTED ALERT");
 
             // Release the connection after all rows are inserted
             connection.release();

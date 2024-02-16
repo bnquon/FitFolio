@@ -105,10 +105,16 @@ function addExerciseRow(exercises) {
                 break;
         }
     }
-    document.getElementById("saveExercise").addEventListener("click", function() {
-        saveTemplate(table);
-    })
 }
+
+document.getElementById("saveExercise").addEventListener("click", function (e) {
+    e.preventDefault();
+    console.log('Save button clicked');
+
+    var table = document.getElementById("exerciseTable");
+    saveTemplate(table);
+});
+
 
 function saveTemplate(table) {
     // Create an array to store the template rows

@@ -33,12 +33,18 @@ fetch(`http://127.0.0.1:3000/retrieveWorkoutTemplates?passedUserID=${storedUserI
         "Content-Type": "application/json",
     },
 })
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+})
 .then(data => {
-    console.log("Workout Template Data: ", data);
+    console.log("Workout Template Data: ", data.workoutTemplate);
 })
 .catch(error => {
     console.error('Error fetching data: ', error);
-})
+});
 
 function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();

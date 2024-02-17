@@ -656,7 +656,7 @@
     height: 15px;
 }
 
-.weight-page #content-container #template-container .workout {
+.weight-page #content-container #template-container .createTemplate {
     position: relative;
     text-align: center;
     border: 1px solid pink;
@@ -667,12 +667,12 @@
     overflow: auto;
 }
 
-.weight-page #content-container #template-container .workout #exerciseTable {
+.weight-page #content-container #template-container .createTemplate #exerciseTable {
     border-collapse: collapse;
     width: 100%;
 }
 
-.weight-page #content-container #template-container .workout #template-Name {
+.weight-page #content-container #template-container .createTemplate #template-Name {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -680,7 +680,7 @@
     align-items: center;
 }
 
-.weight-page #content-container #template-container .workout #templateName {
+.weight-page #content-container #template-container .createTemplate #templateName {
     width: 55%;
     font-size: 14px;
     padding: 4px;

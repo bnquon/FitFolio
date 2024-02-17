@@ -610,7 +610,14 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 20%;
+}
+
+.weight-page #content-container #template-container {
+    width: 23%;
+}
+
+.weight-page #content-container #goal-container {
+    width: 17%;
 }
 
 .weight-page #content-container #template-container #templateContentContainer,
@@ -674,7 +681,7 @@
 }
 
 .weight-page #content-container #template-container .workout #templateName {
-    width: 40%;
+    width: 55%;
     font-size: 14px;
     padding: 4px;
     text-align: center;

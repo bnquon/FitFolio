@@ -99,7 +99,7 @@ function testing(data, index) {
     console.log("Values from testing function: ", values);
     var string = '';
     values.forEach(element => {
-        string += element.exerciseName + " " + element.sets + " x " + element.reps + "\n";
+        string += element.exerciseName + " " + element.sets + " x " + element.reps + "<br>";
     })
     console.log(string);
     addElementToGrid(string, values[0].templateName);
@@ -128,8 +128,6 @@ function addElementToGrid(content, title) {
 
    gridContainer.appendChild(newElement);
 }
-
-// addElementToGrid('BENCH PRESS 5x5  LAT PULLDOWN 3x8', 'PUSH');
 
 function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();

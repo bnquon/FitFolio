@@ -12,7 +12,5 @@ https://uiverse.io/gharsh11032000/foolish-sloth-90
 
 TODO:
 - Create a stored template container within bigger container
-- Create hardcoded stored template example
-- Create input box for the title of the template + add column for template name in MySQL
 - populate templates
 - make the calendar interactable

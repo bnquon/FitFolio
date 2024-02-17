@@ -48,8 +48,30 @@ fetch(`http://127.0.0.1:3000/retrieveWorkoutTemplates?passedUserID=${storedUserI
 });
 
 // MAYBE RECURSIVE? PROBABLY
-function testing(data) {
-    console.log(data[0].templateID);
+function testing(data, index) {
+    // console.log(data[0].templateID);
+    if (index >= data.length) {
+        // End of the data array
+        return;
+    }
+    
+    const currentTemplateID = data[index].templateID;
+    var values = [];
+
+    //need to implement while loop checking if templateID is equal to one before
+
+    console.log("TEMPLATE VALUES IS: ", values);
+
+}
+
+const gridContainer = document.getElementById('templates');
+
+function addElementToGrid(content) {
+   const newElement = document.createElement('div');
+   newElement.classList.add('grid-item');
+   newElement.textContent = content;
+
+   gridContainer.appendChild(newElement);
 }
 
 function daysInMonth(month, year) {
@@ -347,16 +369,6 @@ function applyGoalCellStyle(cell) {
     cell.style.padding = '3px';
     cell.style.marginTop = '15px';
     cell.style.marginLeft = '10px';
-}
-
-const gridContainer = document.getElementById('templates');
-
-function addElementToGrid(content) {
-   const newElement = document.createElement('div');
-   newElement.classList.add('grid-item');
-   newElement.textContent = content;
-
-   gridContainer.appendChild(newElement);
 }
 
 // Example usage:

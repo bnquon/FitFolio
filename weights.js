@@ -41,10 +41,16 @@ fetch(`http://127.0.0.1:3000/retrieveWorkoutTemplates?passedUserID=${storedUserI
 })
 .then(data => {
     console.log("Workout Template Data: ", data.workoutTemplate);
+    testing(data.workoutTemplate);
 })
 .catch(error => {
     console.error('Error fetching data: ', error);
 });
+
+// MAYBE RECURSIVE? PROBABLY
+function testing(data) {
+    console.log(data[0].templateID);
+}
 
 function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();

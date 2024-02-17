@@ -65,6 +65,11 @@ function testing(data, index) {
     }
 
     console.log("Values from testing function: ", values);
+    var string = '';
+    values.forEach(element => {
+        string += element.exerciseID + " " + element.sets + " x " + element.reps + "\n";
+    })
+    console.log(string);
 
 }
 
@@ -210,7 +215,7 @@ function viewExercise() {
     .then(data => {
         // Handle the data received from the server
         console.log("Exercise List:", data.exerciseList);
-    
+        sessionStorage.setItem("LOE", data.exerciseList);
         // Set the event listener after fetching data
         document.getElementById("addExercise").addEventListener("click", function() {
             addExerciseRow(data.exerciseList);

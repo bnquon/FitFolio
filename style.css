@@ -581,12 +581,11 @@
 }
 
 .weight-page #content-container {
-    border: 1px solid green;
     width: 100%;
     position: absolute;
     display: flex;
     top: 27.5vh;
-    height: 65vh;
+    height: 70vh;
 }
 
 .weight-page #content-container #container-title {
@@ -622,12 +621,18 @@
 
 .weight-page #content-container #template-container #templateContentContainer,
 .weight-page #content-container #goal-container #goalContentContainer {
-    border: 1px solid blue;
     position: relative;
     left: 5%;
     width: 90%;
-    height: 75%;
     overflow-y: auto;
+}
+
+.weight-page #content-container #goal-container #goalContentContainer {
+    height: 75%;
+}
+
+.weight-page #content-container #template-container #templateContentContainer {
+    height: 80%;
 }
 
 .weight-page #content-container #goal-container #goalBtnContainer {
@@ -672,7 +677,8 @@
     width: 100%;
 }
 
-.weight-page #content-container #template-container .createTemplate #template-Name {
+.weight-page #content-container #template-container .createTemplate #template-Name,
+.weight-page #content-container #template-container .storeTemplate #template-Name  {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -688,6 +694,17 @@
     font-family: 'Nunito Sans', sans-serif;
     border: none;
     border-bottom: 1px solid black;
+}
+
+.weight-page #content-container #template-container .storeTemplate {
+    background-color: red;
+    position: relative;
+    text-align: center;
+    width: 90%;
+    left: 5%;
+    height: 50%;
+    max-height: 50%;
+    overflow: auto;
 }
 
 .weight-page #content-container #templateContentContainer #templateBtnContainer {

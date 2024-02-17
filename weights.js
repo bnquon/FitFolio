@@ -201,6 +201,7 @@ document.getElementById("saveExercise").addEventListener("click", function(e) {
 function saveTemplate(table) {
     // Create an array to store the template rows
     var templateRows = [];
+    var templateName = document.getElementById("templateName").value;
 
     // Loop through each row in the table
     for (var i = 1; i < table.rows.length; i++) {
@@ -229,6 +230,7 @@ function saveTemplate(table) {
         },
         body: JSON.stringify({
             storedUserID,
+            templateName,
             templateJSON,
         }),
     })

@@ -719,7 +719,7 @@
     flex-direction: column;
     align-items: center;
     border: 1px solid #ccc;
-    height: 150px;
+    height: 140px;
     overflow: auto;
     padding-top: 5px;
  }

@@ -1,5 +1,6 @@
 const storedUserID = sessionStorage.getItem('userid');
 const addressUser = sessionStorage.getItem('username');
+
 document.getElementById('username').textContent = addressUser;
 document.getElementById('username').style.fontWeight = '700';
 
@@ -47,6 +48,37 @@ fetch(`http://127.0.0.1:3000/retrieveWorkoutTemplates?passedUserID=${storedUserI
     console.error('Error fetching data: ', error);
 });
 
+function viewExercise() {
+    fetch("http://127.0.0.1:3000/selectExercise", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Handle the data received from the server
+        console.log("Exercise List:", data.exerciseList);
+        // Set the event listener after fetching data
+        document.getElementById("addExercise").addEventListener("click", function() {
+            addExerciseRow(data.exerciseList);
+        });
+        
+    })
+    .catch(error => {
+        // Handle errors
+        console.error('Error fetching exercise data:', error);
+    });
+}
+
+viewExercise();
+
+
 // MAYBE RECURSIVE? PROBABLY
 function testing(data, index) {
     // console.log(data[0].templateID);
@@ -72,9 +104,6 @@ function testing(data, index) {
     console.log(string);
 
 }
-
-
-
 
 // NEED TO WORK ON DYNAMICALLY ADDING THE TEMPLATE
 const gridContainer = document.getElementById('templates');
@@ -192,39 +221,6 @@ function populateGoals(data) {
         ul.appendChild(li);
         goalContainer.appendChild(ul);
     });   
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Call the viewExercise function here
-    viewExercise();
-});
-
-function viewExercise() {
-    fetch("http://127.0.0.1:3000/selectExercise", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Handle the data received from the server
-        console.log("Exercise List:", data.exerciseList);
-        sessionStorage.setItem("LOE", data.exerciseList);
-        // Set the event listener after fetching data
-        document.getElementById("addExercise").addEventListener("click", function() {
-            addExerciseRow(data.exerciseList);
-        });
-    })
-    .catch(error => {
-        // Handle errors
-        console.error('Error fetching exercise data:', error);
-    });
 }
 
 function addExerciseRow(exercises) {

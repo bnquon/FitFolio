@@ -3,6 +3,7 @@ const addressUser = sessionStorage.getItem('username');
 document.getElementById('username').textContent = addressUser;
 document.getElementById('username').style.fontWeight = '700';
 
+document.getElementById('templateName').placeholder = "Template Name";
 
 fetch(`http://127.0.0.1:3000/retrieveWeightliftingData?passedUserID=${storedUserID}`, {
     method: "GET",

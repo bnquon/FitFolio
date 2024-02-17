@@ -41,7 +41,7 @@ fetch(`http://127.0.0.1:3000/retrieveWorkoutTemplates?passedUserID=${storedUserI
 })
 .then(data => {
     console.log("Workout Template Data: ", data.workoutTemplate);
-    testing(data.workoutTemplate);
+    testing(data.workoutTemplate, 0);
 })
 .catch(error => {
     console.error('Error fetching data: ', error);
@@ -58,21 +58,42 @@ function testing(data, index) {
     const currentTemplateID = data[index].templateID;
     var values = [];
 
-    //need to implement while loop checking if templateID is equal to one before
+    while (index < data.length && data[index].templateID === currentTemplateID) {
+        const { sets, reps, exerciseID, templateName } = data[index];
+        values.push({ sets, reps, exerciseID, templateName });
+        index++;
+    }
 
-    console.log("TEMPLATE VALUES IS: ", values);
+    console.log("Values from testing function: ", values);
 
 }
 
+
+
+
+// NEED TO WORK ON DYNAMICALLY ADDING THE TEMPLATE
 const gridContainer = document.getElementById('templates');
 
-function addElementToGrid(content) {
+function addElementToGrid(content, title) {
    const newElement = document.createElement('div');
    newElement.classList.add('grid-item');
    newElement.textContent = content;
 
+   const titleElement = document.createElement('h4');
+   titleElement.id = 'grid-item-title';
+   titleElement.textContent = title;
+
+   const exercises = document.createElement('div');
+   exercises.classList.add = 'grid-content';
+   exercises.innerHTML = content;
+
+   newElement.appendChild(titleElement);
+   newElement.appendChild(exercises);
+
    gridContainer.appendChild(newElement);
 }
+
+// addElementToGrid('BENCH PRESS 5x5  LAT PULLDOWN 3x8', 'PUSH');
 
 function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();

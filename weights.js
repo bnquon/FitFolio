@@ -236,7 +236,7 @@ function addExerciseRow(exercises) {
                 // Populate the select element with options based on exercises
                 exercises.forEach(exercise => {
                     var option = document.createElement("option");
-                    option.value = exercise.exerciseID;  
+                    option.value = exercise.exerciseName;  
                     option.text = exercise.exerciseName;  
                     select.add(option);
                 });
@@ -277,7 +277,7 @@ function saveTemplate(table) {
 
         // Create an object to represent each row
         var templateRow = {
-            exerciseId: row.cells[0].querySelector('select').value,
+            exerciseName: row.cells[0].querySelector('select').value,
             sets: row.cells[1].querySelector('input').value,
             reps: row.cells[2].querySelector('input').value
         };

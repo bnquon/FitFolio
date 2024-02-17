@@ -283,14 +283,14 @@ app.post("/addWorkoutTemplate", (req, res) => {
          const newTemplateID = latestTemplateID + 1;
 
          // SQL query to insert new workout template
-         const sql = "INSERT INTO workouttemplate (templateID, userID, exerciseID, sets, reps, templateName) VALUES ?";
+         const sql = "INSERT INTO workouttemplate (templateID, userID, exerciseName, sets, reps, templateName) VALUES ?";
          const template = JSON.parse(templateJSON);
          const values = [];
 
          // Use a for loop to populate the values array
          for (let i = 0; i < template.length; i++) {
             const element = template[i];
-            values.push([newTemplateID, storedUserID, element.exerciseId, element.sets, element.reps, templateName]);
+            values.push([newTemplateID, storedUserID, element.exerciseName, element.sets, element.reps, templateName]);
          }
 
          console.log("VALUES ", values);

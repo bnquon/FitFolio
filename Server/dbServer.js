@@ -200,12 +200,12 @@ app.post("/addGoal", (req, res) => {
       const sql = "INSERT INTO goals (userID, goal, status) VALUES (?, ?, ?)";
       const values = [storedUserID, goal, status];
       connection.query(sql, values, (err, result) => {
-         connection.release();
-
+         
          if (err) {
             console.error("Error adding goal: ", err);
             return res.status(500).json({ error: "Failed to add goal." });
          }
+         connection.release();
          console.log("Goal added successfully: ", result);
          res.status(200).json({ success: true });
       });
@@ -222,14 +222,14 @@ app.get("/selectExercise", (req, res) => {
          return res.status(500).json({ error: "Failed to fetch exercises." });
       }
       connection.query(exerciseQuery, (err, exerciseResult) => {
-         connection.release();
          
          if (err) {
             console.error("Error fetching exercise data: ", err);
             return res.status(500).json({ error: "Failed to fetch exercise data." });
-        }
-
-        res.json({exerciseList: exerciseResult})
+         }
+         
+         connection.release();
+         res.json({exerciseList: exerciseResult})
       });
    });
 });
@@ -244,12 +244,11 @@ app.post("/addWeightGoal", (req, res) => {
       const sql = "INSERT INTO weightgoals (userID, goal, status) VALUES (?, ?, ?)";
       const values = [storedUserID, goal, status];
       connection.query(sql, values, (err, result) => {
-         connection.release();
-
          if (err) {
             console.error("Error adding weightlifting goal: ", err);
             return res.status(500).json({ error: "Failed to add goal." });
          }
+         connection.release();
          console.log("Weightlifting goal added successfully: ", result);
          res.status(200).json ({ success: true });
       });
@@ -304,10 +303,10 @@ app.post("/addWorkoutTemplate", (req, res) => {
             }     
             console.log("ROWS INSERTED ALERT");
 
-            // Release the connection after all rows are inserted
-            connection.release();
             // Return success response
             res.json({ success: true });
+            // Release the connection after all rows are inserted
+            connection.release();
          });
       });
    });
@@ -315,7 +314,7 @@ app.post("/addWorkoutTemplate", (req, res) => {
 
 app.get('/retrieveWeightliftingData', (req, res) => {
    const userId = req.query.passedUserID;
-   const sqlGoal =  "SELECT * FROM weightgoals WHERE userID = ?"
+   const sqlGoal =  "SELECT * FROM weightgoals WHERE userID = ?";
    const sqlGoalQuery = mysql.format(sqlGoal, [userId]);
 
    db.getConnection((err, connection) => {
@@ -329,8 +328,31 @@ app.get('/retrieveWeightliftingData', (req, res) => {
             connection.release();
             return res.status(500).json({ error: "Failed to fetch weightlifting goal data." });
          }
-         connection.release();
          res.json({weightliftingGoalData: weightGoalResult});
+         connection.release();
+      });
+   });
+});
+
+app.get('/retrieveWorkoutTemplates', (req, res) => {
+   console.log("RETRIEVE TEMPLATE CALLED");
+   const userId = req.query.passedUserID;
+   const sql = "SELECT * FROM workouttemplate WHERE userID = ?";
+   const sqlQuery = mysql.format(sql, [userId]);
+
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error getting connection: ", err);
+         return res.status(500).json({ error: "Failed to fetch workout template data. "});
+      }
+      connection.query(sqlQuery, (err, workoutTemplateResult) => {
+         if (err) {
+            console.error("Error executing query: ", err);
+            connection.release();
+            return res.status(500).json({ error: "Failed to fetch workout template data. "});
+         }
+         res.json({workoutTemplate: workoutTemplateResult});
+         connection.release();
       });
    });
 });

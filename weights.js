@@ -324,3 +324,17 @@ function applyGoalCellStyle(cell) {
     cell.style.marginTop = '15px';
     cell.style.marginLeft = '10px';
 }
+
+const gridContainer = document.getElementById('templates');
+
+function addElementToGrid(content) {
+   const newElement = document.createElement('div');
+   newElement.classList.add('grid-item');
+   newElement.textContent = content;
+
+   gridContainer.appendChild(newElement);
+}
+
+// Example usage:
+// addElementToGrid('Item 1');
+// addElementToGrid('Item 2');

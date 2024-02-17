@@ -667,8 +667,8 @@
     border: 1px solid pink;
     width: 90%;
     left: 5%;
-    height: 50%;
-    max-height: 50%;
+    height: 45%;
+    max-height: 45%;
     overflow: auto;
 }
 
@@ -697,14 +697,42 @@
 }
 
 .weight-page #content-container #template-container .storeTemplate {
-    background-color: red;
     position: relative;
     text-align: center;
     width: 90%;
     left: 5%;
-    height: 50%;
-    max-height: 50%;
+    height: 55%;
+    max-height: 55%;
     overflow: auto;
+}
+
+.weight-page #content-container #template-container .storeTemplate #templates {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    overflow: auto;
+}
+
+.grid-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    height: 150px;
+    overflow: auto;
+    padding-top: 5px;
+ }
+
+.grid-item #grid-item-title {
+    background-color: white;
+    position: relative;
+}
+
+.grid-item .grid-content {
+    position: relative;
+    font-size: 12px;
+    font-weight: 100;
 }
 
 .weight-page #content-container #templateContentContainer #templateBtnContainer {

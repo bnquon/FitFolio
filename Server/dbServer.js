@@ -335,7 +335,7 @@ app.get('/retrieveWeightliftingData', (req, res) => {
 });
 
 app.get('/retrieveWorkoutTemplates', (req, res) => {
-   console.log("RETRIEVE TEMPLATE CALLED");
+
    const userId = req.query.passedUserID;
    const sql = "SELECT * FROM workouttemplate WHERE userID = ?";
    const sqlQuery = mysql.format(sql, [userId]);

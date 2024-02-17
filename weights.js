@@ -102,6 +102,9 @@ function testing(data, index) {
         string += element.exerciseName + " " + element.sets + " x " + element.reps + "\n";
     })
     console.log(string);
+    addElementToGrid(string, values[0].templateName);
+
+    testing(data, index);
 
 }
 
@@ -111,7 +114,6 @@ const gridContainer = document.getElementById('templates');
 function addElementToGrid(content, title) {
    const newElement = document.createElement('div');
    newElement.classList.add('grid-item');
-   newElement.textContent = content;
 
    const titleElement = document.createElement('h4');
    titleElement.id = 'grid-item-title';

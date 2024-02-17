@@ -12,4 +12,5 @@ https://uiverse.io/gharsh11032000/foolish-sloth-90
 
 TODO:
 - JS CODE TO STYLE THE GRID ITEMS
+- Make button to change months and re-generate the calender based on month
 - make the calendar interactable

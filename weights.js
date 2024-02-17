@@ -91,15 +91,15 @@ function testing(data, index) {
     var values = [];
 
     while (index < data.length && data[index].templateID === currentTemplateID) {
-        const { sets, reps, exerciseID, templateName } = data[index];
-        values.push({ sets, reps, exerciseID, templateName });
+        const { sets, reps, exerciseName, templateName } = data[index];
+        values.push({ sets, reps, exerciseName, templateName });
         index++;
     }
 
     console.log("Values from testing function: ", values);
     var string = '';
     values.forEach(element => {
-        string += element.exerciseID + " " + element.sets + " x " + element.reps + "\n";
+        string += element.exerciseName + " " + element.sets + " x " + element.reps + "\n";
     })
     console.log(string);
 

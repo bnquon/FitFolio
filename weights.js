@@ -3,7 +3,7 @@ const addressUser = sessionStorage.getItem('username');
 document.getElementById('username').textContent = addressUser;
 document.getElementById('username').style.fontWeight = '700';
 
-document.getElementById('templateName').placeholder = "Template Name";
+document.getElementById('templateName').placeholder = "Enter Template Name";
 
 fetch(`http://127.0.0.1:3000/retrieveWeightliftingData?passedUserID=${storedUserID}`, {
     method: "GET",
@@ -27,6 +27,18 @@ fetch(`http://127.0.0.1:3000/retrieveWeightliftingData?passedUserID=${storedUser
     console.error('Error fetching data:', error);
 });
 
+fetch(`http://127.0.0.1:3000/retrieveWorkoutTemplates?passedUserID=${storedUserID}`, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+    },
+})
+.then(data => {
+    console.log("Workout Template Data: ", data);
+})
+.catch(error => {
+    console.error('Error fetching data: ', error);
+})
 
 function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();

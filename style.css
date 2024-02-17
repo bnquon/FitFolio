@@ -724,17 +724,6 @@
     padding-top: 5px;
  }
 
-.grid-item #grid-item-title {
-    background-color: white;
-    position: relative;
-}
-
-.grid-item .grid-content {
-    position: relative;
-    font-size: 12px;
-    font-weight: 100;
-}
-
 .weight-page #content-container #templateContentContainer #templateBtnContainer {
     display: flex;
     justify-content: space-around;

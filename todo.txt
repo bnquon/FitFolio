@@ -11,6 +11,5 @@ https://uiverse.io/Cornerstone-04/bitter-impala-54
 https://uiverse.io/gharsh11032000/foolish-sloth-90
 
 TODO:
-- NEED TO RETRIEVE TEMPLATE DATA AND POPULATE IT IN THE GRID;
-- populate templates
+- JS CODE TO STYLE THE GRID ITEMS
 - make the calendar interactable

@@ -253,6 +253,18 @@ calendarBody.addEventListener('click', function (e) {
 });
 
 
+calendarBody.addEventListener('change', function(e) {
+    const select = e.target;
+
+    if (select.value === 'Remove') {
+        const parentDiv = select.parentElement;
+        const cell = parentDiv.parentElement; // Assuming the cell is the parent of the div
+
+        // Remove the parent div from the cell
+        cell.removeChild(parentDiv);
+    }
+});
+
 
 function calendarCellStyle(cell) {
     cell.style.fontSize = '20px';

@@ -191,6 +191,8 @@ function generateCalendar(monthChange) {
                 cell.textContent = "";
             } else if (i*7 + j - startIndex + 1 <= numDay) {
                 cell.textContent = i*7 + j - startIndex + 1;
+                cell.id =  `${i*7 + j - startIndex + 1}`;
+                // console.log(monthNames[month] + " " + cell.id);
             } else i++;
         }
     }

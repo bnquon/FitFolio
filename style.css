@@ -257,28 +257,31 @@
 }
 
 .main-page .main-container .bio .buttons {
-    position: relative;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    margin-top: 10%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 8%;
 }
 
 .main-page .main-container .bio .buttons button {
-    position: relative;
+    width: 80%;
+    height: 60px;
+    border: unset;
+    border-radius: 45px;
+    transition: all 0.3s;
     cursor: pointer;
-    font-size: 1.25vw;
-    font-weight: bold;
-    padding: 7.5px;
-    width: 12.5vw;
-    border-radius: 20px;
-    border: 1px solid white;
-    transition: 500ms;
-}
-
-.main-page .main-container .bio .buttons button:hover {
-    transform: scale(1.2);
-}
+    background: white;
+    font-size: 1.4em;
+    font-weight: 550;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .main-page .main-container .bio .buttons button:hover {
+    background: #e74c3c;
+    color: white;
+    font-size: 1.6em;
+  }
 
 .main-page .inspire-container {
     font-family: 'Libre Baskerville', serif;

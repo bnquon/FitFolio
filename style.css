@@ -753,9 +753,64 @@
 }
 
 .weight-page #content-container #calendar-container #calendarBtnContainer {
-    border: 1px solid red;
+    width: 25%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     margin-bottom: 10px;
 }
+
+#calendarBtnContainer button#lastMonth,
+#calendarBtnContainer button#nextMonth {
+    padding: 10px 20px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: lightgray;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    transition: all 250ms;
+    overflow: hidden;
+}
+
+#calendarBtnContainer button#lastMonth::before,
+#calendarBtnContainer button#nextMonth::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #212121;
+    z-index: -1;
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+}
+
+#calendarBtnContainer button#lastMonth::before {
+    left: 100%;
+}
+
+#calendarBtnContainer button#nextMonth::before {
+    left: 0%;
+}
+
+#calendarBtnContainer button#lastMonth:hover,
+#calendarBtnContainer button#nextMonth:hover {
+    color: #e8e8e8;
+}
+
+#calendarBtnContainer button#lastMonth:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+#calendarBtnContainer button#nextMonth:hover::before {
+    width: 100%;
+}
+
 
 .weight-page #content-container #calendar-container #calendar {
     position: relative;

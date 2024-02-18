@@ -256,37 +256,35 @@ calendarBody.addEventListener('click', function (e) {
         contentDiv.appendChild(select);
         cell.appendChild(contentDiv);
         
-    }
-
-   
-    const curDate = {
-        userId: storedUserID,
-        date: document.getElementById('calendar-title').textContent + " " + cell.textContent[0], 
-        templateName: select.options[select.selectedIndex].text,
-    };
-
-    console.log("CURDATE = ", curDate);
+        const curDate = {
+            userId: storedUserID,
+            date: document.getElementById('calendar-title').textContent + " " + cell.textContent[0], 
+            templateName: select.options[select.selectedIndex].text,
+        };
     
-    fetch("http://127.0.0.1:3000/saveTemplateToCalendar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(curDate),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Server response:', data);
-    })
-    .catch(error => {
-        // Handle errors
-        console.error('Error:', error);
-    });
+        console.log("CURDATE = ", curDate);
+        
+        fetch("http://127.0.0.1:3000/saveTemplateToCalendar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(curDate),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Server response:', data);
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error:', error);
+        });
+    } 
 
 });
 

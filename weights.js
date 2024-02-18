@@ -217,48 +217,50 @@ const calendarBody = document.querySelector('#calendar tbody');
 
 calendarBody.addEventListener('click', function (e) {
     const cell = e.target.closest('td');
-
     if (!cell || (cell.innerHTML === '')) {
         return; // Quit, not clicked on a cell
     }
-
     const row = cell.parentElement;
     console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.id);
-
     if (!cell.querySelector('div')) {
-        const contentDiv = document.createElement('div');
-        contentDiv.style.overflow = 'auto'; // Set overflow on the div
-        contentDiv.style.height = '60%'; // Set a fixed height for demonstration purposes
-        contentDiv.style.textAlign = 'center';
-        var select = document.createElement("select");
-        select.style.width = '80%';
-        select.style.fontSize = '18px';
-        select.style.height = '70%';
-        select.style.textAlign = 'center';
-        select.style.borderRadius = '20px';
-        select.style.border = 'unset';
-        select.style.outline = 'none';
-        select.style.fontWeight = '700';
-        select.style.backgroundColor = '#a1f1a1';
-        // Populate the select element with options based on exercises
-        templateNames.forEach(name => {
-            var option = document.createElement("option");
-            option.text = name;
-            option.style.backgroundColor = 'white';
-            select.add(option);
-        });
-
-        var option = document.createElement("option");
-        option.text = "Remove";
-        option.style.fontStyle = 'italic';
-        option.style.fontWeight = 'bold';
-        option.style.backgroundColor = 'white';
-        select.add(option);
-
-        contentDiv.appendChild(select);
-        cell.appendChild(contentDiv);
+        createCalendarContent(cell);
     }
 });
+
+function createCalendarContent(cell) {
+    const contentDiv = document.createElement('div');
+    contentDiv.style.overflow = 'auto'; // Set overflow on the div
+    contentDiv.style.height = '60%'; // Set a fixed height for demonstration purposes
+    contentDiv.style.textAlign = 'center';
+    var select = document.createElement("select");
+    select.style.width = '80%';
+    select.style.fontSize = '18px';
+    select.style.height = '70%';
+    select.style.textAlign = 'center';
+    select.style.borderRadius = '20px';
+    select.style.border = 'unset';
+    select.style.outline = 'none';
+    select.style.fontWeight = '700';
+    select.style.backgroundColor = '#2ade2a';
+    // select.style.color = 'white';
+    // Populate the select element with options based on exercises
+    templateNames.forEach(name => {
+        var option = document.createElement("option");
+        option.text = name;
+        option.style.backgroundColor = 'white';
+        select.add(option);
+    });
+
+    var option = document.createElement("option");
+    option.text = "Remove";
+    option.style.fontStyle = 'italic';
+    option.style.fontWeight = 'bold';
+    option.style.backgroundColor = 'white';
+    select.add(option);
+
+    contentDiv.appendChild(select);
+    cell.appendChild(contentDiv);
+}
 
 calendarBody.addEventListener('change', function(e) {
     const select = e.target;

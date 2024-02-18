@@ -214,21 +214,37 @@ document.getElementById('lastMonth').addEventListener('click', function() {
 console.log(templateNames);
 
 const calendarBody = document.querySelector('#calendar tbody');
+
 calendarBody.addEventListener('click', function (e) {
     const cell = e.target.closest('td');
-    if (!cell) {return;} // Quit, not clicked on a cell
+
+    if (!cell || (cell.innerHTML === '')) {
+        return; // Quit, not clicked on a cell
+    }
+
     const row = cell.parentElement;
     console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.id);
-    var select = document.createElement("select");
-    // Populate the select element with options based on exercises
-    templateNames.forEach(name => {
-        var option = document.createElement("option");
-        option.text = name;
-        select.add(option);
-    });
-    cell.appendChild(select);
 
+    if (!cell.querySelector('div')) {
+        const contentDiv = document.createElement('div');
+        contentDiv.style.overflow = 'auto'; // Set overflow on the div
+        contentDiv.style.maxHeight = '50px'; // Set a fixed height for demonstration purposes
+        contentDiv.style.border = '1px solid red'; // Add a border for visualization
+        contentDiv.style.textAlign = 'center';
+        var select = document.createElement("select");
+        
+        // Populate the select element with options based on exercises
+        templateNames.forEach(name => {
+            var option = document.createElement("option");
+            option.text = name;
+            select.add(option);
+        });
+
+        contentDiv.appendChild(select);
+        cell.appendChild(contentDiv);
+    }
 });
+
 
 
 function calendarCellStyle(cell) {

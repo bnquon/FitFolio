@@ -12,6 +12,13 @@ https://uiverse.io/gharsh11032000/foolish-sloth-90
 
 TODO:
 -SAVE CALENDAR THATS IT PLEASE U GOT THIS
+    PLAN
+    - Create SQL table to store the template Name, UserID and Date (get month + year from the Calendar title & date from the inner html)
+    - Retrieve on generateCalendar() function
+    - populate with new populateCalendarFunction that i have to Create
+    - Save on the calendar cell click 
+    - Remove if the value is Remove
+    - DONE BOOM
 
 USE THIS FOR FRONT PAGE
 https://uiverse.io/SteveBloX/short-fish-35

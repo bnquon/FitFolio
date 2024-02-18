@@ -240,6 +240,13 @@ calendarBody.addEventListener('click', function (e) {
             select.add(option);
         });
 
+        var option = document.createElement("option");
+        option.text = "Remove";
+        option.style.fontStyle = 'italic';
+        option.style.fontWeight = 'bold';
+        
+        select.add(option);
+
         contentDiv.appendChild(select);
         cell.appendChild(contentDiv);
     }

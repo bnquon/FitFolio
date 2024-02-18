@@ -358,16 +358,16 @@ app.get('/retrieveWorkoutTemplates', (req, res) => {
 });
 
 app.post('/saveTemplateToCalendar', (req, res) => {
-   const {storedUserID, date, templateName} = req.body;
-   const sql = "INSERT INTO usercalendartemplate (templateName, Date, userID) VALUES (?, ?, ?)";
-
+   const {userId, date, templateName} = req.body;
+   const sql = "INSERT INTO usercalendartemplate (userID, templateName, Date) VALUES (?, ?, ?)";
+   console.log("SERVER CODE ", userId);
    db.getConnection((err, connection) => {
       if (err) {
          console.error("Error getting connection: ", err);
          return res.status(500).json({ error: "Failed to add template to calendar. "});
       }
 
-      connection.query(sql, [templateName, date, storedUserID], (err, result) => {
+      connection.query(sql, [userId, templateName, date], (err, result) => {
          connection.release(); // release the connection after the query is executed
 
             if (err) {

@@ -19,7 +19,7 @@ fetch(`http://127.0.0.1:3000/retrieveWeightliftingData?passedUserID=${storedUser
     return response.json();
 })
 .then(data => {
-    console.log(data);
+    // console.log(data);
     // populateTable(data.templateData);
     populateGoals(data.weightliftingGoalData);
 })
@@ -41,7 +41,7 @@ fetch(`http://127.0.0.1:3000/retrieveWorkoutTemplates?passedUserID=${storedUserI
     return response.json();
 })
 .then(data => {
-    console.log("Workout Template Data: ", data.workoutTemplate);
+    // console.log("Workout Template Data: ", data.workoutTemplate);
     testing(data.workoutTemplate, 0);
 })
 .catch(error => {
@@ -63,7 +63,7 @@ function viewExercise() {
     })
     .then(data => {
         // Handle the data received from the server
-        console.log("Exercise List:", data.exerciseList);
+        // console.log("Exercise List:", data.exerciseList);
         // Set the event listener after fetching data
         document.getElementById("addExercise").addEventListener("click", function() {
             addExerciseRow(data.exerciseList);
@@ -96,12 +96,12 @@ function testing(data, index) {
         index++;
     }
 
-    console.log("Values from testing function: ", values);
+    // console.log("Values from testing function: ", values);
     var string = '';
     values.forEach(element => {
         string += element.exerciseName + " " + element.sets + " x " + element.reps + "<br>";
     })
-    console.log(string);
+    // console.log(string);
     addElementToGrid(string, values[0].templateName);
 
     testing(data, index);
@@ -169,14 +169,14 @@ function generateCalendar(monthChange) {
         "December"
       ];
 
-    console.log(month);
-    console.log(year);
+    // console.log(month);
+    // console.log(year);
 
     var firstDay = new Date(year, month, 1);
     let dayAbbreviation = firstDay.toLocaleString('en-US', { weekday: 'short' });
 
     let numDay = daysInMonth(month, year);
-    console.log(numDay);
+    // console.log(numDay);
 
     document.getElementById("calendar-title").innerHTML = monthNames[month] + " " + year;
 
@@ -211,7 +211,7 @@ document.getElementById('lastMonth').addEventListener('click', function() {
     generateCalendar(currentMonth);
 })
 
-console.log(templateNames);
+// console.log(templateNames);
 
 const calendarBody = document.querySelector('#calendar tbody');
 
@@ -221,7 +221,7 @@ calendarBody.addEventListener('click', function (e) {
         return; // Quit, not clicked on a cell
     }
     const row = cell.parentElement;
-    console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.id);
+    // console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.id);
     if (!cell.querySelector('div')) {
         const contentDiv = document.createElement('div');
         contentDiv.style.overflow = 'auto'; // Set overflow on the div
@@ -261,9 +261,11 @@ calendarBody.addEventListener('click', function (e) {
    
     const curDate = {
         userId: storedUserID,
-        date: document.getElementById('calendar-title').innerHTML + " " + cell.innerHTML, 
-        templateName: select.value,
+        date: document.getElementById('calendar-title').textContent + " " + cell.textContent[0], 
+        templateName: select.options[select.selectedIndex].text,
     };
+
+    console.log("CURDATE = ", curDate);
     
     fetch("http://127.0.0.1:3000/saveTemplateToCalendar", {
         method: "POST",

@@ -109,23 +109,24 @@ function testing(data, index) {
 }
 
 const gridContainer = document.getElementById('templates');
+const templateNames = [];
 
 function addElementToGrid(content, title) {
-   const newElement = document.createElement('div');
-   newElement.classList.add('grid-item');
+    const newElement = document.createElement('div');
+    newElement.classList.add('grid-item');
 
-   const titleElement = document.createElement('h4');
-   titleElement.id = 'grid-item-title';
-   titleElement.textContent = title;
+    const titleElement = document.createElement('h4');
+    titleElement.id = 'grid-item-title';
+    titleElement.textContent = title;
+    templateNames.push(title);
+    const exercises = document.createElement('div');
+    exercises.classList.add = 'grid-content';
+    exercises.innerHTML = content;
 
-   const exercises = document.createElement('div');
-   exercises.classList.add = 'grid-content';
-   exercises.innerHTML = content;
+    newElement.appendChild(titleElement);
+    newElement.appendChild(exercises);
 
-   newElement.appendChild(titleElement);
-   newElement.appendChild(exercises);
-
-   gridContainer.appendChild(newElement);
+    gridContainer.appendChild(newElement);
 }
 
 let currentMonth = 0;
@@ -210,13 +211,25 @@ document.getElementById('lastMonth').addEventListener('click', function() {
     generateCalendar(currentMonth);
 })
 
+console.log(templateNames);
+
 const calendarBody = document.querySelector('#calendar tbody');
 calendarBody.addEventListener('click', function (e) {
-  const cell = e.target.closest('td');
-  if (!cell) {return;} // Quit, not clicked on a cell
-  const row = cell.parentElement;
-  console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.id);
+    const cell = e.target.closest('td');
+    if (!cell) {return;} // Quit, not clicked on a cell
+    const row = cell.parentElement;
+    console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.id);
+    var select = document.createElement("select");
+    // Populate the select element with options based on exercises
+    templateNames.forEach(name => {
+        var option = document.createElement("option");
+        option.text = name;
+        select.add(option);
+    });
+    cell.appendChild(select);
+
 });
+
 
 function calendarCellStyle(cell) {
     cell.style.fontSize = '20px';
@@ -444,7 +457,3 @@ function applyGoalCellStyle(cell) {
     cell.style.marginTop = '15px';
     cell.style.marginLeft = '10px';
 }
-
-// Example usage:
-// addElementToGrid('Item 1');
-// addElementToGrid('Item 2');

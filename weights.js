@@ -129,15 +129,14 @@ function addElementToGrid(content, title) {
 }
 
 let currentMonth = 0;
+const table = document.getElementById("calendar");
 
 function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
 
 function generateCalendar(monthChange) {
-    const table = document.getElementById("calendar");
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    table.innerHTML = '';
 
     var date = new Date();
     var month = date.getMonth() + monthChange;
@@ -149,7 +148,7 @@ function generateCalendar(monthChange) {
         month = 11;
         year -= 1;
     }
-
+    console.log("LAST TABLE ROWS", lastTableRows)
     const monthNames = [
         "January",
         "February",
@@ -191,6 +190,7 @@ function generateCalendar(monthChange) {
             } else i++;
         }
     }
+
 }
 
 generateCalendar(currentMonth);

@@ -292,14 +292,41 @@ calendarBody.addEventListener('click', function (e) {
 
 calendarBody.addEventListener('change', function(e) {
     const select = e.target;
-
+    // document.getElementById('calendar-title').textContent + " " + cell.textContent[0]
     if (select.value === 'Remove') {
         const parentDiv = select.parentElement;
         const cell = parentDiv.parentElement; // Assuming the cell is the parent of the div
-
+        var values = {
+            date: document.getElementById('calendar-title').textContent + " " + cell.textContent[0],
+            userId: storedUserID,
+        }
         // Remove the parent div from the cell
         cell.removeChild(parentDiv);
-    }
+
+        fetch('http://127.0.0.1:3000/deleteTemplateFromCalendar', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            // Other headers as needed
+        },
+            body: JSON.stringify(values),
+        })
+        .then(response => {
+            if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the response data
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error:', error);
+        });
+
+    }    
+
 });
 
 

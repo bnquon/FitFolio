@@ -379,3 +379,25 @@ app.post('/saveTemplateToCalendar', (req, res) => {
       });
    });
 });
+
+app.delete('/deleteTemplateFromCalendar', (req, res) => {
+   const {userId, date} = req.body;
+   const sql = "DELETE FROM usercalendartemplate WHERE userID = ? AND Date = ?";  
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error getting connection: ", err);
+         return res.status(500).json({ error: "Failed to delete template to calendar. "});
+      }
+
+      connection.query(sql, [userId, date], (err, result) => {
+         connection.release(); // release the connection after the query is executed
+
+            if (err) {
+                console.error("Error executing query: ", err);
+                return res.status(500).json({ error: "Failed to delete template from calendar." });
+            }
+
+            return res.json({ success: true, message: "Template deleted from calendar successfully." });
+      });
+   });
+})

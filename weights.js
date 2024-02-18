@@ -228,15 +228,22 @@ calendarBody.addEventListener('click', function (e) {
     if (!cell.querySelector('div')) {
         const contentDiv = document.createElement('div');
         contentDiv.style.overflow = 'auto'; // Set overflow on the div
-        contentDiv.style.maxHeight = '50px'; // Set a fixed height for demonstration purposes
-        contentDiv.style.border = '1px solid red'; // Add a border for visualization
+        contentDiv.style.height = '60%'; // Set a fixed height for demonstration purposes
         contentDiv.style.textAlign = 'center';
         var select = document.createElement("select");
-        
+        select.style.width = '80%';
+        select.style.fontSize = '18px';
+        select.style.height = '75%';
+        select.style.textAlign = 'center';
+        select.style.borderRadius = '20px';
+        select.style.border = 'unset';
+        select.style.outline = 'none';
+        select.style.backgroundColor = '#a1f1a1';
         // Populate the select element with options based on exercises
         templateNames.forEach(name => {
             var option = document.createElement("option");
             option.text = name;
+            option.style.backgroundColor = 'white';
             select.add(option);
         });
 
@@ -244,14 +251,13 @@ calendarBody.addEventListener('click', function (e) {
         option.text = "Remove";
         option.style.fontStyle = 'italic';
         option.style.fontWeight = 'bold';
-        
+        option.style.backgroundColor = 'white';
         select.add(option);
 
         contentDiv.appendChild(select);
         cell.appendChild(contentDiv);
     }
 });
-
 
 calendarBody.addEventListener('change', function(e) {
     const select = e.target;

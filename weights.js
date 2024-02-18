@@ -260,7 +260,7 @@ calendarBody.addEventListener('click', function (e) {
 
    
     const curDate = {
-        userID :storedUserID, 
+        userId: storedUserID,
         date: document.getElementById('calendar-title').innerHTML + " " + cell.innerHTML, 
         templateName: select.value,
     };
@@ -283,7 +283,7 @@ calendarBody.addEventListener('click', function (e) {
     })
     .catch(error => {
         // Handle errors
-        console.error('Error fetching exercise data:', error);
+        console.error('Error:', error);
     });
 
 });

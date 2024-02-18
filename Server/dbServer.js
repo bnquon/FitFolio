@@ -356,3 +356,26 @@ app.get('/retrieveWorkoutTemplates', (req, res) => {
       });
    });
 });
+
+app.post('/saveTemplateToCalendar', (req, res) => {
+   const {storedUserID, date, templateName} = req.body;
+   const sql = "INSERT INTO usercalendartemplate (templateName, Date, userID) VALUES (?, ?, ?)";
+
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error getting connection: ", err);
+         return res.status(500).json({ error: "Failed to add template to calendar. "});
+      }
+
+      connection.query(sql, [templateName, date, storedUserID], (err, result) => {
+         connection.release(); // release the connection after the query is executed
+
+            if (err) {
+                console.error("Error executing query: ", err);
+                return res.status(500).json({ error: "Failed to save template to calendar." });
+            }
+
+            return res.json({ success: true, message: "Template saved to calendar successfully." });
+      });
+   });
+});

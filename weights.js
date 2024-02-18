@@ -233,11 +233,12 @@ calendarBody.addEventListener('click', function (e) {
         var select = document.createElement("select");
         select.style.width = '80%';
         select.style.fontSize = '18px';
-        select.style.height = '75%';
+        select.style.height = '70%';
         select.style.textAlign = 'center';
         select.style.borderRadius = '20px';
         select.style.border = 'unset';
         select.style.outline = 'none';
+        select.style.fontWeight = '700';
         select.style.backgroundColor = '#a1f1a1';
         // Populate the select element with options based on exercises
         templateNames.forEach(name => {

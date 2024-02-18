@@ -138,6 +138,10 @@ function daysInMonth(month, year) {
 function generateCalendar(monthChange) {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+    for (let i = table.rows.length - 1; i > 0; i--) {
+        table.deleteRow(i);
+    }
+
     var date = new Date();
     var month = date.getMonth() + monthChange;
     var year = date.getFullYear();
@@ -148,7 +152,7 @@ function generateCalendar(monthChange) {
         month = 11;
         year -= 1;
     }
-    console.log("LAST TABLE ROWS", lastTableRows)
+
     const monthNames = [
         "January",
         "February",
@@ -190,7 +194,6 @@ function generateCalendar(monthChange) {
             } else i++;
         }
     }
-
 }
 
 generateCalendar(currentMonth);

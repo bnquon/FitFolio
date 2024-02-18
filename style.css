@@ -757,7 +757,7 @@
 }
 
 .weight-page #content-container #calendar-container #calendarBtnContainer {
-    width: 25%;
+    width: 300px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -831,7 +831,7 @@
 
 .weight-page #content-container #calendar-container #calendar td {
     border: 1px solid black;
-    /* padding-left: 0.5%; */
+    padding: 0.5%;
 }
 
 

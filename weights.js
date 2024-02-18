@@ -210,9 +210,19 @@ document.getElementById('lastMonth').addEventListener('click', function() {
     generateCalendar(currentMonth);
 })
 
+const calendarBody = document.querySelector('#calendar tbody');
+calendarBody.addEventListener('click', function (e) {
+  const cell = e.target.closest('td');
+  if (!cell) {return;} // Quit, not clicked on a cell
+  const row = cell.parentElement;
+  console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.id);
+});
+
 function calendarCellStyle(cell) {
     cell.style.fontSize = '20px';
     cell.style.height = '100px';
+    cell.style.verticalAlign = "top";
+    cell.style.textAlign = "end";
 }
 
 function applyGoalCellStyle(cell) {

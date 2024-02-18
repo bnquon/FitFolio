@@ -10,6 +10,9 @@ CHANGE THE BORDER COLOUR ON THE BUTTONS IN CARDIO
 https://uiverse.io/Cornerstone-04/bitter-impala-54
 https://uiverse.io/gharsh11032000/foolish-sloth-90
 
+USE THIS FOR FRONT PAGE
+https://uiverse.io/SteveBloX/short-fish-35
+
 TODO:
 -SAVE CALENDAR THATS IT PLEASE U GOT THIS
     PLAN
@@ -19,6 +22,3 @@ TODO:
     - Save on the calendar cell click 
     - Remove if the value is Remove
     - DONE BOOM
-
-USE THIS FOR FRONT PAGE
-https://uiverse.io/SteveBloX/short-fish-35

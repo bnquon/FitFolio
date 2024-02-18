@@ -223,44 +223,70 @@ calendarBody.addEventListener('click', function (e) {
     const row = cell.parentElement;
     console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.id);
     if (!cell.querySelector('div')) {
-        createCalendarContent(cell);
-    }
-});
+        const contentDiv = document.createElement('div');
+        contentDiv.style.overflow = 'auto'; // Set overflow on the div
+        contentDiv.style.height = '60%'; // Set a fixed height for demonstration purposes
+        contentDiv.style.textAlign = 'center';
+        var select = document.createElement("select");
+        select.style.width = '80%';
+        select.style.fontSize = '18px';
+        select.style.height = '70%';
+        select.style.textAlign = 'center';
+        select.style.borderRadius = '20px';
+        select.style.border = 'unset';
+        select.style.outline = 'none';
+        select.style.fontWeight = '700';
+        select.style.backgroundColor = '#2ade2a';
+        // select.style.color = 'white';
+        // Populate the select element with options based on exercises
+        templateNames.forEach(name => {
+            var option = document.createElement("option");
+            option.text = name;
+            option.style.backgroundColor = 'white';
+            select.add(option);
+        });
 
-function createCalendarContent(cell) {
-    const contentDiv = document.createElement('div');
-    contentDiv.style.overflow = 'auto'; // Set overflow on the div
-    contentDiv.style.height = '60%'; // Set a fixed height for demonstration purposes
-    contentDiv.style.textAlign = 'center';
-    var select = document.createElement("select");
-    select.style.width = '80%';
-    select.style.fontSize = '18px';
-    select.style.height = '70%';
-    select.style.textAlign = 'center';
-    select.style.borderRadius = '20px';
-    select.style.border = 'unset';
-    select.style.outline = 'none';
-    select.style.fontWeight = '700';
-    select.style.backgroundColor = '#2ade2a';
-    // select.style.color = 'white';
-    // Populate the select element with options based on exercises
-    templateNames.forEach(name => {
         var option = document.createElement("option");
-        option.text = name;
+        option.text = "Remove";
+        option.style.fontStyle = 'italic';
+        option.style.fontWeight = 'bold';
         option.style.backgroundColor = 'white';
         select.add(option);
+
+        contentDiv.appendChild(select);
+        cell.appendChild(contentDiv);
+        
+    }
+
+   
+    const curDate = {
+        userID :storedUserID, 
+        date: document.getElementById('calendar-title').innerHTML + " " + cell.innerHTML, 
+        templateName: select.value,
+    };
+    
+    fetch("http://127.0.0.1:3000/saveTemplateToCalendar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(curDate),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Server response:', data);
+    })
+    .catch(error => {
+        // Handle errors
+        console.error('Error fetching exercise data:', error);
     });
 
-    var option = document.createElement("option");
-    option.text = "Remove";
-    option.style.fontStyle = 'italic';
-    option.style.fontWeight = 'bold';
-    option.style.backgroundColor = 'white';
-    select.add(option);
-
-    contentDiv.appendChild(select);
-    cell.appendChild(contentDiv);
-}
+});
 
 calendarBody.addEventListener('change', function(e) {
     const select = e.target;

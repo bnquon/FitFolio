@@ -749,7 +749,12 @@
 .weight-page #content-container #calendar-container #calendar-title {
     font-size: 25px;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.weight-page #content-container #calendar-container #calendarBtnContainer {
+    border: 1px solid red;
+    margin-bottom: 10px;
 }
 
 .weight-page #content-container #calendar-container #calendar {

@@ -108,7 +108,6 @@ function testing(data, index) {
 
 }
 
-// NEED TO WORK ON DYNAMICALLY ADDING THE TEMPLATE
 const gridContainer = document.getElementById('templates');
 
 function addElementToGrid(content, title) {
@@ -133,21 +132,74 @@ function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
 
-function generateCalendar() {
+// function generateCalendar() {
+//     const table = document.getElementById("calendar");
+//     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+//     var date = new Date();
+//     var month = date.getMonth();
+//     var year = date.getFullYear();
+//     console.log(month);
+//     console.log(year);
+
+//     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+//     let dayAbbreviation = firstDay.toLocaleString('en-US', { weekday: 'short' });
+
+//     let numDay = daysInMonth(month, year);
+//     console.log(numDay);
+
+//     // Find the index of the first day
+//     let startIndex = daysOfWeek.indexOf(dayAbbreviation);
+
+//     for (let i = 0; i < 6; i++) {
+//         let row = table.insertRow();
+//         for (let j = 0; j < 7; j++) {
+//             let cell = row.insertCell();
+//             calendarCellStyle(cell);
+//             if (i === 0 && j < startIndex) {
+//                 cell.textContent = "";
+//             } else if (i*7 + j - startIndex + 1 <= numDay) {
+//                 cell.textContent = i*7 + j - startIndex + 1;
+//             } else i++;
+//         }
+//     }
+// }
+let currentMonth = 0;
+
+function generateCalendar(monthChange) {
     const table = document.getElementById("calendar");
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    table.innerHTML = '';
 
     var date = new Date();
-    var month = date.getMonth();
+    var month = date.getMonth() + monthChange;
     var year = date.getFullYear();
+
+    const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+
     console.log(month);
     console.log(year);
 
-    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    var firstDay = new Date(year, month, 1);
     let dayAbbreviation = firstDay.toLocaleString('en-US', { weekday: 'short' });
 
     let numDay = daysInMonth(month, year);
     console.log(numDay);
+
+    document.getElementById("calendar-title").innerHTML = monthNames[month] + " " + year;
 
     // Find the index of the first day
     let startIndex = daysOfWeek.indexOf(dayAbbreviation);
@@ -166,7 +218,17 @@ function generateCalendar() {
     }
 }
 
-generateCalendar();
+generateCalendar(currentMonth);
+
+document.getElementById('nextMonth').addEventListener('click', function() {
+    currentMonth++;
+    generateCalendar(currentMonth);
+})
+
+document.getElementById('lastMonth').addEventListener('click', function() {
+    currentMonth--;
+    generateCalendar(currentMonth);
+})
 
 function calendarCellStyle(cell) {
     cell.style.fontSize = '20px';

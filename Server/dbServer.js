@@ -53,6 +53,15 @@ app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
 app.use(express.json());
 
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Define a route handler for the root path
+app.get('/', (req, res) => {
+  // Send the HTML file
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // Middleware to read req.body.<params>
 // CREATE USER
 app.post("/createUser", async (req, res) => {

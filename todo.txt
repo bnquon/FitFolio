@@ -18,4 +18,7 @@ TODO:
     PLAN
     DONE - Create SQL table to store the template Name, UserID and Date (get month + year from the Calendar title & date from the inner html)
     DONE - Save on the calendar cell click 
-    - HAVE TO DEAL WITH ALTERING THE TEMPLATE
+    DONE - HAVE TO DEAL WITH ALTERING THE TEMPLATE
+
+WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+need to fix the code layout and then test/add features

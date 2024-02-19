@@ -76,6 +76,26 @@ function viewExercise() {
     });
 }
 
+fetch(`http://127.0.0.1:3000/getTemplateCalendarDates?passedUserID=${storedUserID}`, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+    }
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => {
+    console.log("DATES FROM GET FETCH: ", data);
+})
+.catch(error => {
+    console.error("Error fetching calendar dates with a template, ", error);
+});
+
+
 viewExercise();
 
 

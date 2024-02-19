@@ -357,6 +357,29 @@ app.get('/retrieveWorkoutTemplates', (req, res) => {
    });
 });
 
+app.get('/getTemplateCalendarDates', (req, res) => {
+   console.log("RECIEVED GET CALL FOR : getTemplateCalendarDates");
+   const userId = req.query.passedUserID;
+   const sql = "SELECT * FROM usercalendartemplate WHERE userID = ?";
+   const sqlQuery = mysql.format(sql, [userId]);
+
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error getting connection: ", err);
+         return res.status(500).json({ error: "Failed to fetch dates with template from calendar. "});
+      }
+      connection.query(sqlQuery, (err, listOfCalendarDates) => {
+         if (err) {
+            console.error("Error executing getTemplateCalendarDates query: ", err);
+            connection.release()
+            return res.status(500).json({ error: "Failed to fetch dates with template from calendar. "});
+         }
+         res.json({templateCalendarRows: listOfCalendarDates});
+         connection.release()
+      })
+   })
+})
+
 app.post('/saveTemplateToCalendar', (req, res) => {
    const {userId, date, templateName} = req.body;
    const sql = "INSERT INTO usercalendartemplate (userID, templateName, Date) VALUES (?, ?, ?)";

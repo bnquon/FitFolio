@@ -50,7 +50,7 @@ signup.addEventListener('submit', function(event) {
         if (data.createUserSuccessful) {
             sessionStorage.setItem('username', newUsername);
             sessionStorage.setItem('userid', data.userid);
-            window.location.href = "index.html";
+            window.location.href = "client/index.html";
         }
     })
     .catch(error => {
@@ -86,7 +86,7 @@ login.addEventListener('submit', function(event) {
         if (data.loginSuccessful) {
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('userid', data.userid);
-            window.location.href = "index.html";
+            window.location.href = "client/index.html";
         }
     })
     .catch(error => {

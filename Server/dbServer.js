@@ -54,13 +54,13 @@ app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
 app.use(express.json());
 
-// Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files from the 'client' directory
+app.use(express.static(path.join(__dirname, '../client')));
 
 // Define a route handler for the root path
 app.get('/', (req, res) => {
   // Send the HTML file
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client', 'login.html'));
 });
 
 // Middleware to read req.body.<params>

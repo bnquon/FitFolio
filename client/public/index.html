@@ -3,56 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Login Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Nunito+Sans:ital,opsz,wght@0,6..12,500;1,6..12,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    
-    <div class="main-page" id="main-page">
+    <div class="login-page">
 
-        <div class="taskbar">
-            <h1 id="fit">FITFOLIO</h1>
-            <div id="username-container">
-                <span id="greeting">Logged in as </span>
-                <span id="username"></span>
-            </div>
-            <ul id="links">
-                <li><a href="index.html"><h4>Home</h4></a></li>
-                <li><h4>About</h4></li>
-            </ul>
-        </div>
+        <h1 id="login-title">FITFOLIO</h1>
 
-        <div class="main-container">
-            <div class="bio">
-                <div class="intro">
-                    <h1>FITFOLIO</h1>
-                    <h2>YOUR PERSONALIZED FITNESS COMPANION, GUIDING YOU THROUGH A JOURNEY OF HEALTH AND WELLNESS WITH PROGRESS TRACKING</h2>
+        <div class="form-container">
+            <div class="overlay" id="overlay">
+                <div id="overlayMsg">
+                    <div id="loginMsg">
+                        <p><h1>Welcome Back!</h1><br><h3>If you're already a member, log in and seamlessly continue your journey by adding more to it!</h3></p>
+                    </div>
+                    <div id="signupMsg" class="hidden">
+                        <p><h1>Hello There!</h1><br><h3>Join our community and start tracking your fitness journey today. Sign up and let's make progress together! 💪🎉</h3></p>
+                    </div>
                 </div>
-                <div class="buttons">
-                    <a href="cardio.html"><button id="cardio">RUNNING</button></a>  
-                    <a href="weights.html"><button id="weightlifting">WEIGHTLIFTING</button></a>
+                <div class="overlayBtnContainer">
+                    <button id="switchBtn"><p>Login</p></button>
                 </div>
             </div>
 
-            <div class="image-container" id="image-container">
-                <img id="cardioBg" src="images/cbg.jpg" alt="">
-                <img id="weightBg" src="images/wbg.jpg" alt="">
-            </div>
+            <form action="home.html" class="login-form" id="login-form">
+
+                <div class="login-title">
+                    <p>Login</p>
+                </div>
+                <div class="login-fillout">
+                    <input type="text" id="usernameLogin" name="username" placeholder="Username" required>
+                    <input type="password" id="passwordLogin" placeholder="Password" required>
+                </div>
+
+                <div class="buttonContainer">
+                    <button id="loginBtn" type="submit"><p>Login</p></button>
+                </div>
+            </form>
+
+            <form action="home.html" class="signup-form" id="signup-form">
+                <div class="signup-title">
+                    <p>Create Account</p>
+                </div>
+
+                <div class="signup-fillout">
+                    <input type="text" id="usernameSignup" name="username" placeholder="Username" required>
+                    <input type="password" id="passwordSignup" placeholder="Password" required>
+                </div>
+
+                <div class="buttonContainer">
+                    <button id="signUpBtn" type="submit"><p>Create</p></button>
+                </div>
+            </form>
 
         </div>
-
-        <div class="inspire-container">
-            <div class="inspire">
-                <h2 id="inspire"></h2>
-            </div>
-        </div>
-
     </div>
-
-    <script src="../src/js/index.js"></script>
-
+    <script src="../src/js/login.js"></script>
 </body>
 </html>

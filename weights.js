@@ -93,7 +93,11 @@ fetch(`http://127.0.0.1:3000/getTemplateCalendarDates?passedUserID=${storedUserI
 .then(data => {
     console.log("DATES FROM GET FETCH: ", data);
     (data.templateCalendarRows).forEach(element => {
-        templateNamesAndDates.push([element.templateName, element.Date]);
+        const entry = {
+            templateName: element.templateName,
+            Date: element.Date,
+        };
+        templateNamesAndDates.push(entry);
     })
 })
 .catch(error => {
@@ -220,6 +224,7 @@ function generateCalendar(monthChange) {
             } else if (i*7 + j - startIndex + 1 <= numDay) {
                 cell.textContent = i*7 + j - startIndex + 1;
                 cell.id =  `${i*7 + j - startIndex + 1}`;
+                populateCalendar(templateNamesAndDates, cell);
                 // console.log(monthNames[month] + " " + cell.id);
             } else i++;
         }
@@ -314,6 +319,13 @@ calendarBody.addEventListener('click', function (e) {
     } 
 
 });
+
+function populateCalendar(data, cell) {
+    var curMonthYear = document.getElementById("calendar-title").textContent;
+    var curDate = cell.id;
+    var compareDate = curMonthYear + " " + curDate;
+    console.log(compareDate);
+}
 
 calendarBody.addEventListener('change', function(e) {
     const select = e.target;

@@ -52,16 +52,14 @@ db.getConnection((err, connection) => {
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
-// app.use(express.static('client'));
+// Serve static files from the 'client' directory
+app.use(express.static(path.join(__dirname, 'client')));
 
-// Serve static files from the 'client/public' directory
-app.use(express.static("client"));
-
-// // Define a route handler for the root path
-// app.get('/', (req, res) => {
-//   // Send the HTML file
-//   res.sendFile(path.join(__dirname, '../client/public', 'login.html'));
-// });
+// Define a route handler for the root path
+app.get('/', (req, res) => {
+  // Send the HTML file
+  res.sendFile(path.join(__dirname, 'client', 'public', 'login.html'));
+});
 
 // Middleware to read req.body.<params>
 // CREATE USER

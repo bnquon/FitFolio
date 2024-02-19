@@ -27,7 +27,7 @@ signup.addEventListener('submit', function(event) {
     event.preventDefault();
     const newUsername = document.getElementById('usernameSignup').value;
     const newPassword = document.getElementById('passwordSignup').value;
-    const serverURL = "http://localhost:3000";
+    const serverURL = "mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com";
 
     fetch(`${serverURL}/createUser`, {
         method: 'POST',
@@ -63,7 +63,7 @@ login.addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.getElementById('usernameLogin').value;
     const password = document.getElementById('passwordLogin').value; 
-    const serverURL = "http://localhost:3000";
+    const serverURL = "mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com";
 
     fetch(`${serverURL}/login`, {
         method: 'POST',

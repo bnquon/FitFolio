@@ -3,7 +3,7 @@ const addressUser = sessionStorage.getItem('username');
 document.getElementById('username').textContent = addressUser;
 document.getElementById('username').style.fontWeight = '700';
 
-fetch(`http://127.0.0.1:3000/retrieveCardioData?passedUserID=${storedUserID}`, {
+fetch(`mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/retrieveCardioData?passedUserID=${storedUserID}`, {
     method: "GET",
     headers: {
         "Content-Type": "application/json",
@@ -157,7 +157,7 @@ function saveRunningData(row) {
     console.log("Time:", time);
     console.log("Pace:", pace);
     console.log("Date:", date);
-    fetch("http://127.0.0.1:3000/addRunningData", {
+    fetch("mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/addRunningData", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -218,7 +218,7 @@ function addGoal() {
 }
 
 function saveGoal(goal, status) {
-    fetch("http://127.0.0.1:3000/addGoal", {
+    fetch("mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/addGoal", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

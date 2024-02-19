@@ -6,7 +6,7 @@ document.getElementById('username').style.fontWeight = '700';
 
 document.getElementById('templateName').placeholder = "Enter Template Name";
 
-fetch(`http://127.0.0.1:3000/retrieveWeightliftingData?passedUserID=${storedUserID}`, {
+fetch(`mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/retrieveWeightliftingData?passedUserID=${storedUserID}`, {
     method: "GET",
     headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ fetch(`http://127.0.0.1:3000/retrieveWeightliftingData?passedUserID=${storedUser
     console.error('Error fetching data:', error);
 });
 
-fetch(`http://127.0.0.1:3000/retrieveWorkoutTemplates?passedUserID=${storedUserID}`, {
+fetch(`mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/retrieveWorkoutTemplates?passedUserID=${storedUserID}`, {
     method: "GET",
     headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ fetch(`http://127.0.0.1:3000/retrieveWorkoutTemplates?passedUserID=${storedUserI
 });
 
 function viewExercise() {
-    fetch("http://127.0.0.1:3000/selectExercise", {
+    fetch("mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/selectExercise", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const templateNamesAndDates = [];
 
 async function fetchTemplateCalendarDates() {
     try {
-        const response = await fetch(`http://127.0.0.1:3000/getTemplateCalendarDates?passedUserID=${storedUserID}`, {
+        const response = await fetch(`mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/getTemplateCalendarDates?passedUserID=${storedUserID}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -300,7 +300,7 @@ calendarBody.addEventListener('click', function (e) {
     
         console.log("CURDATE = ", curDate);
         
-        fetch("http://127.0.0.1:3000/saveTemplateToCalendar", {
+        fetch("mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/saveTemplateToCalendar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -384,7 +384,7 @@ calendarBody.addEventListener('change', function(e) {
         // Remove the parent div from the cell
         cell.removeChild(parentDiv);
 
-        fetch('http://127.0.0.1:3000/deleteTemplateFromCalendar', {
+        fetch('mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/deleteTemplateFromCalendar', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -416,7 +416,7 @@ calendarBody.addEventListener('change', function(e) {
             newTemplateName: select.value,
         }
 
-        fetch('http://127.0.0.1:3000/alterTemplateFromCalendar', {
+        fetch('mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/alterTemplateFromCalendar', {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
@@ -565,7 +565,7 @@ function saveTemplate(table) {
     // You can now store or send templateJSON as needed
     console.log(templateJSON);
     
-    fetch("http://127.0.0.1:3000/addWorkoutTemplate", {
+    fetch("mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/addWorkoutTemplate", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -629,7 +629,7 @@ function addWeightGoal() {
 
 // NEED TO MAKE THIS HAPPEN ON SAVE BUTTON CLICK NOT AUTOMATICALLY
 function saveGoal(goal, status) {
-    fetch("http://127.0.0.1:3000/addWeightGoal", {
+    fetch("mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/addWeightGoal", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

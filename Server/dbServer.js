@@ -9,22 +9,15 @@ const { restart } = require("nodemon");
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-// First connection pool
-const db = mysql.createPool({
-   connectionLimit: 100,
-   host: "127.0.0.1",
-   user: "newuser",
-   password: "password1#",
-   database: "userDB",
-   port: "3306"
-});
-
-// Check the connection
-db.getConnection((err, connection) => {
-   if (err) throw err;
-   console.log("DB connected successfully: " + connection.threadId);
-   connection.release(); // Release the connection back to the pool
-});
+// // First connection pool
+// const db = mysql.createPool({
+//    connectionLimit: 100,
+//    host: "127.0.0.1",
+//    user: "newuser",
+//    password: "password1#",
+//    database: "userDB",
+//    port: "3306"
+// });
 
 // Use dotenv for environment variables
 require("dotenv").config();
@@ -37,7 +30,7 @@ const DB_DATABASE = process.env.DB_DATABASE;
 const DB_PORT = process.env.DB_PORT;
 
 // Second connection pool for a different environment
-const dbEnv = mysql.createPool({
+const db = mysql.createPool({
    connectionLimit: 100,
    host: DB_HOST,
    user: DB_USER,
@@ -45,6 +38,14 @@ const dbEnv = mysql.createPool({
    database: DB_DATABASE,
    port: DB_PORT
 });
+
+// Check the connection
+db.getConnection((err, connection) => {
+   if (err) throw err;
+   console.log("DB connected successfully: " + connection.threadId);
+   connection.release(); // Release the connection back to the pool
+});
+
 
 // Use 3000 as the default port if PORT is not set
 const port = process.env.PORT || 3000;

@@ -78,34 +78,42 @@ function viewExercise() {
 
 const templateNamesAndDates = [];
 
-fetch(`http://127.0.0.1:3000/getTemplateCalendarDates?passedUserID=${storedUserID}`, {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json",
-    }
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-})
-.then(data => {
-    console.log("DATES FROM GET FETCH: ", data);
-    (data.templateCalendarRows).forEach(element => {
-        const entry = {
-            templateName: element.templateName,
-            Date: element.Date,
-        };
-        templateNamesAndDates.push(entry);
-    })
-})
-.catch(error => {
-    console.error("Error fetching calendar dates with a template, ", error);
-});
+async function fetchTemplateCalendarDates() {
+    try {
+        const response = await fetch(`http://127.0.0.1:3000/getTemplateCalendarDates?passedUserID=${storedUserID}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
 
-console.log(templateNamesAndDates);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
+        const data = await response.json();
+        console.log("DATES FROM GET FETCH: ", data);
+
+        (data.templateCalendarRows).forEach(element => {
+            templateNamesAndDates.push({
+                storedTemplateName: element.templateName,
+                storedDate: element.Date
+            });
+        });
+        
+        console.log("TEMPLATE NAMES AND DATES: ", templateNamesAndDates);
+        console.log(templateNamesAndDates[0].storedDate);
+        generateCalendar(currentMonth);
+        // Call the function that needs the fetched data
+        // Example: populateCalendar(templateNamesAndDates, cell);
+
+    } catch (error) {
+        console.error("Error fetching calendar dates with a template, ", error);
+    }
+}
+
+// Call the async function
+fetchTemplateCalendarDates();
 
 viewExercise();
 
@@ -225,13 +233,10 @@ function generateCalendar(monthChange) {
                 cell.textContent = i*7 + j - startIndex + 1;
                 cell.id =  `${i*7 + j - startIndex + 1}`;
                 populateCalendar(templateNamesAndDates, cell);
-                // console.log(monthNames[month] + " " + cell.id);
             } else i++;
         }
     }
 }
-
-generateCalendar(currentMonth);
 
 document.getElementById('nextMonth').addEventListener('click', function() {
     currentMonth++;
@@ -324,7 +329,42 @@ function populateCalendar(data, cell) {
     var curMonthYear = document.getElementById("calendar-title").textContent;
     var curDate = cell.id;
     var compareDate = curMonthYear + " " + curDate;
-    console.log(compareDate);
+    data.forEach(element => {
+        if (compareDate === element.storedDate) {
+            const contentDiv = document.createElement('div');
+            contentDiv.style.overflow = 'auto'; // Set overflow on the div
+            contentDiv.style.height = '60%'; // Set a fixed height for demonstration purposes
+            contentDiv.style.textAlign = 'center';
+            var select = document.createElement("select");
+            select.style.width = '80%';
+            select.style.fontSize = '18px';
+            select.style.height = '70%';
+            select.style.textAlign = 'center';
+            select.style.borderRadius = '20px';
+            select.style.border = 'unset';
+            select.style.outline = 'none';
+            select.style.fontWeight = '700';
+            select.style.backgroundColor = '#2ade2a';
+            // select.style.color = 'white';
+            // Populate the select element with options based on exercises
+            templateNames.forEach(name => {
+                var option = document.createElement("option");
+                option.text = name;
+                option.style.backgroundColor = 'white';
+                select.add(option);
+            });
+
+            var option = document.createElement("option");
+            option.text = "Remove";
+            option.style.fontStyle = 'italic';
+            option.style.fontWeight = 'bold';
+            option.style.backgroundColor = 'white';
+            select.add(option);
+
+            contentDiv.appendChild(select);
+            cell.appendChild(contentDiv);
+        }
+    });
 }
 
 calendarBody.addEventListener('change', function(e) {

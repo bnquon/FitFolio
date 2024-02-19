@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
-const path = require('path');
+const path = require("path");
 const { restart } = require("nodemon");
 
 
@@ -54,13 +54,13 @@ app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
 app.use(express.json());
 
-// Serve static files from the 'client' directory
-app.use(express.static(path.join(__dirname, 'client')));
+// Serve static files from the 'client/public' directory
+app.use(express.static(path.join(__dirname, '../client/public')));
 
 // Define a route handler for the root path
 app.get('/', (req, res) => {
-  // Send the login HTML file
-  res.sendFile(path.join(__dirname, 'client', 'public', 'login.html'));
+  // Send the HTML file
+  res.sendFile(path.join(__dirname, '../client/public', 'login.html'));
 });
 
 // Middleware to read req.body.<params>

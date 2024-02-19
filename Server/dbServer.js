@@ -52,7 +52,7 @@ db.getConnection((err, connection) => {
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
-app.use(express.json());
+app.use(express.static('client'));
 
 // Serve static files from the 'client/public' directory
 app.use(express.static(path.join(__dirname, '../client/public')));

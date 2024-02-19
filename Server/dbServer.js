@@ -4,21 +4,9 @@ const app = express();
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const path = require("path");
-const { restart } = require("nodemon");
-
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
-
-// // First connection pool
-// const db = mysql.createPool({
-//    connectionLimit: 100,
-//    host: "127.0.0.1",
-//    user: "newuser",
-//    password: "password1#",
-//    database: "userDB",
-//    port: "3306"
-// });
 
 // Use dotenv for environment variables
 require("dotenv").config();
@@ -30,7 +18,6 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_DATABASE = process.env.DB_DATABASE;
 const DB_PORT = process.env.DB_PORT;
 
-// Second connection pool for a different environment
 const db = mysql.createPool({
    connectionLimit: 100,
    host: DB_HOST,
@@ -47,19 +34,17 @@ db.getConnection((err, connection) => {
    connection.release(); // Release the connection back to the pool
 });
 
+// Serve static files from the 'client/public' directory
+app.use(express.static(path.join(__dirname, 'client', 'public')));
+
+// Define a route handler for the root path to serve login.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'public', 'login.html'));
+});
 
 // Use 3000 as the default port if PORT is not set
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server Started on port ${port}...`));
-
-// Serve static files from the 'client' directory
-app.use(express.static(path.join(__dirname, 'client')));
-
-// Define a route handler for the root path
-app.get('/', (req, res) => {
-  // Send the HTML file
-  res.sendFile(path.join(__dirname, 'client', 'public', 'login.html'));
-});
 
 // Middleware to read req.body.<params>
 // CREATE USER

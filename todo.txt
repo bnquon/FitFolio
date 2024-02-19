@@ -18,7 +18,4 @@ TODO:
     PLAN
     DONE - Create SQL table to store the template Name, UserID and Date (get month + year from the Calendar title & date from the inner html)
     DONE - Save on the calendar cell click 
-    - Remove or change if the value is Remove or smt not the stored template
-    - Retrieve on generateCalendar() function
-    - populate with new populateCalendarFunction that i have to Create
-    - DONE BOOM
+    - HAVE TO DEAL WITH ALTERING THE TEMPLATE

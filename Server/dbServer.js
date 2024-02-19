@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = express();
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
+const { restart } = require("nodemon");
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
@@ -423,4 +424,24 @@ app.delete('/deleteTemplateFromCalendar', (req, res) => {
             return res.json({ success: true, message: "Template deleted from calendar successfully." });
       });
    });
+})
+
+app.patch('/alterTemplateFromCalendar', (req, res) => {
+   const {userId, date, newTemplateName} = req.body;
+   const sql = "UPDATE usercalendartemplate SET templateName = ? WHERE userID = ? AND Date = ?";
+   db.getConnection((err, connection) => {
+      if (err) {
+         console.error("Error getting connection: ", err);
+         return res.status(500).json({ error: "Failed to alter template name in calendar. "});
+      }
+      connection.query(sql, [newTemplateName, userId, date], (err, result) => {
+         connection.release();
+
+            if (err) {
+               console.error("Error executing alter Template query: ", err);
+               return res.status(500).json({ error: "Failed to alter template in calendar. "});
+            }
+            return res.json({ success: true, message: "Template altered from calendar successfully." });
+      })
+   })
 })

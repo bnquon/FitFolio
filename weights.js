@@ -402,8 +402,34 @@ calendarBody.addEventListener('change', function(e) {
             console.error('Error:', error);
         });
 
-    }    
+    } else if (select.value != 'Remove' && select.selectedIndex!= 0) {
+        var values = {
+            date: document.getElementById('calendar-title').textContent + " " + cell.textContent[0],
+            userId: storedUserID,
+            newTemplateName: select.value,
+        }
 
+        fetch('http://127.0.0.1:3000/alterTemplateFromCalendar', {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(values),
+        })
+        .then(response => {
+            if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the response data
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error:', error);
+        });
+    }   
 });
 
 

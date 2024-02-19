@@ -76,6 +76,8 @@ function viewExercise() {
     });
 }
 
+const templateNamesAndDates = [];
+
 fetch(`http://127.0.0.1:3000/getTemplateCalendarDates?passedUserID=${storedUserID}`, {
     method: "GET",
     headers: {
@@ -90,10 +92,15 @@ fetch(`http://127.0.0.1:3000/getTemplateCalendarDates?passedUserID=${storedUserI
 })
 .then(data => {
     console.log("DATES FROM GET FETCH: ", data);
+    (data.templateCalendarRows).forEach(element => {
+        templateNamesAndDates.push([element.templateName, element.Date]);
+    })
 })
 .catch(error => {
     console.error("Error fetching calendar dates with a template, ", error);
 });
+
+console.log(templateNamesAndDates);
 
 
 viewExercise();

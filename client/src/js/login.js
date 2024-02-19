@@ -86,7 +86,7 @@ login.addEventListener('submit', function(event) {
         if (data.loginSuccessful) {
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('userid', data.userid);
-            window.location.href = "client/index.html";
+            window.location.href = "index.html";
         }
     })
     .catch(error => {

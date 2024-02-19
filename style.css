@@ -827,6 +827,8 @@
     width: 14.2857%; /* 100% / 7 columns */
     text-align: center;
     border: 1px solid black;
+    font-size: 20px;
+    text-transform: uppercase;
 }
 
 .weight-page #content-container #calendar-container #calendar td {
@@ -834,4 +836,6 @@
     padding: 0.5%;
 }
 
-
+.weight-page #content-container #calendar-container #calendar tr:nth-child(even) {
+    background-color: #d8d8d8;
+}

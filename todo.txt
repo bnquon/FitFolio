@@ -29,16 +29,15 @@ REFORMAT THE CODE INTO THIS
 project-root/
 |\-- client/
 |   |\-- public/
+|   |   |\-- login.html
 |   |   |\-- index.html
-|   |   |\-- page1.html
-|   |   |\-- page2.html
-|   |   |\-- page3.html
-|   |   |\-- images/    <-- Add this folder for images
+|   |   |\-- cardio.html
+|   |   |\-- weights.html
+|   |   |\-- style.css
+|   |   |\-- images/    
 |   |\-- src/
 |       |\-- js/
-|       |   |\-- main.js
-|       |   |\-- page1.js
-|       |   |\-- page2.js
-|       |   |\-- page3.js
-|       |\-- css/
-|           |\-- styles.css
+|       |   |\-- login.js
+|       |   |\-- index.js
+|       |   |\-- cardio.js
+|       |   |\-- weights.js

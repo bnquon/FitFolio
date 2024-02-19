@@ -35,11 +35,12 @@ db.getConnection((err, connection) => {
 });
 
 // Serve static files from the 'client/public' directory
-app.use(express.static(path.join(__dirname, 'client', 'public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
-// Define a route handler for the root path to serve login.html
+// Define a route handler for the root path
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'public', 'login.html'));
+  // Send the HTML file
+  res.sendFile(path.join(__dirname, '../client/public', 'login.html'));
 });
 
 // Use 3000 as the default port if PORT is not set

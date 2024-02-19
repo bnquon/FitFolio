@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = express();
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
+const path = require('path');
 const { restart } = require("nodemon");
 
 

@@ -356,9 +356,7 @@ function populateCalendar(data, cell) {
                     option.selected = true;
                 }
 
-            });
-
-            
+            });            
 
             var option = document.createElement("option");
             option.text = "Remove";

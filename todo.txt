@@ -22,3 +22,23 @@ TODO:
 
 WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 need to fix the code layout and then test/add features
+
+REFORMAT THE CODE INTO THIS
+
+
+project-root/
+|\-- client/
+|   |\-- public/
+|   |   |\-- index.html
+|   |   |\-- page1.html
+|   |   |\-- page2.html
+|   |   |\-- page3.html
+|   |   |\-- images/    <-- Add this folder for images
+|   |\-- src/
+|       |\-- js/
+|       |   |\-- main.js
+|       |   |\-- page1.js
+|       |   |\-- page2.js
+|       |   |\-- page3.js
+|       |\-- css/
+|           |\-- styles.css

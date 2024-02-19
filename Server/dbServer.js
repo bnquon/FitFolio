@@ -5,6 +5,7 @@ const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const { restart } = require("nodemon");
 
+
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 

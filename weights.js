@@ -274,8 +274,7 @@ calendarBody.addEventListener('click', function (e) {
         select.style.outline = 'none';
         select.style.fontWeight = '700';
         select.style.backgroundColor = '#2ade2a';
-        // select.style.color = 'white';
-        // Populate the select element with options based on exercises
+        
         templateNames.forEach(name => {
             var option = document.createElement("option");
             option.text = name;
@@ -326,6 +325,7 @@ calendarBody.addEventListener('click', function (e) {
 });
 
 function populateCalendar(data, cell) {
+    console.log("Populate Calendar data: ", data);
     var curMonthYear = document.getElementById("calendar-title").textContent;
     var curDate = cell.id;
     var compareDate = curMonthYear + " " + curDate;
@@ -345,14 +345,20 @@ function populateCalendar(data, cell) {
             select.style.outline = 'none';
             select.style.fontWeight = '700';
             select.style.backgroundColor = '#2ade2a';
-            // select.style.color = 'white';
-            // Populate the select element with options based on exercises
+
             templateNames.forEach(name => {
                 var option = document.createElement("option");
                 option.text = name;
                 option.style.backgroundColor = 'white';
                 select.add(option);
+
+                if (name === element.storedTemplateName) {
+                    option.selected = true;
+                }
+
             });
+
+            
 
             var option = document.createElement("option");
             option.text = "Remove";
@@ -395,7 +401,7 @@ calendarBody.addEventListener('change', function(e) {
             return response.json();
         })
         .then(data => {
-            // Handle the response data
+
         })
         .catch(error => {
             // Handle errors
@@ -403,6 +409,9 @@ calendarBody.addEventListener('change', function(e) {
         });
 
     } else if (select.value != 'Remove' && select.selectedIndex!= 0) {
+        const parentDiv = select.parentElement;
+        const cell = parentDiv.parentElement;
+        
         var values = {
             date: document.getElementById('calendar-title').textContent + " " + cell.textContent[0],
             userId: storedUserID,
@@ -423,7 +432,7 @@ calendarBody.addEventListener('change', function(e) {
             return response.json();
         })
         .then(data => {
-            // Handle the response data
+
         })
         .catch(error => {
             // Handle errors

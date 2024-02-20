@@ -35,7 +35,7 @@ db.getConnection((err, connection) => {
 });
 
 // Serve static files from the 'client/public' directory
-app.use(express.static('public'));
+app.use(express.static('client'));
 
 // Define a route handler for the root path
 app.get('/', (req, res) => {

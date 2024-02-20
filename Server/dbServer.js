@@ -51,6 +51,8 @@ app.get('*.js', (req, res, next) => {
    next();
 });
 
+console.log(caCert);
+
 // Define a route handler for the root path
 app.get('/', (req, res) => {
   // Send the HTML file

@@ -51,7 +51,7 @@ app.get('/', (req, res) => {
 
  
 // Use 3000 as the default port if PORT is not set
-const port = process.env.PORT || 16903;
+const port = DB_PORT || 3000;
 app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
 // Middleware to read req.body.<params>

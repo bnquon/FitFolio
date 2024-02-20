@@ -41,3 +41,6 @@ project-root/
 |       |   |\-- index.js
 |       |   |\-- cardio.js
 |       |   |\-- weights.js
+
+
+restore package-lock-json somehow revert code and make sure using proper start commands in render

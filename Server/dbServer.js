@@ -8,7 +8,7 @@ const path = require("path");
 
 // Read the CA certificate
 const caCertPath = path.join(__dirname, 'ca.pem');
-const caCert = process.env.CA_CERT || fs.readFileSync(caCertPath, 'utf8');
+const caCert = process.env.CA_CERT || fs.readFileSync(caCertPath).toString();
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
@@ -31,9 +31,11 @@ const db = mysql.createPool({
    database: DB_DATABASE,
    port: DB_PORT,
    ssl: {
+      rejectUnauthorized: true,
       ca: caCert
    },
 });
+
 
 // Check the connection
 db.getConnection((err, connection) => {

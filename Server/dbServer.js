@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 
 // Read the CA certificate
-const caCert = fs.readFileSync('ca.pem', 'utf8');
+const caCert = fs.readFileSync('Server/ca.pem', 'utf8');
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());

@@ -76,6 +76,7 @@ login.addEventListener('submit', function(event) {
             name: username, 
             password: password,
         }),
+        agent: new https.Agent({ rejectUnauthorized: false }),
     })
     .then(response => {
         if (!response.ok) {

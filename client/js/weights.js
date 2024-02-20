@@ -6,7 +6,7 @@ document.getElementById('username').style.fontWeight = '700';
 
 document.getElementById('templateName').placeholder = "Enter Template Name";
 
-fetch(`mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/retrieveWeightliftingData?passedUserID=${storedUserID}`, {
+fetch(`mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED/retrieveWeightliftingData?passedUserID=${storedUserID}`, {
     method: "GET",
     headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ fetch(`mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/retrieveWeightliftingData
     console.error('Error fetching data:', error);
 });
 
-fetch(`mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/retrieveWorkoutTemplates?passedUserID=${storedUserID}`, {
+fetch(`mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED/retrieveWorkoutTemplates?passedUserID=${storedUserID}`, {
     method: "GET",
     headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ fetch(`mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/retrieveWorkoutTemplates?
 });
 
 function viewExercise() {
-    fetch("mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/selectExercise", {
+    fetch("mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED/selectExercise", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const templateNamesAndDates = [];
 
 async function fetchTemplateCalendarDates() {
     try {
-        const response = await fetch(`mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/getTemplateCalendarDates?passedUserID=${storedUserID}`, {
+        const response = await fetch(`mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED/getTemplateCalendarDates?passedUserID=${storedUserID}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -300,7 +300,7 @@ calendarBody.addEventListener('click', function (e) {
     
         console.log("CURDATE = ", curDate);
         
-        fetch("mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/saveTemplateToCalendar", {
+        fetch("mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED/saveTemplateToCalendar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -384,7 +384,7 @@ calendarBody.addEventListener('change', function(e) {
         // Remove the parent div from the cell
         cell.removeChild(parentDiv);
 
-        fetch('mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/deleteTemplateFromCalendar', {
+        fetch('mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED/deleteTemplateFromCalendar', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -416,7 +416,7 @@ calendarBody.addEventListener('change', function(e) {
             newTemplateName: select.value,
         }
 
-        fetch('mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/alterTemplateFromCalendar', {
+        fetch('mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED/alterTemplateFromCalendar', {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
@@ -565,7 +565,7 @@ function saveTemplate(table) {
     // You can now store or send templateJSON as needed
     console.log(templateJSON);
     
-    fetch("mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/addWorkoutTemplate", {
+    fetch("mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED/addWorkoutTemplate", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -629,7 +629,7 @@ function addWeightGoal() {
 
 // NEED TO MAKE THIS HAPPEN ON SAVE BUTTON CLICK NOT AUTOMATICALLY
 function saveGoal(goal, status) {
-    fetch("mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com/addWeightGoal", {
+    fetch("mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED/addWeightGoal", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

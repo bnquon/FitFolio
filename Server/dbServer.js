@@ -49,9 +49,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public', 'login.html'));
 });
 
- 
-// Use 3000 as the default port if PORT is not set
-const port = DB_PORT || 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
 // Middleware to read req.body.<params>

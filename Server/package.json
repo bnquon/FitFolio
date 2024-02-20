@@ -4,7 +4,7 @@
   "description": "",
   "main": "dbServer.js",
   "scripts": {
-    "start": "node dbServer.js"
+    "start": "node Server/dbServer.js"
   },
   "keywords": [],
   "author": "",

@@ -6,9 +6,8 @@ const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const path = require("path");
 
-const certificatesPath = path.join(__dirname);
-
-const caCertPath = path.join(certificatesPath, 'ca.pem');
+// Read the CA certificate
+const caCertPath = path.join(__dirname, 'ca.pem');
 const caCert = fs.readFileSync(caCertPath, 'utf8');
 
 app.use(cors()); // Enable CORS for all routes

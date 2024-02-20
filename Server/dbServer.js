@@ -3,7 +3,7 @@ const cors = require("cors");
 const fs = require('fs');
 const app = express();
 const mysql = require("mysql");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
 const path = require("path");
 
 app.use(cors()); // Enable CORS for all routes
@@ -66,49 +66,54 @@ app.listen(port, () => console.log(`Server Started on port ${port}...`));
 app.post("/createUser", async (req, res) => {
    console.log("/CREATEUSER FETCH CALL RETRIEVED");
    const user = req.body.name;
-   const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-   db.getConnection(async (err, connection) => {
-      if (err) throw err;
+   try {
+      // Hash the password asynchronously
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-      const sqlSearch = "SELECT * FROM usertable WHERE user = ?";
-      const search_query = mysql.format(sqlSearch, [user]);
+      db.getConnection((err, connection) => {
+         if (err) throw err;
 
-      const sqlInsert = "INSERT INTO usertable VALUES (0,?,?)";
-      const insert_query = mysql.format(sqlInsert, [user, hashedPassword]);
+         const sqlSearch = "SELECT * FROM usertable WHERE user = ?";
+         const search_query = mysql.format(sqlSearch, [user]);
 
-      // ? will be replaced by values
-      // ?? will be replaced by string
-      connection.query(search_query, (err, result) => {
-         if (err) {
-            console.error("Error signing up user: ", err);
-            connection.release();
-            return res.status(500).json({ error: "Failed to signup user." });
-         }
+         const sqlInsert = "INSERT INTO usertable VALUES (0,?,?)";
+         const insert_query = mysql.format(sqlInsert, [user, hashedPassword]);
 
-         console.log("------> Search Results");
-         console.log(result.length);
-
-         if (result.length != 0) {
-            connection.release();
-            console.log("------> User already exists");
-            res.sendStatus(409);
-         } else {
-            connection.query(insert_query, (err, result) => {
-               if (err) {
-                  console.error("Error signing up user: ", err);
-                  connection.release();
-                  return res.status(500).json({ error: "Failed to signup user." });
-               }
-
+         connection.query(search_query, (err, result) => {
+            if (err) {
+               console.error("Error signing up user: ", err);
                connection.release();
-               const userId = result.insertId;
-               console.log(userId);
-               res.json({ createUserSuccessful: true, userid: userId });
-            });
-         }
-      }); // end of connection.query()
-   }); // end of db.getConnection()
+               return res.status(500).json({ error: "Failed to signup user." });
+            }
+
+            console.log("------> Search Results");
+            console.log(result.length);
+
+            if (result.length != 0) {
+               connection.release();
+               console.log("------> User already exists");
+               res.sendStatus(409);
+            } else {
+               connection.query(insert_query, (err, result) => {
+                  if (err) {
+                     console.error("Error signing up user: ", err);
+                     connection.release();
+                     return res.status(500).json({ error: "Failed to signup user." });
+                  }
+
+                  connection.release();
+                  const userId = result.insertId;
+                  console.log(userId);
+                  res.json({ createUserSuccessful: true, userid: userId });
+               });
+            }
+         }); // end of connection.query()
+      }); // end of db.getConnection()
+   } catch (error) {
+      console.error("Error hashing password: ", error);
+      return res.status(500).json({ error: "Failed to hash password." });
+   }
 }); // end of app.post()
 
 //LOGIN (AUTHENTICATE USER)

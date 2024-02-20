@@ -55,6 +55,7 @@ app.listen(port, () => console.log(`Server Started on port ${port}...`));
 // Middleware to read req.body.<params>
 // CREATE USER
 app.post("/createUser", async (req, res) => {
+   console.log("/CREATEUSER FETCH CALL RETRIEVED");
    const user = req.body.name;
    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 

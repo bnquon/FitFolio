@@ -50,7 +50,7 @@ signup.addEventListener('submit', function(event) {
         if (data.createUserSuccessful) {
             sessionStorage.setItem('username', newUsername);
             sessionStorage.setItem('userid', data.userid);
-            window.location.href = "client/index.html";
+            console.log("USER CREATED SUCCESSFULLY");
         }
     })
     .catch(error => {

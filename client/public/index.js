@@ -26,7 +26,7 @@ signup.addEventListener('submit', function(event) {
     event.preventDefault();
     const newUsername = document.getElementById('usernameSignup').value;
     const newPassword = document.getElementById('passwordSignup').value;
-    const serverURL = "mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED";
+    const serverURL = "mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com";
 
     fetch(`${serverURL}/createUser`, {
         method: 'POST',
@@ -62,7 +62,7 @@ login.addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.getElementById('usernameLogin').value;
     const password = document.getElementById('passwordLogin').value; 
-    const serverURL = "mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED";
+    const serverURL = "mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com";
 
     fetch(`${serverURL}/login`, {
         method: 'POST',

@@ -1,4 +1,3 @@
-// LOGIN PAGE
 const overlay = document.getElementById("overlay");
 const login = document.getElementById("login-form");
 const signup = document.getElementById("signup-form");

@@ -6,7 +6,10 @@ const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const path = require("path");
 
-const ca = [fs.readFileSync('./certificates/ca.pem')];
+const certificatesPath = path.join(__dirname);
+
+const caCertPath = path.join(certificatesPath, 'ca.pem');
+const caCert = fs.readFileSync(caCertPath, 'utf8');
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
@@ -29,7 +32,7 @@ const db = mysql.createPool({
    database: DB_DATABASE,
    port: DB_PORT,
    ssl: {
-      ca: ca
+      ca: caCert
    },
 });
 

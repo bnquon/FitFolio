@@ -61,10 +61,10 @@ app.post("/createUser", async (req, res) => {
    db.getConnection(async (err, connection) => {
       if (err) throw err;
 
-      const sqlSearch = "SELECT * FROM userTable WHERE user = ?";
+      const sqlSearch = "SELECT * FROM usertable WHERE user = ?";
       const search_query = mysql.format(sqlSearch, [user]);
 
-      const sqlInsert = "INSERT INTO userTable VALUES (0,?,?)";
+      const sqlInsert = "INSERT INTO usertable VALUES (0,?,?)";
       const insert_query = mysql.format(sqlInsert, [user, hashedPassword]);
 
       // ? will be replaced by values

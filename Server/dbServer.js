@@ -71,7 +71,11 @@ app.post("/createUser", async (req, res) => {
       // ? will be replaced by values
       // ?? will be replaced by string
       await connection.query(search_query, async (err, result) => {
-         if (err) throw err;
+         if (err) {
+            console.error("Error signing up user: ", err);
+            connection.release();
+            return res.status(500).json({ error: "Failed to signup user." });
+         }
 
          console.log("------> Search Results");
          console.log(result.length);
@@ -82,9 +86,13 @@ app.post("/createUser", async (req, res) => {
             res.sendStatus(409);
          } else {
             await connection.query(insert_query, (err, result) => {
-               connection.release();
-               if (err) throw err;
+               if (err) {
+                  console.error("Error signing up user: ", err);
+                  connection.release();
+                  return res.status(500).json({ error: "Failed to signup user." });
+               }
                
+               connection.release();
                const userId = result.insertId;
                console.log(userId);
                res.json({ createUserSuccessful: true, userid: userId });

@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public', 'login.html'));
 });
 
-const port = process.env.PORT || 3000;
+const port = 3306;
 app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
 // Middleware to read req.body.<params>

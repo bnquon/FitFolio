@@ -19,6 +19,9 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_DATABASE = process.env.DB_DATABASE;
 const DB_PORT = process.env.DB_PORT;
 
+const path = require('path');
+const caFilePath = path.join(__dirname, 'Server', 'ca.pem');
+
 const db = mysql.createPool({
    connectionLimit: 100,
    host: DB_HOST,
@@ -28,7 +31,7 @@ const db = mysql.createPool({
    port: DB_PORT,
    ssl: {
       rejectUnauthorized: true,
-      ca: fs.readFileSync("./ca.pem").toString(),
+      ca: fs.readFileSync(caFilePath).toString(),
    },
 });
 

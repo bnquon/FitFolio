@@ -1,9 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+const fs = require('fs');
 const app = express();
 const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const path = require("path");
+
+const ca = [fs.readFileSync('./certificates/ca.pem')];
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
@@ -26,7 +29,7 @@ const db = mysql.createPool({
    database: DB_DATABASE,
    port: DB_PORT,
    ssl: {
-      rejectUnauthorized: false,
+      ca: ca
    },
 });
 

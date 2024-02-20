@@ -2,7 +2,7 @@ const overlay = document.getElementById("overlay");
 const login = document.getElementById("login-form");
 const signup = document.getElementById("signup-form");
 const switchBtn = document.getElementById("switchBtn");
-
+console.log("INDEX.JS IS BEING LOADED HELLO")
 const signupMsg = document.getElementById("signupMsg");
 const loginMsg = document.getElementById("loginMsg");
 

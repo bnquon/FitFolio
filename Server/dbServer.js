@@ -8,7 +8,7 @@ const path = require("path");
 
 // Read the CA certificate
 const caCertPath = path.join(__dirname, 'ca.pem');
-const caCert = fs.readFileSync(caCertPath, 'utf8');
+const caCert = process.env.CA_CERT || fs.readFileSync(caCertPath, 'utf8');
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());

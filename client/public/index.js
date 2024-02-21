@@ -30,7 +30,7 @@ signup.addEventListener('submit', function(event) {
     const serverURL = "https://mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903";
 
 
-    fetch(`${serverURL}/createUser`, {
+    fetch(`${serverURL}/createUser?ssl=true`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ login.addEventListener('submit', function(event) {
     const serverURL = "https://mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903";
 
 
-    fetch(`${serverURL}/login`, {
+    fetch(`${serverURL}/login?ssl=true`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -44,7 +44,7 @@ db.getConnection((err, connection) => {
 });
 
 // Serve static files from the 'client/public' directory
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '/client/public')));
 
 // Set MIME type for JavaScript files
 app.get('*.js', (req, res, next) => {
@@ -55,7 +55,7 @@ app.get('*.js', (req, res, next) => {
 // Define a route handler for the root path
 app.get('/', (req, res) => {
   // Send the HTML file
-  res.sendFile(path.join(__dirname, '../client/public', 'login.html'));
+  res.sendFile(path.join(__dirname, '/client/public', 'login.html'));
 });
 
 const port = 3306;

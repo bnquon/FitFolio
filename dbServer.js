@@ -19,7 +19,7 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_DATABASE = process.env.DB_DATABASE;
 const DB_PORT = process.env.DB_PORT;
 
-const caFilePath = path.join(__dirname, 'ca.pem');
+const caFilePath = 'ca.pem';
 console.log(caFilePath);
 const sslEnabled = process.env.SSL === 'true';
 

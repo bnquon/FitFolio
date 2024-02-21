@@ -21,6 +21,7 @@ const DB_PORT = process.env.DB_PORT;
 
 const caFilePath = path.join(__dirname, 'ca.pem');
 console.log(caFilePath);
+const sslEnabled = process.env.SSL === 'true';
 
 const db = mysql.createPool({
    connectionLimit: 100,
@@ -29,10 +30,10 @@ const db = mysql.createPool({
    password: DB_PASSWORD,
    database: DB_DATABASE,
    port: DB_PORT,
-   ssl: {
+   ssl: sslEnabled ? {
       rejectUnauthorized: true,
       ca: fs.readFileSync(caFilePath).toString(),
-   },
+   } : null,
 });
 
 

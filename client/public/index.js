@@ -27,10 +27,10 @@ signup.addEventListener('submit', function(event) {
     const newUsername = document.getElementById('usernameSignup').value;
     const newPassword = document.getElementById('passwordSignup').value;
     console.log("HELLO THE SIGN UP BUTTON HAS BEEN PRESSED: " + newUsername + " " + newPassword);
-    const serverURL = "https://mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903";
+    const serverURL = "mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED";
 
 
-    fetch(`${serverURL}/createUser?ssl-mode=REQUIRED`, {
+    fetch(`${serverURL}/createUser`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -64,10 +64,10 @@ login.addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.getElementById('usernameLogin').value;
     const password = document.getElementById('passwordLogin').value; 
-    const serverURL = "https://mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903";
+    const serverURL = "mysql://avnadmin:AVNS_Tb0d3PB38RAnaY9s3Ac@mysql-fitfolio-bnquon-fitfolio.a.aivencloud.com:16903/defaultdb?ssl-mode=REQUIRED";
 
 
-    fetch(`${serverURL}/login?ssl-mode=REQUIRED`, {
+    fetch(`${serverURL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

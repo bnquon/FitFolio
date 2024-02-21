@@ -20,7 +20,7 @@ const DB_DATABASE = process.env.DB_DATABASE;
 const DB_PORT = process.env.DB_PORT;
 
 const caFilePath = path.join(__dirname, 'ca.pem');
-console.log(caFilePath);
+
 
 const db = mysql.createPool({
    connectionLimit: 100,

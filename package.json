@@ -2,9 +2,9 @@
   "name": "fitfolio",
   "version": "1.0.0",
   "description": "Your project description",
-  "main": "Server/dbServer.js",
+  "main": "dbServer.js",
   "scripts": {
-    "start": "node Server/dbServer.js"
+    "start": "node dbServer.js"
   },
   "keywords": [],
   "author": "",

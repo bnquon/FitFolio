@@ -21,6 +21,8 @@ const DB_PORT = process.env.DB_PORT;
 
 const caFilePath = 'ca.pem';
 console.log(caFilePath);
+const caContent = fs.readFileSync(caFilePath).toString();
+console.log("CA Certificate Content:", caContent);
 const sslEnabled = process.env.SSL === 'true';
 
 const db = mysql.createPool({

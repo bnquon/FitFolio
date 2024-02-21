@@ -42,6 +42,8 @@ db.getConnection((err, connection) => {
    if (err) throw err;
    console.log("DB connected successfully: " + connection.threadId);
    connection.release(); // Release the connection back to the pool
+
+   console.log("Connected to the database successfully!");
 });
 
 // Serve static files from the 'client/public' directory
@@ -60,7 +62,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(DB_PORT, () => console.log(`Server Started on port ${port}...`));
+app.listen(DB_PORT, () => console.log(`Server Started on port ${DB_PORT}...`));
 
 // Middleware to read req.body.<params>
 // CREATE USER

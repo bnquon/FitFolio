@@ -63,8 +63,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/public', 'login.html'));
 });
 
-
-app.listen(DB_PORT, () => console.log(`Server Started on port ${DB_PORT}...`));
+const PORT = 3306;
+app.listen(PORT, () => console.log(`Server Started on port ${PORT}...`));
 
 // Middleware to read req.body.<params>
 // CREATE USER
